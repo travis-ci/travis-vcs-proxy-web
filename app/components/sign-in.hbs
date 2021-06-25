@@ -1,0 +1,22 @@
+  <div>
+    <label for='email'>Email</label>
+    <Input
+      @id='email'
+      @value={{this.email}}
+      @type='text'
+      placeholder='Enter your email'
+      class='email'
+    />
+  </div>
+  <div>
+    <label for='password'>Password</label>
+    <Input
+      @id='password'
+      @value={{this.password}}
+      @type='password'
+      class='password'
+    />
+  </div>
+
+  <button type='button' {{ on 'click' this.signIn }}>Sign In</button>
+  <button type='button' {{ on 'click' this.signUp }}>Sign Up</button>
