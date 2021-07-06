@@ -5,6 +5,6 @@ export default class ApplicationRoute extends Route {
 	@service auth;
 
   beforeModel() {
-    this.auth.autoSignIn();
+    //this.auth.autoSignIn();
   }
 }

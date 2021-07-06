@@ -1,0 +1,94 @@
+.auth-page {
+  height: 95%;
+
+  a {
+    color: #32AB52;
+    font-weight: 600;  
+  }
+
+  .auth-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10em;
+    height: 100%;
+  }
+}
+
+.auth-window {
+  display: contents;
+
+  h2 {
+    font-size: 36px;
+    line-height: 130%;
+  }
+
+  svg {
+    width: 142px;
+    height: 52px;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #142819;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .text-field {
+    width: 334px;
+    height: 34px;
+    margin-bottom: 2px;
+  }
+
+  .password {
+    margin-bottom: 5px;
+  }
+
+  .forgot-password {
+    text-align: right;
+    width: 334px;
+    margin-bottom: 24px;
+  }
+
+  .password-requirements {
+    width: 334px;
+    font-size: 12px;
+    line-height: 130%;
+    margin-bottom: 20px;
+  }
+
+  .create-account {
+    font-size: 18px;
+  }
+
+  .terms {
+    width: 334px;
+    margin-bottom: 55px;
+    font-size: 12px;
+    line-height: 130%;
+  }
+
+  .login-button {
+    color: white;
+    background-color: #32AB52;
+    font-size: 16px;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid #32AB52;
+    border-radius: 2px;
+    padding: 9px 147px;
+    margin-bottom: 54px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .login-button.create {
+    padding: 9px 117px;
+    margin-bottom: 15px;
+  }
+}

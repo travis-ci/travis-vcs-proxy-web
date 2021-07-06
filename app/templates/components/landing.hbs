@@ -1,0 +1,49 @@
+<div class="landing">
+  <div id="top" class="top landing-page">
+    <TopBar />
+  </div>
+
+  <main>
+    <section class="landing-hero-section section--grey">
+      <div class="landing-hero-container">
+        <div class="landing-hero-text">
+          <h1>
+            Travis CI Proxy Service
+          </h1>
+          <p>
+            A service meant to serve as a proxy layer between Perforce version control system and Travis CI. Please Create Account if you want to use your Perforce depots in Travis CI.
+          </p>
+          <div>
+            <LinkTo @route='sign-up' class='landing-button'>Create Account</LinkTo>
+          </div>
+        </div>
+
+        <div class="landing-hero-login">
+            <div>
+              <h3>Email</h3>
+              <Input
+                @id='email'
+                @value={{this.email}}
+                @type='text'
+                class='text-field email'
+              />
+            </div>
+            <div>
+              <h3>Password</h3>
+              <Input
+                @id='password'
+                @value={{this.password}}
+                @type='password'
+                class='text-field password'
+              />
+            </div>
+            <div>
+              <button type='button' class='login-button' {{ on 'click' this.signIn }}>Login</button>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<PageFooter />

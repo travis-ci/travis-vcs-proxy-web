@@ -1,0 +1,271 @@
+%button {
+  display: inline-block;
+  padding: 0.7em 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 2px;
+  border: none;
+  vertical-align: middle;
+  line-height: 1;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 14px;
+
+  &.disabled {
+    background-color: $cement-grey;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $cement-grey;
+    }
+  }
+}
+
+.button {
+  @extend %button;
+
+  position: relative;
+  overflow: visible;
+  outline: none;
+  text-align: center;
+  color: white;
+  background-color: darken($pebble-grey, 10);
+
+  &.already-migrated {
+    background-color: $oxide-blue;
+    &:hover {
+      background-color: darken($oxide-blue, 5%);
+    }
+  }
+
+  &--flex {
+    display: inline-flex;
+  }
+}
+
+.no-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus,
+.button:active,
+.button.active {
+  border-color: $pebble-grey;
+  background-color: $cement-grey;
+}
+
+.auth-button {
+  @extend %button;
+
+  height: 36px;
+  width: 136px;
+  color: #32AB52;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid #32AB52;
+  border-radius: 2px;
+  padding: 9px 19px;
+  line-height: 0.5;
+  margin-left: 18px;
+
+  &:hover,
+  &:active {
+    color: white;
+    background-color: #32AB52;
+    cursor: pointer;
+  }
+
+  .label-align {
+    line-height: 1.4;
+  }
+
+  .loading-indicator {
+    vertical-align: top;
+    margin-left: 0.3em;
+
+    i {
+      background-color: white;
+      width: 6px;
+      height: 6px;
+    }
+  }
+}
+
+.auth-button.signed-out {
+  .icon {
+    margin: 0 0 0 4px;
+    vertical-align: top;
+  }
+}
+
+.auth-button.create-account {
+  color: white;
+  background-color: #32AB52;
+}
+
+.auth-button--white {
+  @extend %button;
+
+  vertical-align: baseline;
+  border: 1px solid #f1f1f1 !important;
+  padding: 0.7em 0.8em !important;
+  border-radius: 2px;
+  font-size: inherit;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: $oxide-blue !important;
+    border-color: $oxide-blue !important;
+  }
+}
+
+.button--blue {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $oxide-blue;
+  border: 1px solid $oxide-blue;
+
+  &:hover,
+  &:active {
+    background-color: darken($oxide-blue, 10);
+  }
+  &:disabled {
+    background-color: $cement-grey;
+    border-color: $cement-grey;
+    cursor: not-allowed;
+  }
+}
+
+.button--white {
+  @extend %button;
+  border: 1px solid $pebble-grey;
+  color: $asphalt-grey;
+
+  &.button--hover {
+    transition: all 0.1s linear;
+
+    &:hover {
+      border-color: darken($pebble-grey, 10);
+      color: darken($asphalt-grey, 20);
+      background-color: lighten($pebble-grey, 2);
+    }
+  }
+}
+
+.button--green {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $turf-green;
+
+  &:hover,
+  &:active {
+    background-color: darken($turf-green, 10);
+  }
+}
+
+.button--white-and-teal {
+  @extend %button;
+
+  margin-right: 1em;
+
+  color: $oxide-blue;
+  border: 1px solid $oxide-blue;
+
+  &:hover,
+  &:active {
+    background-color: $oxide-blue;
+    color: white;
+  }
+}
+
+.button--orange {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $brick-orange;
+
+  &:hover {
+    background-color: darken($brick-orange, 10);
+  }
+}
+
+.button--red {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $brick-red;
+
+  &:hover {
+    background-color: darken($brick-red, 10);
+  }
+}
+
+.button--dark-grey {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $asphalt-grey;
+
+  &:hover,
+  &:active {
+    background-color: darken($asphalt-grey, 10);
+  }
+}
+
+.button--compact {
+  padding: 3px 7px;
+}
+
+.button--large {
+  font-size: 1.2em;
+  padding: 18px 30px;
+  border-radius: 3px;
+}
+
+.inactive {
+  cursor: default;
+  background: $dry-cement !important;
+  color: white;
+
+  &:hover,
+  &:active {
+    background: $dry-cement !important;
+  }
+}
+
+@mixin labelless {
+  display: inline-flex;
+  padding-top: 2px;
+  margin-left: 5px;
+
+  button,
+  a.disabled {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin-right: 5px;
+    border-radius: 30px;
+    border-color: $cement-grey;
+    transform: translate(0, 1px) scale(0.85);
+
+    &:hover, &:active {
+      border-color: $oxide-blue;
+    }
+
+    .label-align {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class='travis-status {{this.indicator}} {{if this.args.colorizeText 'colorize-text'}}'>
+  <div class="status-circle">
+    ●
+  </div>
+  <ExternalLinkTo href="http://www.traviscistatus.com/" class="status-link">
+    Travis CI Status
+    <span class="status-description {{if this.args.showDescription 'status-description--visible'}}">:
+      {{this.description}}
+    </span>
+  </ExternalLinkTo>
+  {{#if this.showTooltip}}
+    <EmberTooltip @text={{this.description}} @side="left" />
+  {{/if}}
+</div>

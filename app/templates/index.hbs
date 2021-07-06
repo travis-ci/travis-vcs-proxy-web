@@ -1,8 +1,16 @@
 {{page-title "Home"}}
 
-<h1>Travis CI Proxy Service.</h1>
-<h3>A service meant to serve as a proxy layer between Perforce version control system and Travis CI. Please sign-up if you want to use your Perforce depots in Travis CI.</h3>
-
-<LinkTo @route="sign-in">Sign in/Sign up</LinkTo>
-
-{{outlet}}
+{{#if this.auth.signedIn}}
+  <div class="wrapper">
+    <TopBar />
+    {{!-- <FlashDisplay /> --}}
+    <div class="wrapper-main">
+      <div id="main" role="main" class="main">
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="wrapper centered">
+    <Landing />
+  </div>
+{{/if}}

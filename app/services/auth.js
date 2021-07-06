@@ -15,6 +15,7 @@ export default class AuthService extends Service {
   storage = reads('localStorage.auth');
 
   signedIn = equal('state', STATE.SIGNED_IN);
+  signedOut = equal('state', STATE.SIGNED_OUT);
 
   signIn(email, password) {
     this.api.post(

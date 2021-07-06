@@ -1,0 +1,10 @@
+<header class="top {{if this.isWhite 'top--white'}}">
+  <div class="topbar {{if this.isNavigationOpen 'expanded'}}" >
+    <h1 id="logo" class="logo">
+      <LinkTo @route="index">
+        <SvgImage @name="travisci-proxy-logo-grayscale" @class="travis-logo" />
+      </LinkTo>
+    </h1>
+    <ProfileMenu />
+  </div>
+</header>

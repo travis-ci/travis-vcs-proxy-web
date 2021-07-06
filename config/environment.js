@@ -27,6 +27,21 @@ module.exports = function (environment) {
     },
 
     apiEndpoint: 'https://travis-vcs-proxy.travis-ci.org',
+    statusPageStatusUrl: 'https://pnpcptp8xh9k.statuspage.io/api/v2/status.json',
+
+    urls: {
+      blog: 'https://blog.travis-ci.com',
+      changelog: 'https://changelog.travis-ci.com',
+      community: 'https://travis-ci.community',
+      docs: 'https://docs.travis-ci.com',
+      imprint: 'https://docs.travis-ci.com/imprint.html',
+      legal: 'https://ideracorp.com/legal/TravisCI',
+      jobs: 'https://travisci.workable.com/',
+      status: 'https://www.traviscistatus.com/',
+      support: 'mailto:support@travis-ci.com',
+      travisVsJenkins: 'https://travis-ci.com/travisci-vs-jenkins',
+      twitter: 'https://twitter.com/travisci',
+    },
   };
 
   if (environment === 'development') {

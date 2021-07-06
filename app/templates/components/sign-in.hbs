@@ -1,0 +1,47 @@
+{{#if this.args.isSignIn}}
+<h2>Welcome back to Travis CI Proxy Service</h2>
+{{else}}
+<h2>Welcome to Travis CI Proxy Service</h2>
+{{/if}}
+<div>
+  <h3>Email</h3>
+  <Input
+    @id='email'
+    @value={{this.email}}
+    @type='text'
+    class='text-field email'
+  />
+</div>
+<div>
+  <h3>Password</h3>
+  <Input
+    @id='password'
+    @value={{this.password}}
+    @type='password'
+    class='text-field password'
+  />
+</div>
+{{#if this.args.isSignIn}}
+<div class='forgot-password'>
+  <LinkTo @route='sign-in'>Forgot your password?</LinkTo>
+</div>
+<div>
+  <button type='button' class='login-button' {{ on 'click' this.signIn }}>Login</button>
+</div>
+<div class='create-account'>
+  Don't have an account? <LinkTo @route='sign-up'>Create Account</LinkTo>
+</div>
+{{else}}
+<div class='password-requirements'>
+  Password must include at least 6 characters including at least one non-alphabetic character (number or special character)
+</div>
+<div>
+  <button type='button' class='login-button create' {{ on 'click' this.signUp }}>Create account</button>
+</div>
+<div class='terms'>
+  By creating an account, you agree to the <LinkTo @route='sign-in'>Terms of Service</LinkTo> and <LinkTo @route='sign-in'>Privacy Policy</LinkTo>
+</div>
+<div class='create-account'>
+  Already have an account? <LinkTo @route='sign-in'>Login</LinkTo>
+</div>
+{{/if}}
