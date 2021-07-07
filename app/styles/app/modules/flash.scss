@@ -1,0 +1,129 @@
+.flash {
+  @include resetul;
+
+  text-align: center;
+  height: 0;
+
+  li {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  li.notice, li.success, li.error, li.warning {
+    opacity: 1;
+
+    @include z-index(flashes);
+
+    height: $top-height;
+    @media #{$small-only} {
+      height: $top-height-mobile;
+    }
+    top: -1px;
+
+    &.fixed {
+      position: fixed;
+      top: 0;
+      z-index: z-index(flashes) * 1000;
+    }
+  }
+
+  .close {
+    position: absolute;
+    cursor: pointer;
+    right: 1.2rem;
+    top: 0.2em;
+    height: 100%;
+
+    .icon {
+      margin-right: 0;
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  .success {
+    color: #32AB52;
+    background-color: #BCE0C5;
+
+    @include colorSVGFill(#32AB52);
+
+    animation: fadeFlashOut 7s 1 ease forwards;
+
+    .flash-message svg {
+      height: 38px;
+      width: 32px;
+      margin-top: -5px;
+    }
+  }
+
+  .error {
+    color: $brick-red;
+    background-color: $quartz-red;
+
+    @include colorSVGFill($brick-red);
+
+    .flash-message svg {
+      height: 34px;
+      width: 30px;
+      margin-top: -1px;
+    }
+  }
+
+  .notice {
+    color: #3E80AF;
+    background-color: #BDD4E4;
+
+    @include colorSVGFill(#3E80AF);
+
+    .flash-message svg {
+      height: 19px;
+      width: 14px;
+      margin-right: 6px;
+
+      @include colorSVG(#3E80AF);
+
+      stroke-width: 1.5px;
+    }
+  }
+
+  .warning {
+    color: $brick-red;
+    background-color: $quartz-red;
+  }
+}
+
+ul.flash.warning+.wrapper-main,
+ul.flash.warning+#main,
+ul.flash.warning+.wrapper-main+#left {
+  margin-top: $top-height;
+  @media #{$small-only} {
+    height: $top-height-mobile;
+  }
+}
+
+.flash-message {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  line-height: 1.14;
+  font-size: 1.14rem;
+}
+
+@keyframes fadeFlashOut {
+  0% {
+    opacity: 1;
+  }
+
+  98% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

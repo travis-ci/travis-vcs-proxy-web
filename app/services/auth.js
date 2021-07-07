@@ -12,6 +12,7 @@ export default class AuthService extends Service {
   store = service();
   @service('storage') localStorage;
   @service api;
+  @service flashes;
   storage = reads('localStorage.auth');
 
   signedIn = equal('state', STATE.SIGNED_IN);
@@ -28,7 +29,9 @@ export default class AuthService extends Service {
           }
         }
       }
-    );
+    ).catch((error) => {
+      this.flashes.error(error.details.message);
+    });
   }
 
   signUp(email, password) {
@@ -42,7 +45,9 @@ export default class AuthService extends Service {
           }
         }
       }
-    );
+    ).catch((error) => {
+      this.flashes.error(error.details.message);
+    });
   }
 
   autoSignIn() {

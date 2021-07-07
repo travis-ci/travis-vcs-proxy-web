@@ -1,5 +1,4 @@
 import { inject as service } from '@ember/service';
-import { notEmpty } from '@ember/object/computed';
 import Component from '@glimmer/component';
 
 export default class TravisStatus extends Component {

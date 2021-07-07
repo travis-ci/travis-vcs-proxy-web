@@ -1,0 +1,15 @@
+<li class='{{this.type}} {{if this.isFixed 'fixed' 'below-top-bar'}}'>
+  <p class="flash-message">
+    {{#if this.args.flash.icon}}
+      <SvgImage @name={{this.args.flash.icon}} />
+    {{/if}}
+    <span data-test-flash-message-text class="message">
+      {{{this.args.flash.message}}}
+    </span>
+  </p>
+  {{#if this.args.flash.closeButton}}
+    <button type="button" class="no-button close" onclick={{action "close"}}>
+      <SvgImage @name="flash-close" @class="icon" />
+    </button>
+  {{/if}}
+</li>
