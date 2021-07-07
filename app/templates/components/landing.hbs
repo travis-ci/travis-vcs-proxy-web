@@ -19,27 +19,7 @@
         </div>
 
         <div class="landing-hero-login">
-            <div>
-              <h3>Email</h3>
-              <Input
-                @id='email'
-                @value={{this.email}}
-                @type='text'
-                class='text-field email'
-              />
-            </div>
-            <div>
-              <h3>Password</h3>
-              <Input
-                @id='password'
-                @value={{this.password}}
-                @type='password'
-                class='text-field password'
-              />
-            </div>
-            <div>
-              <button type='button' class='login-button' {{ on 'click' this.signIn }}>Login</button>
-            </div>
+          {{sign-in isLanding=true}}
         </div>
       </div>
     </section>

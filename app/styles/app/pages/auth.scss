@@ -37,16 +37,6 @@
     margin-bottom: 6px;
   }
 
-  .text-field {
-    width: 334px;
-    height: 34px;
-    margin-bottom: 2px;
-  }
-
-  .password {
-    margin-bottom: 5px;
-  }
-
   .forgot-password {
     text-align: right;
     width: 334px;
@@ -90,5 +80,41 @@
   .login-button.create {
     padding: 9px 117px;
     margin-bottom: 15px;
+  }
+}
+
+.text-field {
+  width: 334px;
+  height: 34px;
+  margin-bottom: 2px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.entry-field {
+  width: 334px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-bottom: 2px;
+}
+
+.password {
+  margin-bottom: 5px;
+}
+
+.password-eye-icon {
+  width: 18px;
+  height: 18px;
+  margin: 8px;
+  cursor: pointer;
+
+  svg {
+    width: 18px;
+    height: 18px;
   }
 }

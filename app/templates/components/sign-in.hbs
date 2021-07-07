@@ -1,25 +1,32 @@
 {{#if this.args.isSignIn}}
 <h2>Welcome back to Travis CI Proxy Service</h2>
-{{else}}
+{{else if this.args.isSignUp}}
 <h2>Welcome to Travis CI Proxy Service</h2>
 {{/if}}
 <div>
   <h3>Email</h3>
-  <Input
-    @id='email'
-    @value={{this.email}}
-    @type='text'
-    class='text-field email'
-  />
+  <div class='entry-field'>
+    <Input
+      @id='email'
+      @value={{this.email}}
+      @type='text'
+      class='text-field'
+    />
+  </div>
 </div>
 <div>
   <h3>Password</h3>
-  <Input
-    @id='password'
-    @value={{this.password}}
-    @type='password'
-    class='text-field password'
-  />
+  <div class='entry-field password'>
+    <Input
+      @id='password'
+      @value={{this.password}}
+      @type='password'
+      class='text-field'
+    />
+    <div class='password-eye-icon' {{ on 'click' this.togglePassword }}>
+      <SvgImage @name="icon-visible" />
+    </div>
+  </div>
 </div>
 {{#if this.args.isSignIn}}
 <div class='forgot-password'>
@@ -31,7 +38,7 @@
 <div class='create-account'>
   Don't have an account? <LinkTo @route='sign-up'>Create Account</LinkTo>
 </div>
-{{else}}
+{{else if this.args.isSignUp}}
 <div class='password-requirements'>
   Password must include at least 6 characters including at least one non-alphabetic character (number or special character)
 </div>
@@ -43,5 +50,9 @@
 </div>
 <div class='create-account'>
   Already have an account? <LinkTo @route='sign-in'>Login</LinkTo>
+</div>
+{{else if this.args.isLanding}}
+<div>
+  <button type='button' class='login-button' {{ on 'click' this.signIn }}>Login</button>
 </div>
 {{/if}}
