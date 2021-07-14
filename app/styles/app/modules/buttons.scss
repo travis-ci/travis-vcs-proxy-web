@@ -233,6 +233,15 @@
   border-radius: 3px;
 }
 
+.button--very-large {
+  font-size: 16px;
+  border-radius: 2px;
+  width: 334px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .inactive {
   cursor: default;
   background: $dry-cement !important;

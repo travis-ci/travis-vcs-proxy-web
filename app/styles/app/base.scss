@@ -302,6 +302,14 @@ span.emoji.emoji-sizer {
   color: #DB4545;
 }
 
+.turf-green {
+  color: $turf-green;
+}
+
+.text-black {
+  color: $text-black;
+}
+
 @for $i from 1 through 100 {
   .height-#{$i} {
     height: $i + 0%;
