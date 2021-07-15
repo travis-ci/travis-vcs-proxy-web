@@ -13,6 +13,11 @@ Router.map(function () {
   this.route('two-factor-authentication', { path: '/two_factor_authentication' });
   this.route('setup-new-password', { path: '/setup_new_password' });
   this.route('forgot-password', { path: '/forgot_password' });
-  this.route('first-page-without-confirmation', { path: '/first_page_without_confirmation' });
-  this.route('settings', { path: '/settings' });
+  this.route('unconfirmed');
+  this.route('account', function () {
+    this.route('security');
+    this.route('change-password', { path: 'change_password' });
+    this.route('change-email', { path: 'change_email' });
+    this.route('remove-account', { path: 'remove_account' });
+  });
 });

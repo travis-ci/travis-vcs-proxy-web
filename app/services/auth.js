@@ -1,22 +1,31 @@
 import Service, { inject as service } from '@ember/service';
-import { equal, reads } from '@ember/object/computed';
+import { tracked } from '@glimmer/tracking';
 
 const STATE = {
   SIGNING_IN: 'signing_in',
   SIGNED_IN: 'signed_in',
-  SIGNED_OUT: 'signed_out'
+  SIGNED_OUT: 'signed_out',
+  REQUIRES_2FA: 'requires_2fa'
 };
 
 export default class AuthService extends Service {
-  state = STATE.SIGNED_OUT;
+  @tracked state = STATE.SIGNED_OUT;
   store = service();
   @service('storage') localStorage;
   @service api;
   @service flashes;
-  storage = reads('localStorage.auth');
+  @service router;
+  storage = this.localStorage.auth;
 
-  signedIn = equal('state', STATE.SIGNED_IN);
-  signedOut = equal('state', STATE.SIGNED_OUT);
+  get signedIn() {
+    return this.state == STATE.SIGNED_IN;
+  }
+  get signedOut() {
+    return this.state == STATE.SIGNED_OUT;
+  }
+  get requires2FA() {
+    return this.state == STATE.REQUIRES_2FA;
+  }
 
   signIn(email, password) {
     this.api.post(
@@ -29,8 +38,16 @@ export default class AuthService extends Service {
           }
         }
       }
-    ).catch((error) => {
-      this.flashes.error(error.details.message);
+    ).then((data) => {
+      //if (data.otp_required_for_login && !!token) {
+        this.set('state', STATE.REQUIRES_2FA);
+      //} else {
+        // Set token
+      //  this.set('state', STATE.SIGNED_IN);
+      //  this.router.transitionTo('/');
+      //}
+    }).catch((error) => {
+      this.flashes.error(error);
     });
   }
 
@@ -45,8 +62,11 @@ export default class AuthService extends Service {
           }
         }
       }
-    ).catch((error) => {
-      this.flashes.error(error.details.message);
+    ).then(() => {
+      this.flashes.notice('Please check your email and confirm your account. If you need to generate a new confirmation email, please resend your confirmation email.')
+      this.router.transitionTo('unconfirmed');
+    }).catch((error) => {
+      this.flashes.error(error);
     });
   }
 

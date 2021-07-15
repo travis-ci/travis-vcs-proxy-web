@@ -39,6 +39,10 @@ h6 {
   font-weight: $font-weight-normal;
 }
 
+input {
+  font-family: inherit;
+}
+
 img {
   max-width: 100%;
   height: auto;

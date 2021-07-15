@@ -9,6 +9,36 @@ import Service, { inject as service } from '@ember/service';
 const storage = getStorage();
 
 export default class StorageAuthService extends Service {
+  get token() {
+    return storage.getItem('travis.token') || null;
+  }
+  set token(token) {
+    return storage.setItem('travis.token', token);
+  }
+
+  get user() {
+    const data = parseWithDefault(storage.getItem('travis.user'), null);
+    return data && data.user || data;
+  }
+  set user(user) {
+    return storage.setItem('travis.user', user);
+  }
+
+  get accounts() {
+    const accountsData = storage.getItem('travis.auth.accounts');
+    const accounts = parseWithDefault(accountsData, []).map(account =>
+      extractAccountRecord(this.store, account)
+    );
+    accounts.addArrayObserver(this, {
+      willChange: 'persistAccounts',
+      didChange: 'persistAccounts'
+    });
+    return accounts;
+  }
+  set accounts(accounts) {
+    this.persistAccounts(accounts);
+    return accounts;
+  }
 }
 
 // HELPERS

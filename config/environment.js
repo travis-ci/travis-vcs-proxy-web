@@ -70,8 +70,8 @@ module.exports = function (environment) {
 
   if (typeof process !== 'undefined') {
     if (API_ENDPOINT) {
-        ENV.apiEndpoint = API_ENDPOINT;
-      }
+      ENV.apiEndpoint = API_ENDPOINT;
+    }
   }
 
   return ENV;

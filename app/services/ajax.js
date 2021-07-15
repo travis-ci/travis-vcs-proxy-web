@@ -83,27 +83,27 @@ export default Service.extend({
       }
 
       fetch(url, fetchOptions).then(response => {
-        if (!response.ok) {
-          this.handleFetchError(reject, response);
+        const { 'content-type': resContentType = '' } = response.headers.map;
+        const resBodyLength = response._bodyBlob.size;
+
+        let resContent;
+        if (resContentType.includes('application/json') && resBodyLength > 0) {
+          resContent = response.json();
         } else {
-          const { 'content-type': resContentType = '' } = response.headers.map;
-
-          let resContent;
-          if (resContentType.includes('application/json')) {
-            resContent = response.json();
-          } else {
-            resContent = response.text();
-          }
-
-          resContent
-            .then(data => resolve(data))
-            .catch(error => this.handleFetchError(reject, error));
+          resContent = response.text();
         }
+
+        resContent
+          .then(data => {
+            if (!response.ok) {
+              this.handleFetchError(reject, data.error);
+            } else {
+              resolve({ headers: response.headers.map, data: data });
+            }
+          })
+          .catch(error => this.handleFetchError(reject, error));
       }).catch(error => {
-        this.handleFetchError(reject, {
-          isNetworkError: true,
-          details: error,
-        });
+        this.handleFetchError(reject, error.message);
       });
     });
   },
@@ -114,8 +114,7 @@ export default Service.extend({
   },
 
   logFetchError(response) {
-    const { status = 'UNKNOWN' } = response;
-    const message = `[ERROR] Fetch error (${status}): ${response}`;
+    const message = `[ERROR] Fetch error: ${response}`;
     warn(message, { id: 'travis.ajax.fetch' });
   },
 });

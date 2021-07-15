@@ -5,13 +5,9 @@
    <TopBar />
   </div>
   <FlashDisplay />
-
-  <main class='settings-page'>
-    <div class="settings-page-container">
-      <LeftBar />
-      <Security />
-    </div>
-  </main>
+  <AccountNav>
+    {{outlet}}
+  </AccountNav>
 </div>
 
 <PageFooter />
