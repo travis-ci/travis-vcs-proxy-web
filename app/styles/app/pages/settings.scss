@@ -1,0 +1,49 @@
+.settings-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    height: 100%;
+}
+
+.settings-page-container {
+    width: $layout-max-width;
+    display: flex;
+}
+
+.avatar-img {
+    border-radius: 50%;
+}
+
+.security {
+    width: 550px;
+    font-size: 18px;
+    color: $text-black;
+    margin-bottom: 41px;
+}
+
+.enable-2fa {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.qr-code {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 130px;
+    height: 130px;
+}
+
+.verification {
+    display: flex;
+    justify-content: center;
+}
+
+.help-link {
+  color: #32AB52;
+  font-weight: 600;
+}

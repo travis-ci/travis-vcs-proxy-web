@@ -1,0 +1,19 @@
+.left-bar {
+  width: 245px;
+}
+
+.left-bar-container {
+  display: block;
+  margin-top: 42px;
+}
+
+.left-bar-link {
+  display: block;
+  color: #333333;
+  line-height: 150%;
+  margin-bottom: 24px;
+
+  &.active {
+    color: #32AB52;
+  }
+}

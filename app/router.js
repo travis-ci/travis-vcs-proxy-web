@@ -14,5 +14,5 @@ Router.map(function () {
   this.route('setup-new-password', { path: '/setup_new_password' });
   this.route('forgot-password', { path: '/forgot_password' });
   this.route('first-page-without-confirmation', { path: '/first_page_without_confirmation' });
-
+  this.route('settings', { path: '/settings' });
 });

@@ -14,13 +14,15 @@
 @import "app/modules/flash";
 @import "app/modules/margins";
 @import "app/modules/widths";
-@import "app/modules/fonts";
+@import "app/modules/text";
 @import "app/modules/positioning";
 
 @import "app/layout";
 @import "app/layouts/top";
 @import "app/layouts/footer";
+@import "app/layouts/left-bar";
 
 @import "app/pages/landing";
 @import "app/pages/auth";
 @import "app/pages/page-without-confirmation";
+@import "app/pages/settings";
