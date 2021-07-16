@@ -163,14 +163,6 @@
   }
 }
 
-@mixin travisColorRows($gradient-width: 10px) {
-  @each $state, $colorMap in $stateMap {
-    @include colorBg(map-get($colorMap, gradient), $state, $gradient-width);
-    @include colorLinks(map-get($colorMap, color), $state);
-    @include colorStatusIcons(map-get($colorMap, color), $state);
-  }
-}
-
 @mixin snapshotHide {
   @media only percy {
     visibility: hidden;

@@ -1,0 +1,26 @@
+<span class="{{if this.small 'avatar--small' 'avatar'}}">
+  <span
+    class="pseudo-avatar"
+    aria-hidden="true"
+    data-initials={{this.userInitials}}
+  ></span>
+  {{#if this.url}}
+    <img
+      class="real-avatar"
+      src="{{this.url}}"
+      alt="{{this.name}} avatar"
+    />
+  {{/if}}
+</span>
+{{#if this.showSubscriptionCheckmark}}
+  <SvgImage @name="avatar-checkmark" @class="checkmark" />
+  <EmberTooltip @text={{this.subscriptionTooltipText}} />
+{{/if}}
+{{#if this.providerIcon}}
+  <SvgImage
+    @name={{this.providerIcon}}
+    @width={{15}}
+    @height={{15}}
+    @class="avatar__provider-icon"
+  />
+{{/if}}

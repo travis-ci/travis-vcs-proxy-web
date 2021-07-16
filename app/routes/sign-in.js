@@ -1,4 +1,4 @@
-import Route from '@ember/routing/route';
+import TravisRoute from 'travis/routes/basic';
 
-export default class SignInRoute extends Route {
+export default class SignInRoute extends TravisRoute {
 }

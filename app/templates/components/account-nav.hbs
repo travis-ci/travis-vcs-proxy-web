@@ -1,14 +1,12 @@
 <main class='settings-page'>
   <div class="settings-page-container">
     <div class="left-bar">
-      {{!--<UserAvatar
-        @url={{this.user.avatarUrl}}
-        @name={{this.user.fullName}}
+      <UserAvatar
+        @name={{this.user.name}}
         @size={{40}}
-        @providerIcon={{vcs-icon this.user.vcsType}}
-        class="navigation-avatar navigation-avatar--{{this.user.provider}}"
-      />--}}
-      <img class="navigation-avatar avatar-img" src="http://placehold.it/36x36">
+        class="navigation-avatar"
+      />
+      <span class="user-name">{{this.user.name}}</span>
 
       <div class="left-bar-container fs-18">
         <LinkTo @class="left-bar-link" @route="account.security">

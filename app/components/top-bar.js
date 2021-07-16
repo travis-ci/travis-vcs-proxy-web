@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
@@ -10,9 +11,7 @@ export default class TopBar extends Component {
   landingPage = false;
   isNavigationOpen = false;
   
-  get user() {
-    return this.auth.currentUser;
-  }
+  @tracked user = this.auth.currentUser;
 
   get isUnconfirmed() {
     if (!this.user)

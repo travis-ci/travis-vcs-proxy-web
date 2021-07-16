@@ -7,6 +7,8 @@ import fetch from 'fetch';
 const DEFAULT_ACCEPT = 'application/json';
 
 export default Service.extend({
+  storage: service(),
+
   getDefaultOptions() {
     return {
       accept: DEFAULT_ACCEPT,
@@ -23,6 +25,10 @@ export default Service.extend({
     // Content-Type
     if (!this.isRetrieve(method)) {
       headers['Content-Type'] = options.contentType || 'application/json; charset=utf-8';
+    }
+
+    if (this.storage.auth.token) {
+      headers['Authorization'] = `Bearer ${this.storage.auth.token}`;
     }
 
     // Accept
@@ -98,7 +104,7 @@ export default Service.extend({
             if (!response.ok) {
               this.handleFetchError(reject, data.error);
             } else {
-              resolve({ headers: response.headers.map, data: data });
+              resolve(data);
             }
           })
           .catch(error => this.handleFetchError(reject, error));

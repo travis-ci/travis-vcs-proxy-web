@@ -1,23 +1,22 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { next } from '@ember/runloop';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class ProfileMenu extends Component {
   @service auth;
   @service router;
 
-  isMenuOpen = false;
+  @tracked isMenuOpen = false;
 
-  get user() {
-    this.auth.currentUser;
-  }
+  @tracked user = this.auth.currentUser;
 
   get userName() {
-    if (this.user.name) {
-      return this.user.name;
+    if (this.user) {
+      return this.user.name || this.user.login;
     } else {
-      return this.user.login;
+      return '';
     }
   }
 
@@ -35,14 +34,14 @@ export default class ProfileMenu extends Component {
 
   closeMenu() {
     if (this.isMenuOpen) {
-      this.set('isMenuOpen', false);
+      this.isMenuOpen = false;
       this.disableAutoClose();
     }
   }
 
   openMenu() {
     if (!this.isMenuOpen) {
-      this.set('isMenuOpen', true);
+      this.isMenuOpen = true;
       next(() => this.enableAutoClose());
     }
   }

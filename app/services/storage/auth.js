@@ -1,5 +1,6 @@
 import { computed } from '@ember/object';
 import { assert } from '@ember/debug';
+import { tracked } from '@glimmer/tracking';
 import { parseWithDefault } from '../storage';
 import {
   reads
@@ -16,12 +17,15 @@ export default class StorageAuthService extends Service {
     return storage.setItem('travis.token', token);
   }
 
+  @tracked savedUser = this.user;
+
   get user() {
     const data = parseWithDefault(storage.getItem('travis.user'), null);
     return data && data.user || data;
   }
   set user(user) {
-    return storage.setItem('travis.user', user);
+    this.savedUser = serializeUserRecord(user);
+    return storage.setItem('travis.user', this.savedUser);
   }
 
   get accounts() {
@@ -29,15 +33,26 @@ export default class StorageAuthService extends Service {
     const accounts = parseWithDefault(accountsData, []).map(account =>
       extractAccountRecord(this.store, account)
     );
-    accounts.addArrayObserver(this, {
-      willChange: 'persistAccounts',
-      didChange: 'persistAccounts'
-    });
+    //accounts.addArrayObserver(this, {
+    //  willChange: 'persistAccounts',
+    //  didChange: 'persistAccounts'
+    //});
     return accounts;
   }
   set accounts(accounts) {
     this.persistAccounts(accounts);
     return accounts;
+  }
+
+  clearLoginData() {
+    storage.removeItem('travis.user');
+    storage.removeItem('travis.token');
+  }
+
+  clear() {
+    this.clearLoginData();
+    storage.removeItem('travis.auth.accounts');
+    storage.removeItem('travis.auth.activeAccountId');
   }
 }
 
@@ -57,7 +72,7 @@ function getStorage() {
 }
 
 function serializeUserRecord(record) {
-  return record.serialize({ includeId: true, forLocalStorage: true });
+  return JSON.stringify(record.serialize({ includeId: true }));
 }
 
 function extractAccountRecord(store, userData) {

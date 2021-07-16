@@ -6,6 +6,7 @@ import { inject as service } from '@ember/service';
 export default class SignIn extends Component {
   @tracked email = '';
   @tracked password = '';
+  @tracked otp_attempt = '';
   @service auth;
 
   @action
@@ -28,7 +29,7 @@ export default class SignIn extends Component {
 
   @action
   signIn() {
-    this.auth.signIn(this.email, this.password);
+    this.auth.signIn(this.email, this.password, this.otp_attempt);
   }
 
   @action

@@ -23,16 +23,12 @@
       class="pointer navigation-anchor navigation-profile-link signed-in"
       {{on 'click' (action 'toggleMenu')}}
     >
-      {{!-- 
       <UserAvatar
-        @url={{this.user.avatarUrl}}
-        @name={{this.user.fullName}}
+        @name={{this.user.name}}
         @size={{40}}
-        @providerIcon={{vcs-icon this.user.vcsType}}
-        class="navigation-avatar navigation-avatar--{{this.user.provider}}"
+        class="navigation-avatar"
       />
       <SvgImage @name="icon-dropdown-arrow" @class="icon" />
-      --}}
     </div>
 
     <ul class="navigation-nested">
@@ -45,11 +41,22 @@
 
       <li>
         <LinkTo
-          @route="sign-in"
+          @route="index"
+          @title="Server providers"
+          class="signed-in topbar-menu-item"
+        >
+          <div class="topbar-menu-item__label">
+            Server providers
+          </div>
+        </LinkTo>
+      </li>
+
+      <li>
+        <LinkTo
+          @route="account"
           @title="Your profile"
           class="signed-in topbar-menu-item"
         >
-          <SvgImage @name="icon-settings" @class="icon" />
           <div class="topbar-menu-item__label">
             Settings
           </div>
@@ -64,7 +71,6 @@
           class="topbar-menu-item"
           {{action "signOut"}}
         >
-          <SvgImage @name="icon-sign-out" @class="icon" />
           <div class="topbar-menu-item__label">
             Sign Out
           </div>

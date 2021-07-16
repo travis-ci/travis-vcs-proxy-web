@@ -160,7 +160,7 @@ $nav-line-height: 35px;
 
   .signin-provider-icon {
     display: inline-block;
-    margin-left: 7px;
+    margin-left: 19px;
   }
 
   a {
@@ -197,28 +197,28 @@ $nav-line-height: 35px;
 
     &:hover {
       text-decoration: none;
-      color: $oxide-blue;
-      background-color: lighten($oxide-blue, 50%);
+      color: #32AB52;
+      background-color: lighten(#32AB52, 50%);
 
       .icon {
-        @include colorSVG($oxide-blue);
+        @include colorSVG(#32AB52);
       }
 
       .username__text:after {
-        background: linear-gradient(-90deg, lighten($oxide-blue, 50%) 20%, rgba(255, 255, 255, 0) 100%);
+        background: linear-gradient(-90deg, lighten(#32AB52, 50%) 20%, rgba(255, 255, 255, 0) 100%);
       }
     }
 
     &.active:hover {
       text-decoration: none;
-      background-color: lighten($oxide-blue, 50%);
+      background-color: lighten(#32AB52, 50%);
 
       a {
-        color: $oxide-blue;
+        color: #32AB52;
       }
 
       .icon {
-        @include colorSVG($oxide-blue);
+        @include colorSVG(#32AB52);
       }
     }
 
@@ -231,7 +231,7 @@ $nav-line-height: 35px;
     }
 
     &__label {
-      margin-left: 7px;
+      margin-left: 19px;
       position: relative;
       top: -1px;
     }
