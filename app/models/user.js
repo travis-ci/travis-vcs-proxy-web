@@ -9,6 +9,12 @@ export default class UserModel extends Model {
   @attr emails;
   @attr('boolean') otpRequiredForLogin;
 
+  servers = [];
+
+  get serverCount() {
+    return this.servers.length;
+  }
+
   reload(options = {}) {
     return this.store.queryRecord('user', {});
   }

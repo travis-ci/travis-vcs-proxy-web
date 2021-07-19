@@ -18,6 +18,7 @@
 @import "app/modules/positioning";
 @import "app/modules/icons";
 @import "app/modules/avatar";
+@import "app/modules/vcs-server-type";
 
 @import "app/layout";
 @import "app/layouts/top";
@@ -28,3 +29,4 @@
 @import "app/pages/auth";
 @import "app/pages/page-without-confirmation";
 @import "app/pages/settings";
+@import "app/pages/servers";

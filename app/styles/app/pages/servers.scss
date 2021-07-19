@@ -1,0 +1,87 @@
+.servers-page {
+  h1, h2, h3 {
+    color: #142819;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  .setup-input {
+    h3 {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    margin-bottom: 12px;
+  }
+
+  .last {
+    margin-bottom: 4px;
+  }
+  
+  .setup-radio {
+    width: 334px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+
+  .first-setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 645px;
+    margin-bottom: 23px;
+    padding: 40px 112px;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+
+    .button--green,
+    .button--white {
+      width: 157px;
+      height: 38px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .button--white {
+      margin-right: 8px;
+      border: none;
+    }
+
+    .button--green {
+      margin-left: 8px;
+    }
+  }
+
+  h2.no-servers {
+    margin-bottom: 24px;
+  }
+
+  h3.find-server,
+  h3.create-server {
+    margin-bottom: 16px;
+  }
+
+  h3.or {
+    margin-bottom: 10px;
+  }
+
+  .perforce-ticket-warning {
+    width: 334px;
+    font-size: 12px;
+    margin-bottom: 18px;
+
+    a {
+      font-weight: 600;
+      color: $chateau-green;
+    }
+  }
+}

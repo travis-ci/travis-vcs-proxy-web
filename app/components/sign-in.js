@@ -8,6 +8,7 @@ export default class SignIn extends Component {
   @tracked password = '';
   @tracked otp_attempt = '';
   @service auth;
+  @service flashes;
 
   @action
   togglePassword() {
@@ -34,6 +35,14 @@ export default class SignIn extends Component {
 
   @action
   signUp() {
-    this.auth.signUp(this.email, this.password);
+    if (this.password.length < 6) {
+      this.flashes.error('The password must include at least 6 characters.');
+    } else if (!this.password.match(/\d+/) && !this.password.match(/[^\w\s]+/)) {
+      this.flashes.error('The password must include at least one non-alphabetic character (number or special character).');
+    } else if (!this.password.match(/[a-z]+/)) {
+      this.flashes.error('The password must include at least one lowercase alphabetic character.');
+    } else {
+      this.auth.signUp(this.email, this.password);
+    }
   }
 }

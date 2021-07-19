@@ -197,28 +197,28 @@ $nav-line-height: 35px;
 
     &:hover {
       text-decoration: none;
-      color: #32AB52;
-      background-color: lighten(#32AB52, 50%);
+      color: $chateau-green;
+      background-color: lighten($chateau-green, 50%);
 
       .icon {
-        @include colorSVG(#32AB52);
+        @include colorSVG($chateau-green);
       }
 
       .username__text:after {
-        background: linear-gradient(-90deg, lighten(#32AB52, 50%) 20%, rgba(255, 255, 255, 0) 100%);
+        background: linear-gradient(-90deg, lighten($chateau-green, 50%) 20%, rgba(255, 255, 255, 0) 100%);
       }
     }
 
     &.active:hover {
       text-decoration: none;
-      background-color: lighten(#32AB52, 50%);
+      background-color: lighten($chateau-green, 50%);
 
       a {
-        color: #32AB52;
+        color: $chateau-green;
       }
 
       .icon {
-        @include colorSVG(#32AB52);
+        @include colorSVG($chateau-green);
       }
     }
 

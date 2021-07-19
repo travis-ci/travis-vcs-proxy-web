@@ -1,0 +1,18 @@
+<div class='first-setup'>
+  <h2 class='no-servers'>You don’t have any Server yet</h2>
+  <h3 class='find-server'>Enter URL for finding new Server</h3>
+  <div class='setup-input'>
+    <h3>Find a server</h3>
+    <div class='entry-field'>
+      <Input
+        @id='serverUrl'
+        @value={{this.serverUrl}}
+        @type='text'
+        @placeholder='Enter URL'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <h3 class='or'>or</h3>
+  <Servers::Add />
+</div>

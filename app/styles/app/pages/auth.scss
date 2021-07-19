@@ -2,7 +2,7 @@
   height: 95%;
 
   a {
-    color: #32AB52;
+    color: $chateau-green;
     font-weight: 600;  
   }
 
@@ -63,11 +63,11 @@
 
   .login-button {
     color: white;
-    background-color: #32AB52;
+    background-color: $chateau-green;
     font-size: 16px;
     text-align: center;
     line-height: 20px;
-    border: 1px solid #32AB52;
+    border: 1px solid $chateau-green;
     border-radius: 2px;
     padding: 9px 147px;
     margin-bottom: 54px;

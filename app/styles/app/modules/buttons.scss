@@ -62,10 +62,10 @@
 
   height: 36px;
   width: 136px;
-  color: #32AB52;
+  color: $chateau-green;
   font-size: 14px;
   font-weight: 400;
-  border: 1px solid #32AB52;
+  border: 1px solid $chateau-green;
   border-radius: 2px;
   padding: 9px 19px;
   line-height: 0.5;
@@ -74,7 +74,7 @@
   &:hover,
   &:active {
     color: white;
-    background-color: #32AB52;
+    background-color: $chateau-green;
     cursor: pointer;
   }
 
@@ -103,7 +103,7 @@
 
 .auth-button.create-account {
   color: white;
-  background-color: #32AB52;
+  background-color: $chateau-green;
 }
 
 .auth-button--white {
@@ -167,11 +167,11 @@
 
   border: none;
   color: white;
-  background-color: $turf-green;
+  background-color: $chateau-green;
 
   &:hover,
   &:active {
-    background-color: darken($turf-green, 10);
+    background-color: darken($chateau-green, 10);
   }
 }
 
@@ -294,11 +294,11 @@
 }
 
 input:checked + .slider {
-  background-color: #32AB52;
+  background-color: $chateau-green;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #32AB52;
+  box-shadow: 0 0 1px $chateau-green;
 }
 
 input:checked + .slider:before {

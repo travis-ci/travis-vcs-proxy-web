@@ -47,10 +47,10 @@
   }
 
   .success {
-    color: #32AB52;
+    color: $chateau-green;
     background-color: #BCE0C5;
 
-    @include colorSVGFill(#32AB52);
+    @include colorSVGFill($chateau-green);
 
     animation: fadeFlashOut 7s 1 ease forwards;
 

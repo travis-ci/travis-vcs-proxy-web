@@ -85,7 +85,7 @@
 
 .landing-button {
   border-radius: 2px;
-  background-color: #32AB52;
+  background-color: $chateau-green;
   cursor: pointer;
   padding: 9px 27px 9px 29px;
   font-size: 16px;
@@ -332,11 +332,11 @@ main {
   }
 
   .login-button {
-    color: #32AB52;
+    color: $chateau-green;
     font-size: 16px;
     text-align: center;
     line-height: 20px;
-    border: 1px solid #32AB52;
+    border: 1px solid $chateau-green;
     border-radius: 2px;
     padding: 9px 147px;
 

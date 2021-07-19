@@ -1,13 +1,16 @@
 {{page-title "Home"}}
 
 {{#if this.auth.signedIn}}
-  <div class="wrapper">
-    <div id="top" class="top">
-      <TopBar />
-      <FlashDisplay />
+  <div class="wrapper centered">
+    <div class="landing">
+      <div id="top" class="top">
+        <TopBar />
+        <FlashDisplay />
+      </div>
+      <main class="servers-page">
+        <Servers />
+      </main>
     </div>
-    <main>
-    </main>
     <PageFooter />
   </div>
 {{else}}
