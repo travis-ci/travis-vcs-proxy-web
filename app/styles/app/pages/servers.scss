@@ -42,26 +42,10 @@
     padding: 40px 112px;
     border: 1px solid #CCCCCC;
     box-sizing: border-box;
-
-    .button--green,
-    .button--white {
-      width: 157px;
-      height: 38px;
-      font-size: 16px;
-      font-weight: 400;
-    }
-
-    .button--white {
-      margin-right: 8px;
-      border: none;
-    }
-
-    .button--green {
-      margin-left: 8px;
-    }
   }
 
-  h2.no-servers {
+  h2.no-servers,
+  h1.update {
     margin-bottom: 24px;
   }
 
@@ -82,6 +66,160 @@
     a {
       font-weight: 600;
       color: $chateau-green;
+    }
+  }
+
+  .servers-page-main {
+    width: 1040px;
+
+    h1 {
+      font-size: 36px;
+      text-align: center;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-direction: row;
+
+      .button--green.active {
+        display: none;
+      }
+    }
+
+    .setup-input {
+      margin-right: auto;
+    }
+
+    .button--green {
+      margin: auto 0;
+      width: 157px;
+      height: 34px;
+      text-align: center;
+    }
+
+    .content-box {
+      margin-bottom: 23px;
+      border: 1px solid #CCCCCC;
+      box-sizing: border-box;
+
+      .setup-input {
+        margin-right: inherit;
+      }
+
+      .servers-add {
+        margin: 35px 0;
+      }
+    }
+  }
+
+  .servers-add,
+  .servers-remove {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .no-server {
+      margin-bottom: 24px;
+    }
+  }  
+
+  .servers-add,
+  .servers-remove,
+  .first-setup {
+    .button--green,
+    .button--white,
+    .button--red {
+      width: 157px;
+      height: 38px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .button--white {
+      margin-right: 8px;
+      border: none;
+    }
+
+    .button--green,
+    .button--red {
+      margin-left: 8px;
+    }
+  }
+
+  .servers-list {
+    table {
+      width: 100%;
+      color: $text-black;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .col-15 {
+      width: 15%;
+    }
+
+    .col-34 {
+      width: 34%;
+    }
+
+    .col-7 {
+      width: 7%;
+    }
+
+    .col-9 {
+      width: 9%;
+    }
+
+    .col-12 {
+      width: 12%;
+    }
+
+    .col-centered {
+      text-align: center;
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: 25px;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-right: 25px;
+    }
+
+    th, td {
+      font-size: 16px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      line-height: 24px;
+    }
+
+    th {
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 1px solid #C4C4C4;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      @include colorSVGFull($text-black, $text-black);
+    }
+
+    .button--green,
+    .button--green-outline {
+      width: 94px;
+      height: 26px;
+      font-size: 14px;
+      padding: 0;
+    }
+  }
+
+  .servers-remove {
+    h3 {
+      text-align: center;
+      margin-bottom: 38px;
     }
   }
 }

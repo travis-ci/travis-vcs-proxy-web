@@ -27,10 +27,6 @@ export default Service.extend({
       headers['Content-Type'] = options.contentType || 'application/json; charset=utf-8';
     }
 
-    if (this.storage.auth.token) {
-      headers['Authorization'] = `Bearer ${this.storage.auth.token}`;
-    }
-
     // Accept
     headers['Accept'] = options.accept || DEFAULT_ACCEPT;
 

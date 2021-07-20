@@ -18,14 +18,15 @@ export default class StorageAuthService extends Service {
   }
 
   @tracked savedUser = this.user;
+  @service store;
 
   get user() {
     const data = parseWithDefault(storage.getItem('travis.user'), null);
     return data && data.user || data;
   }
   set user(user) {
-    this.savedUser = serializeUserRecord(user);
-    return storage.setItem('travis.user', this.savedUser);
+    this.savedUser = user;
+    return storage.setItem('travis.user', serializeUserRecord(user));
   }
 
   get accounts() {

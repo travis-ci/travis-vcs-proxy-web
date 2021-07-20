@@ -175,6 +175,20 @@
   }
 }
 
+.button--green-outline {
+  @extend %button;
+
+  border: none;
+  background-color: white;
+  color: $chateau-green;
+  border: 1px solid $chateau-green;
+
+  &:hover,
+  &:active {
+    color: darken($chateau-green, 10);
+  }
+}
+
 .button--white-and-teal {
   @extend %button;
 

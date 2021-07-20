@@ -8,9 +8,4 @@
     <span class="user-name">{{this.user.name}}</span>
   </div>
 </div>
-
-{{#if this.userCount}}
-<Servers::Main />
-{{else}}
-<FirstTimeSetup />
-{{/if}}
+{{outlet}}

@@ -21,4 +21,12 @@ Router.map(function () {
     this.route('remove-account', { path: 'remove_account' });
     this.route('remove-account-confirm', { path: 'remove_account_confirm' });
   });
+  this.route('servers', function () {
+    this.route('add');
+  });
+
+  this.route('server', { path: '/servers/:id', resetNamespace: true }, function () {
+    this.route('edit');
+    this.route('remove');
+  });
 });

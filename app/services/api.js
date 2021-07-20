@@ -4,6 +4,8 @@ import config from 'travis/config/environment';
 export default class APIService extends Service {
   @service ajax;
   @service auth;
+  @service storage;
+  authStorage = this.storage.auth;
 
   get(url, options = {}) {
     return this.request(url, 'GET', options);
@@ -35,11 +37,11 @@ export default class APIService extends Service {
 
   setupHeaders(options = {}) {
     const { headers = {} } = options;
-    const { token } = this.auth;
+    const { token } = this.authStorage;
 
     // Authorization
     if (token) {
-      headers['Authorization'] = `token ${token}`;
+      headers['Authorization'] = `Bearer ${token}`;
     }
 
     return headers;

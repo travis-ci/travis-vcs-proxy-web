@@ -1,0 +1,58 @@
+<div class='servers-list'>
+<table>
+  <colgroup>
+    <col class='col-15' />
+    <col class='col-30' />
+    <col class='col-7' />
+    <col class='col-9' />
+    <col class='col-12' />
+    <col class='col-12' />
+    <col class='col-7' />
+    <col class='col-7' />
+  </colgroup>
+  <tr>
+    <th>Server name</th>
+    <th>Connection URL</th>
+    <th>Type</th>
+    <th>User access</th>
+    <th>Repositories</th>
+    <th>Authorize data</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  {{#each this.servers as |server|}}
+  <tr>
+    <td>{{server.name}}</td>
+    <td>{{server.url}}</td>
+    <td>{{server.type}}</td>
+    <td>{{server.access}}</td>
+    <td>
+      <button type='button' class='button--green-outline'>View</button>
+    </td>
+    <td>
+      <button type='button' class='button--green'>Connect</button>
+    </td>
+    <td class='col-centered'>
+      <LinkTo
+        @route="server.edit"
+        @model={{server.id}}
+        @title="Update server information"
+      >
+        <EmberTooltip @text="Update server information" />
+        <SvgImage @name="icon-edit" @class="icon" />
+      </LinkTo>
+    </td>
+    <td class='col-centered'>
+      <LinkTo
+        @route="server.remove"
+        @model={{server.id}}
+        @title="Delete this server"
+      >
+        <EmberTooltip @text="Delete this server" />
+        <SvgImage @name="icon-delete" @class="icon" />
+      </LinkTo>
+    </td>
+  </tr>
+  {{/each}}
+</table>
+</div>

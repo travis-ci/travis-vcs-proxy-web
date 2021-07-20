@@ -1,67 +1,76 @@
-<h3 class='create-server'>Enter the data in the form below for creating new Server</h3>
-<div class='setup-input'>
-  <h3>Server name</h3>
-  <div class='entry-field'>
-    <Input
-      @id='serverName'
-      @value={{this.serverName}}
-      @type='text'
-      class='text-field'
-    />
+<div class='servers-add'>
+  {{#if this.args.editMode}}
+  <h1 class='update'>Update Server</h1>
+  {{else}}
+  {{#if this.args.searchNoServer}}
+  <h2 class='no-server'>You don’t have any Server with this URL yet </h2>
+  {{/if}}
+  <h3 class='create-server'>Enter the data in the form below for creating new Server</h3>
+  {{/if}}
+  <div class='setup-input'>
+    <h3>Server name</h3>
+    <div class='entry-field'>
+      <Input
+        @id='serverName'
+        @value={{this.serverName}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
   </div>
-</div>
-<div class='setup-input'>
-  <h3>Connection URL</h3>
-  <div class='entry-field'>
-    <Input
-      @id='connectionUrl'
-      @value={{this.connectionUrl}}
-      @type='text'
-      class='text-field'
-    />
+  <div class='setup-input'>
+    <h3>Connection URL</h3>
+    <div class='entry-field'>
+      <Input
+        @id='connectionUrl'
+        @value={{this.connectionUrl}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
   </div>
-</div>
-<div class='setup-input'>
-  <h3>Type</h3>
-  <div class='vcs-server-type'>
-    <button
-      autofocus={{true}}
-      class="vcs-server-type-item vcs-server-type-item--selected"
-      onclick={{action (mut this.serverType) 'perforce'}}
-    >
-      <span class="vcs-server-type-item__radio"></span>
-      <span class="vcs-server-type-item__description">
-        Perforce
-      </span>
-    </button>
+  <div class='setup-input'>
+    <h3>Type</h3>
+    <div class='vcs-server-type'>
+      <button
+        autofocus={{true}}
+        class="vcs-server-type-item vcs-server-type-item--selected"
+        onclick={{action (mut this.serverType) 'perforce'}}
+      >
+        <span class="vcs-server-type-item__radio"></span>
+        <span class="vcs-server-type-item__description">
+          Perforce
+        </span>
+      </button>
+    </div>
   </div>
-</div>
-<div class='setup-input'>
-  <h3>Perforce Username</h3>
-  <div class='entry-field'>
-    <Input
-      @id='perforceUserName'
-      @value={{this.perforceUserName}}
-      @type='text'
-      class='text-field'
-    />
+  <div class='setup-input'>
+    <h3>Perforce Username</h3>
+    <div class='entry-field'>
+      <Input
+        @id='perforceUserName'
+        @value={{this.perforceUserName}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
   </div>
-</div>
-<div class='setup-input last'>
-  <h3>Server level ticket / token (optional)</h3>
-  <div class='entry-field'>
-    <Input
-      @id='perforceToken'
-      @value={{this.perforceToken}}
-      @type='text'
-      class='text-field'
-    />
+  <div class='setup-input last'>
+    <h3>Server level ticket / token (optional)</h3>
+    <div class='entry-field'>
+      <Input
+        @id='perforceToken'
+        @value={{this.perforceToken}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
   </div>
-</div>
-<div class='perforce-ticket-warning'>
-  Without Server level ticket / token your won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
-</div>
-<div>
-  <LinkTo @route='index' @tagName='button' @class='button--white'>Cancel</LinkTo>
-  <button type='button' class='button--green' {{ on 'click' this.addServer }}>Add Server</button>
+  <div class='perforce-ticket-warning'>
+    Without Server level ticket / token your won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
+  </div>
+  <div>
+    <LinkTo @route='index' @tagName='button' @class='button--white'>Cancel</LinkTo>
+    <button type='button' class='button--green' {{ on 'click' (if this.args.editMode this.editServer this.addServer)}}>{{if this.args.editMode 'Update Server' 'Add Server'}}</button>
+  </div>
 </div>

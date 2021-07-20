@@ -5,6 +5,16 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class ServersAdd extends Component {
+  constructor() {
+    super(...arguments);
+
+    if (this.args.editMode && this.args.server) {
+      this.serverName = this.args.server.name;
+      this.connectionUrl = this.args.server.url;
+      this.serverType = this.args.server.type;
+    }
+  }
+
   config = config;
 
   @tracked serverName = '';
@@ -15,6 +25,9 @@ export default class ServersAdd extends Component {
 
   @action
   addServer() {
+  }
 
+  @action
+  editServer() {
   }
 }

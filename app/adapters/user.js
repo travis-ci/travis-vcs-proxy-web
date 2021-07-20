@@ -1,4 +1,3 @@
-
 import { assert } from '@ember/debug';
 import ApplicationAdapter from 'travis/adapters/application';
 
@@ -12,4 +11,3 @@ export default class UserAdapter extends ApplicationAdapter {
     return `${this.urlPrefix()}/user`;
   }
 }
-
