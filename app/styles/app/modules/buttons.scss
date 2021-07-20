@@ -156,6 +156,10 @@
       background-color: lighten($pebble-grey, 2);
     }
   }
+
+  &.no-border {
+    border: 0;
+  }
 }
 
 .button--green {
