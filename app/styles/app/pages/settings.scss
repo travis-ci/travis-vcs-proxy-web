@@ -31,6 +31,7 @@
   font-size: 18px;
   color: $text-black;
   margin-bottom: 41px;
+  margin-left: 110px;
 
   &--center {
     display: flex;
@@ -63,4 +64,50 @@
 .help-link {
   color: $chateau-green;
   font-weight: 600;
+}
+
+.reasons-buttons{
+  height: 36px;
+  border: none;
+  overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.reasons-buttons option{
+  width: 120px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 0;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+  border: #C4C4C4 solid 1px;
+  border-radius: 5px;
+  color: #666666;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.reason-textarea {
+  width: 680px;
+  height: 108px;
+  margin-top: 24px;
+  padding: 8px;
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  border: #C4C4C4 solid 1px;
+  border-radius: 2px;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
 }

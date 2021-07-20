@@ -19,5 +19,6 @@ Router.map(function () {
     this.route('change-password', { path: 'change_password' });
     this.route('change-email', { path: 'change_email' });
     this.route('remove-account', { path: 'remove_account' });
+    this.route('remove-account-confirm', { path: 'remove_account_confirm' });
   });
 });
