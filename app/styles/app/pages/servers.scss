@@ -222,4 +222,23 @@
       margin-bottom: 38px;
     }
   }
+
+  .page-path {
+    font-size: 14px;
+    font-weight: 600;
+    color: #32AB52;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    &-active {
+      font-weight: normal;
+      color: #666666;
+    }
+  }
+
+  .code-example {
+    background-color: #f0f0f0;
+    font-family: $font-family-monospace;
+    font-size: 16px;
+  }
 }

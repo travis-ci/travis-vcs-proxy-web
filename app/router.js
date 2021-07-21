@@ -29,4 +29,6 @@ Router.map(function () {
     this.route('edit');
     this.route('remove');
   });
+  this.route('authorization-data-refresh', { path: '/authorization_data_refresh' });
+  this.route('update-repository-access-token', { path: '/update_repository_access_token' });
 });
