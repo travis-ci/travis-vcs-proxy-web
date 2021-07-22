@@ -1,5 +1,8 @@
 <div class="servers-page-header">
   <div class="left-bar">
+    <div class="page-path">
+      VCS Servers / my server provider / repositories / <span class="page-path-active">{{this.args.repo.name}}</span>
+    </div>
     <UserAvatar
       @name={{this.user.name}}
       @size={{40}}
@@ -8,9 +11,4 @@
     <span class="user-name">{{this.user.name}}</span>
   </div>
 </div>
-
-{{#if true}} <!--this.userCount}}-->
-<Servers::Main />
-{{else}}
-<FirstTimeSetup />
-{{/if}}
+{{outlet}}

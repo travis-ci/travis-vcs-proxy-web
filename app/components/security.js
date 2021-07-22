@@ -9,7 +9,7 @@ export default class ProfileMenu extends Component {
   @service api;
 
   @tracked user = this.auth.currentUser;
-  @tracked is2FAEnabled = this.user.otp_required_for_login;
+  @tracked is2FAEnabled = this.user.otpRequiredForLogin;
   @tracked qrCodeUrl = '';
   @tracked otpAttempt = '';
 

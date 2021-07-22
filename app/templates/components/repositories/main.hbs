@@ -1,0 +1,23 @@
+<div class='servers-page-main'>
+  <h1>Repositories</h1>
+
+  <div class='top-bar'>
+    <div class='setup-input'>
+      <h3>Find a repository</h3>
+      <div class='entry-field'>
+        <Input
+          @id='serverUrl'
+          @value={{this.serverUrl}}
+          @type='text'
+          class='text-field'
+        />
+      </div>
+    </div>
+    <div style='margin-top: 40px;'>
+      SORT BY
+    </div>
+  </div>
+  <div class='content-box'>
+    {{yield}}
+  </div>
+</div>

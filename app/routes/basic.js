@@ -12,7 +12,7 @@ export default class TravisRoute extends Route {
       return reject('needs-auth');
     } else if (this.auth.signedIn
         && this.auth.currentUser
-        && !this.auth.currentUser.otp_required_for_login
+        && !this.auth.currentUser.otpRequiredForLogin
         && transition.targetName !== 'account.index'
         && transition.targetName !== 'account.security') {
       this.flashes.error('You have to enable two-factor authentication before beginning work with the service.')

@@ -1,0 +1,40 @@
+<div class='repositories-list'>
+<table>
+  <tr>
+    <th>Repository name</th>
+    <th>User access</th>
+    <th>Last updated</th>
+    <th>Token</th>
+    <th>Update token</th>
+    <th>Delete token</th>
+  </tr>
+  {{#each this.repositories as |repository|}}
+  <tr>
+    <td>{{repository.name}}</td>
+    <td>{{repository.name}}</td>
+    <td>{{repository.name}}</td>
+    <td>{{repository.name}}</td>
+    <td>
+      <LinkTo
+        @route="repository.update-token"
+        @model={{repository.id}}
+        @title="Update repository access token"
+      >
+        <EmberTooltip @text="Update repository access token" />
+        <SvgImage @name="icon-edit" @class="icon" />
+      </LinkTo>
+    </td>
+    <td>
+      <LinkTo
+        @route="repository.remove-token"
+        @model={{repository.id}}
+        @title="Delete repository"
+      >
+        <EmberTooltip @text="Delete repository" />
+        <SvgImage @name="icon-delete" @class="icon" />
+      </LinkTo>
+    </td>
+  </tr>
+  {{/each}}
+</table>
+</div>

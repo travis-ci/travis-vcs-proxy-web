@@ -53,6 +53,7 @@
     "ember-svg-jar": "^2.3.3",
     "ember-concurrency": "^2.1.0",
     "ember-tooltips": "^3.4.7",
+    "ember-truth-helpers": "^3.0.0",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-ember": "^10.3.0",

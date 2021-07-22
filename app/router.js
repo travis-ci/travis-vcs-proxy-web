@@ -27,8 +27,13 @@ Router.map(function () {
 
   this.route('server', { path: '/servers/:id', resetNamespace: true }, function () {
     this.route('edit');
+    this.route('authorization-data-refresh', { path: '/authorization_data_refresh' });
     this.route('remove');
+    this.route('repositories');
   });
-  this.route('authorization-data-refresh', { path: '/authorization_data_refresh' });
-  this.route('update-repository-access-token', { path: '/update_repository_access_token' });
+
+  this.route('repository', { path: '/repositories/:id', resetNamespace: true }, function () {
+    this.route('update-token', { path: '/update_token' });
+    this.route('remove-token', { path: '/remove_token' });
+  });
 });

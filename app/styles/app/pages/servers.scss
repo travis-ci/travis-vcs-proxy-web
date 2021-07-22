@@ -146,36 +146,13 @@
     }
   }
 
-  .servers-list {
+  .servers-list,
+  .repositories-list {
     table {
       width: 100%;
       color: $text-black;
       border-collapse: collapse;
       table-layout: fixed;
-    }
-
-    .col-15 {
-      width: 15%;
-    }
-
-    .col-34 {
-      width: 34%;
-    }
-
-    .col-7 {
-      width: 7%;
-    }
-
-    .col-9 {
-      width: 9%;
-    }
-
-    .col-12 {
-      width: 12%;
-    }
-
-    .col-centered {
-      text-align: center;
     }
 
     th:first-child,
@@ -205,6 +182,46 @@
       width: 24px;
       height: 24px;
       @include colorSVGFull($text-black, $text-black);
+    }
+  }
+
+  .repositories-list {
+    table {
+      text-align: center;
+    }
+
+    th {
+      text-align: center;
+    }
+  }
+
+  .servers-list {
+    .col-15 {
+      width: 15%;
+    }
+
+    .col-34 {
+      width: 34%;
+    }
+
+    .col-7 {
+      width: 7%;
+    }
+
+    .col-9 {
+      width: 9%;
+    }
+
+    .col-12 {
+      width: 12%;
+    }
+
+    .col-centered {
+      text-align: center;
+    }
+
+    .col-capitalized {
+      text-transform: capitalize;
     }
 
     .button--green,

@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 import { inject as service } from '@ember/service';
 
 export default class ServerModel extends Model {
@@ -7,4 +7,5 @@ export default class ServerModel extends Model {
   @attr('string') name;
   @attr('string') url;
   @attr('string') type;
+  @hasMany('repository') repositories;
 }

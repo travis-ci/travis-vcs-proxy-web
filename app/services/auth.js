@@ -20,10 +20,13 @@ export default class AuthService extends Service {
   @service flashes;
   @service router;
   storage = this.localStorage.auth;
-  @tracked currentUser = this.storage.savedUser;
+  @tracked currentUser = null;
 
   get signedIn() {
     return this.state == STATE.SIGNED_IN;
+  }
+  get signingIn() {
+    return this.state == STATE.SIGNING_IN;
   }
   get signedOut() {
     return this.state == STATE.SIGNED_OUT;
@@ -86,8 +89,9 @@ export default class AuthService extends Service {
     console.log('Automatically signing in');
     this.set('state', STATE.SIGNING_IN);
     try {
-      this.handleLogin();
-      this.set('state', STATE.SIGNED_IN);
+      return this.handleLogin().then(() => {
+        this.set('state', STATE.SIGNED_IN);
+      });
     } catch (error) {
       this.signOut(false);
     }
@@ -121,6 +125,7 @@ export default class AuthService extends Service {
     if (!token) throw new Error('No login data');
 
     return this.reloadUser().then((userRecord) => {
+      this.currentUser = userRecord;
       storage.accounts.addObject(userRecord);
       storage.set('user', userRecord);
     });

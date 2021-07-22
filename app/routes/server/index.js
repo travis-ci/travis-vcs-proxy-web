@@ -1,6 +1,6 @@
 import TravisRoute from 'travis/routes/basic';
 
-export default class AccountIndexRoute extends TravisRoute {
+export default class ServerIndexRoute extends TravisRoute {
   redirect() {
     this.router.transitionTo('server.edit');
   }

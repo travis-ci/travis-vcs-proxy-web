@@ -1,11 +1,10 @@
-
 import TravisRoute from 'travis/routes/basic';
 
-export default class ServerRoute extends TravisRoute {
+export default class RepositoryRoute extends TravisRoute {
   needsAuth = true;
 
   model(params) {
-    return this.store.findRecord('server', params.id).catch(() => {
+    return this.store.findRecord('repository', params.id).catch(() => {
       this.router.transitionTo('index');
     });
   }

@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 import { inject as service } from '@ember/service';
 
 export default class UserModel extends Model {
@@ -9,7 +9,7 @@ export default class UserModel extends Model {
   @attr emails;
   @attr('boolean') otpRequiredForLogin;
 
-  servers = [];
+  @hasMany('server') servers;
 
   get serverCount() {
     return this.servers.length;

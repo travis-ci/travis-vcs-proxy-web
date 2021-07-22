@@ -25,7 +25,6 @@ export default class StorageAuthService extends Service {
     return data && data.user || data;
   }
   set user(user) {
-    this.savedUser = user;
     return storage.setItem('travis.user', serializeUserRecord(user));
   }
 

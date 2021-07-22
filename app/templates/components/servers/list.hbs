@@ -24,13 +24,27 @@
   <tr>
     <td>{{server.name}}</td>
     <td>{{server.url}}</td>
-    <td>{{server.type}}</td>
+    <td class='col-capitalized'>{{server.type}}</td>
     <td>{{server.access}}</td>
     <td>
-      <button type='button' class='button--green-outline'>View</button>
+      <LinkTo
+        @route="server.repositories"
+        @tagName='button'
+        @model={{server.id}}
+        @class='button--green-outline'
+      >
+        View
+      </LinkTo>
     </td>
     <td>
-      <button type='button' class='button--green'>Connect</button>
+      <LinkTo
+        @route="server.authorization-data-refresh"
+        @tagName='button'
+        @model={{server.id}}
+        @class='button--green'
+      >
+        Connect
+      </LinkTo>
     </td>
     <td class='col-centered'>
       <LinkTo
