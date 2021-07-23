@@ -98,7 +98,7 @@ export default Service.extend({
         resContent
           .then(data => {
             if (!response.ok) {
-              this.handleFetchError(reject, data.error);
+              this.handleFetchError(reject, data.error || data.errors);
             } else {
               resolve(data);
             }

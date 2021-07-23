@@ -57,9 +57,10 @@ export default class AuthService extends Service {
       } else {
         // Set token
         this.storage.set('token', data.token);
-        this.handleLogin();
-        this.set('state', STATE.SIGNED_IN);
-        this.router.transitionTo('/');
+        this.handleLogin().then(() => {
+          this.set('state', STATE.SIGNED_IN);
+          this.router.transitionTo('/');
+        });
       }
     }).catch((error) => {
       this.flashes.error(error);
@@ -93,12 +94,12 @@ export default class AuthService extends Service {
         this.set('state', STATE.SIGNED_IN);
       });
     } catch (error) {
-      this.signOut(false);
+      this.signOut();
     }
   }
 
   enable2FA(otpAttempt) {
-    this.api.post(
+    return this.api.post(
       '/v1/user/two_factor_auth/enable',
       {
         data: {
@@ -109,9 +110,9 @@ export default class AuthService extends Service {
       if (data.otp_enabled) {
         // Set token
         this.storage.set('token', data.token);
-        this.handleLogin();
-        this.set('state', STATE.SIGNED_IN);
-        this.router.transitionTo('/');
+        return this.handleLogin().then(() => {
+          this.set('state', STATE.SIGNED_IN);
+        });
       }
     }).catch((error) => {
       this.flashes.error(error);
@@ -124,10 +125,13 @@ export default class AuthService extends Service {
 
     if (!token) throw new Error('No login data');
 
+    this.flashes.clear();
     return this.reloadUser().then((userRecord) => {
-      this.currentUser = userRecord;
-      storage.accounts.addObject(userRecord);
-      storage.set('user', userRecord);
+      if (userRecord) {
+        this.currentUser = userRecord;
+        storage.accounts.addObject(userRecord);
+        storage.set('user', userRecord);  
+      }
     });
   }
 
@@ -147,12 +151,13 @@ export default class AuthService extends Service {
     }
   }
 
-  signOut(runTeardown = true) {
+  signOut() {
     if (this.signedIn) {
       this.api.delete('/v1/users/logout');
     }
 
     this.storage.clearLoginData();
+    this.currentUser = null;
     this.set('state', STATE.SIGNED_OUT);
 
     this.store.unloadAll();
@@ -164,6 +169,38 @@ export default class AuthService extends Service {
       } catch (e) {
 
       }
+    }
+  }
+
+  checkPasswordComplexity(password) {
+    if (password.length < 6) {
+      this.flashes.error('The password must include at least 6 characters.');
+      return false;
+    } else if (!password.match(/\d+/) && !password.match(/[^\w\s]+/)) {
+      this.flashes.error('The password must include at least one non-alphabetic character (number or special character).');
+      return false;
+    } else if (!password.match(/[a-z]+/)) {
+      this.flashes.error('The password must include at least one lowercase alphabetic character.');
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  togglePasswordVisibility(id) {
+    let element = document.getElementById(id);
+    if (element.getAttribute('type') === 'password') {
+      element.setAttribute('autocomplete', 'off');
+      element.setAttribute('autocorrect', 'off');
+      element.setAttribute('spellcheck', 'off');
+      element.setAttribute('autocapitalize', 'off');
+      element.setAttribute('type', 'text');
+    } else if (element.getAttribute('type') === 'text') {
+      element.removeAttribute('autocomplete');
+      element.removeAttribute('autocorrect');
+      element.removeAttribute('spellcheck');
+      element.removeAttribute('autocapitalize');
+      element.setAttribute('type', 'password');
     }
   }
 }

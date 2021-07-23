@@ -16,6 +16,17 @@
     </label>
   </div>
   {{#if this.is2FAEnabled}}
+  {{#if this.user.otpRequiredForLogin}}
+  <div>
+    <button
+      type='button'
+      class='button button--green w-156 mt-29 ml-180'
+      {{ on 'click' this.showRecoveryModal }}
+    >
+      Show recovery codes
+    </button>
+  </div>
+  {{else}}
   <div class="fs-16">
     <p><strong class="fs-18 fw-600">STEP 1.</strong>
        Download and install the
@@ -29,7 +40,6 @@
        for your phone or tablet.</p>
     <p><strong class="fs-18 fw-600">STEP 2.</strong>
        Open the authentication app. Scan the QR code below.</p>
-    <!--<SvgImage @name="qr-code" @class="qr-code" />-->
     <div>
       {{qr-code text=this.qrCodeUrl size=200 class='qr-code'}}
     </div>
@@ -54,7 +64,7 @@
         <button
           type='button'
           class='button button--green w-156 mt-29 ml-20'
-          {{on 'click' (action 'enable2FA')}}
+          {{ on 'click' this.enable2FA }}
         >
           Verify
         </button>
@@ -62,4 +72,9 @@
     </div>
   </div>
   {{/if}}
+  {{/if}}
 </div>
+<Dialogs::RecoveryCodesModal
+@isOpen={{this.showRecoveryCodes}}
+@onClose={{action this.closeRecoveryModal}}
+/>

@@ -12,10 +12,21 @@ export default class ProfileMenu extends Component {
   @tracked is2FAEnabled = this.user.otpRequiredForLogin;
   @tracked qrCodeUrl = '';
   @tracked otpAttempt = '';
+  @tracked showRecoveryCodes = false;
 
   @action
   enable2FA() {
     return this.auth.enable2FA(this.otpAttempt);
+  }
+
+  @action
+  showRecoveryModal() {
+    this.showRecoveryCodes = true;
+  }
+
+  @action
+  closeRecoveryModal() {
+    this.showRecoveryCodes = false;
   }
 
   constructor() {

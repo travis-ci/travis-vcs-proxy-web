@@ -1,14 +1,6 @@
 {{page-title "Sign In"}}
 
-<main class='auth-page'>
-  <FlashDisplay />
-  <div class='auth-page-container'>
-    <div class='auth-window'>
-      <LinkTo @route="index">
-        <SvgImage @name="travisci-proxy-logo-grayscale" @class="travis-logo" />
-      </LinkTo>
-      {{sign-in isSignIn=true}}
-    </div>
-  </div>
-</main>
-<SimpleFooter />
+<AuthPage>
+  {{sign-in isSignIn=true}}
+</AuthPage>
+

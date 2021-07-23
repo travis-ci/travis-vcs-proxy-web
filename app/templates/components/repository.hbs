@@ -1,7 +1,7 @@
 <div class="servers-page-header">
   <div class="left-bar">
     <div class="page-path">
-      VCS Servers / my server provider / repositories / <span class="page-path-active">{{this.args.repo.name}}</span>
+      VCS Servers / {{this.args.repo.serverProvider.name}} / repositories / <span class="page-path-active">{{this.args.repo.name}}</span>
     </div>
     <UserAvatar
       @name={{this.user.name}}

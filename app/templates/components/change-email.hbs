@@ -4,8 +4,9 @@
       <h3 class="fs-14 fw-600 tt-u">Old Email</h3>
       <div class='entry-field'>
           <Input
-          @id='email'
+          @id='oldEmail'
           @type='text'
+          @value={{this.oldEmail}}
           class='text-field'
           />
       </div>
@@ -14,14 +15,15 @@
       <h3 class="fs-14 fw-600 tt-u">New Email</h3>
       <div class='entry-field'>
           <Input
-          @id='email'
+          @id='newEmail'
           @type='text'
+          @value={{this.newEmail}}
           class='text-field'
           />
       </div>
     </div>
     <div class="mt-24">
       <LinkTo @route='index' @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
-      <button type='button' class='button--green w-156 ml-20'>Change Email</button>
+      <button type='button' class='button--green w-156 ml-20' {{ on 'click' this.changeEmail }}>Change Email</button>
     </div>
 </div>
