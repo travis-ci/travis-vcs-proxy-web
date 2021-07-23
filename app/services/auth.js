@@ -102,7 +102,7 @@ export default class AuthService extends Service {
       '/v1/user/two_factor_auth/enable',
       {
         data: {
-          otpAttempt
+            otp_attempt: otpAttempt
         }
       }
     ).then((data) => {
