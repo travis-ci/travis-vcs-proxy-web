@@ -1,7 +1,7 @@
 <div class="servers-page-header">
   <div class="left-bar">
     <div class="page-path">
-      VCS Servers / {{this.args.server.name}} / <span class="page-path-active">{{page-title}}</span>
+      <LinkTo @route="servers">VCS Servers</LinkTo> / <LinkTo @route="server.edit" @model={{this.args.server.id}}>{{this.args.server.name}}</LinkTo> / <span class="page-path-active">Repositories</span>
     </div>
     <UserAvatar
       @name={{this.user.name}}

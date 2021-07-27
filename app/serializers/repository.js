@@ -1,8 +1,9 @@
 import JSONSerializer from '@ember-data/serializer/json';
+import ApplicationSerializer from './application';
 
-export default class ServerSerializer extends JSONSerializer {
+export default class RepositorySerializer extends ApplicationSerializer {
   normalizeQueryResponse(store, primaryModelClass, payload, id, requestType) {
-    const newPayload = payload['server_providers'];
+    const newPayload = payload['repositories'];
     newPayload['meta'] = payload['meta'];
     return super.normalizeQueryResponse(store, primaryModelClass, newPayload || [], id, requestType);
   }
@@ -10,6 +11,6 @@ export default class ServerSerializer extends JSONSerializer {
   serialize(snapshot, options) {
     let json = super.serialize(...arguments);
 
-    return { server_provider: json };
+    return { repository: json };
   }
 }

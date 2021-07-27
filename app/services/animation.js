@@ -1,5 +1,4 @@
 import Service from '@ember/service';
-import { computed } from '@ember/object';
 import Ember from 'ember';
 import fade from 'ember-animated/transitions/fade';
 

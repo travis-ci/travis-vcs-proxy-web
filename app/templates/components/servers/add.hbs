@@ -1,4 +1,4 @@
-<div class='servers-add'>
+<div class='{{if this.args.editMode 'servers-edit' 'servers-add'}}'>
   {{#if this.args.editMode}}
   <h1 class='update'>Update Server</h1>
   {{else}}

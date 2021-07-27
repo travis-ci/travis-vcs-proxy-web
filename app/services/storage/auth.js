@@ -1,10 +1,5 @@
-import { computed } from '@ember/object';
-import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 import { parseWithDefault } from '../storage';
-import {
-  reads
-} from '@ember/object/computed';
 import Service, { inject as service } from '@ember/service';
 
 const storage = getStorage();

@@ -42,6 +42,11 @@ module.exports = function (environment) {
       travisVsJenkins: 'https://travis-ci.com/travisci-vs-jenkins',
       twitter: 'https://twitter.com/travisci',
     },
+
+    pagination: {
+      serversPerPage: 20,
+      repositoriesPerPage: 20
+    }
   };
 
   if (environment === 'development') {

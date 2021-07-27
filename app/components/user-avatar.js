@@ -1,11 +1,11 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
 
-export default Component.extend({
-  tagName: 'span',
-  classNames: ['avatar-wrapper'],
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
-  userInitials: computed('name', function () {
+export default class UserAvatar extends Component {
+  @tracked name = this.args.name;
+
+  get userInitials() {
     let name = this.name;
     if (name) {
       let arr = name.split(' ');
@@ -18,5 +18,5 @@ export default Component.extend({
       }
       return initials;
     }
-  })
-});
+  }
+}

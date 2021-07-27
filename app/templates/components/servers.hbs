@@ -9,8 +9,8 @@
   </div>
 </div>
 
-{{#if true}} <!--this.userCount}}-->
-<Servers::Main />
-{{else}}
+{{#if (and this.user.servers.isNotLoading (not this.user.servers.length))}}
 <FirstTimeSetup />
+{{else}}
+<Servers::Main />
 {{/if}}

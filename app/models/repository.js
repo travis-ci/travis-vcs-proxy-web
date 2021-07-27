@@ -3,9 +3,17 @@ import { inject as service } from '@ember/service';
 
 export default class RepositoryModel extends Model {
   @service storage;
+  @service store;
 
   @attr('string') name;
   @attr('string') url;
   @attr('string') type;
-  @belongsTo('server') serverProvider;
+  @attr('string') permission;
+  @attr('date') lastSyncedAt;
+  @attr('number') serverProviderId;
+
+  get serverProvider() {
+    return this.store.peekRecord('server', this.serverProviderId)
+      || this.store.findRecord('server', this.serverProviderId);
+  };
 }

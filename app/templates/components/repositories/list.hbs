@@ -1,3 +1,56 @@
+<div class='top-bar'>
+  <div class='setup-input'>
+    <h3>Find a repository</h3>
+    <div class='entry-field'>
+      <Input
+        @id='repoSearch'
+        @value={{this.repoSearch}}
+        @type='text'
+        class='text-field'
+        {{ on 'keyup' this.filter }}
+      />
+    </div>
+  </div>
+  <nav
+    class="option-button {{if this.isSortMenuOpen 'is-open'}}"
+    {{on 'click' (fn (mut this.isSortMenuOpen) true)}}
+    {{on 'mouseleave' (fn (mut this.isSortMenuOpen) false)}}
+  >
+    <button class="option-display" type="button" title="Show more options">
+      <span class="label-align">
+        SORT BY
+        <SvgImage @name="icon-dropdown-arrow" @class="icon" />
+      </span>
+    </button>
+    <ul class="option-dropdown">
+      <li>
+        <button
+          type="button"
+          onclick={{action this.changeSort 'name'}}
+        >
+          Name
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          onclick={{action this.changeSort 'last_synced_at'}}
+        >
+          User access
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          onclick={{action this.changeSort 'last_synced_at'}}
+        >
+          Last updated
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+{{#unless this.repositories.isLoading}}
 <div class='repositories-list'>
 <table>
   <tr>
@@ -11,9 +64,9 @@
   {{#each this.repositories as |repository|}}
   <tr>
     <td>{{repository.name}}</td>
-    <td>{{repository.name}}</td>
-    <td>{{repository.name}}</td>
-    <td>{{repository.name}}</td>
+    <td class='capitalize-text'>{{repository.permission}}</td>
+    <td>{{pretty-date repository.lastSyncedAt}}</td>
+    <td>{{repository.token}}</td>
     <td>
       <LinkTo
         @route="repository.update-token"
@@ -38,3 +91,13 @@
   {{/each}}
 </table>
 </div>
+<PaginationNavigation
+  @collection={{this.repositories}}
+  @route="server.repositories"
+  @queryParam="page"
+  @inner={{3}}
+  @outer={{1}}
+/>
+{{else}}
+<LoadingIndicator />
+{{/unless}}

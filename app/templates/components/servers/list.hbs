@@ -1,3 +1,4 @@
+{{#unless this.servers.isLoading}}
 <div class='servers-list'>
 <table>
   <colgroup>
@@ -24,8 +25,8 @@
   <tr>
     <td>{{server.name}}</td>
     <td>{{server.url}}</td>
-    <td class='col-capitalized'>{{server.type}}</td>
-    <td>{{server.access}}</td>
+    <td class='capitalize-text'>{{server.type}}</td>
+    <td>{{server.permission}}</td>
     <td>
       <LinkTo
         @route="server.repositories"
@@ -70,3 +71,13 @@
   {{/each}}
 </table>
 </div>
+<PaginationNavigation
+  @collection={{this.servers}}
+  @route="servers"
+  @queryParam="page"
+  @inner={{3}}
+  @outer={{1}}
+/>
+{{else}}
+<LoadingIndicator />
+{{/unless}}

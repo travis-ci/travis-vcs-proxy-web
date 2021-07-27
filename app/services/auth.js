@@ -58,8 +58,10 @@ export default class AuthService extends Service {
         // Set token
         this.storage.set('token', data.token);
         this.handleLogin().then(() => {
-          this.set('state', STATE.SIGNED_IN);
-          this.router.transitionTo('/');
+          if (this.currentUser) {
+            this.set('state', STATE.SIGNED_IN);
+            this.router.transitionTo('/');
+          }
         });
       }
     }).catch((error) => {
@@ -91,7 +93,9 @@ export default class AuthService extends Service {
     this.set('state', STATE.SIGNING_IN);
     try {
       return this.handleLogin().then(() => {
-        this.set('state', STATE.SIGNED_IN);
+        if (this.currentUser) {
+          this.set('state', STATE.SIGNED_IN);
+        }
       });
     } catch (error) {
       this.signOut();
@@ -111,7 +115,9 @@ export default class AuthService extends Service {
         // Set token
         this.storage.set('token', data.token);
         return this.handleLogin().then(() => {
-          this.set('state', STATE.SIGNED_IN);
+          if (this.currentUser) {
+            this.set('state', STATE.SIGNED_IN);
+          }
         });
       }
     }).catch((error) => {
@@ -162,13 +168,10 @@ export default class AuthService extends Service {
 
     this.store.unloadAll();
 
-    const { currentRouteName } = this.router;
-    if (currentRouteName && currentRouteName !== 'sign-in') {
-      try {
-        this.router.transitionTo('sign-in');
-      } catch (e) {
-
-      }
+    const currentURL = new URL(window.location.href);
+    const redirectUrl = currentURL.pathname;
+    if (redirectUrl !== '/' && redirectUrl !== '/sign_in') {
+      this.router.transitionTo('sign-in');
     }
   }
 

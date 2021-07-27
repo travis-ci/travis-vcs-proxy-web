@@ -6,18 +6,18 @@ import fetch from 'fetch';
 
 const DEFAULT_ACCEPT = 'application/json';
 
-export default Service.extend({
-  storage: service(),
+export default class AJAXService extends Service {
+  @service storage;
 
   getDefaultOptions() {
     return {
       accept: DEFAULT_ACCEPT,
     };
-  },
+  }
 
   isRetrieve(method) {
     return method === 'GET' || method === 'HEAD';
-  },
+  }
 
   setupHeaders(method, options = {}) {
     const { headers = {} } = options;
@@ -31,7 +31,7 @@ export default Service.extend({
     headers['Accept'] = options.accept || DEFAULT_ACCEPT;
 
     return headers;
-  },
+  }
 
   setupBody(method, options) {
     if (this.isRetrieve(method)) {
@@ -44,7 +44,7 @@ export default Service.extend({
     }
 
     return data;
-  },
+  }
 
   setupUrl(requestUrl, method, options) {
     const { host = '', data } = options;
@@ -57,7 +57,7 @@ export default Service.extend({
     }
 
     return baseUrl;
-  },
+  }
 
   request(requestUrl, mthd = 'GET', opts = {}) {
     const defaultOpts = this.getDefaultOptions();
@@ -71,7 +71,7 @@ export default Service.extend({
     options.headers = this.setupHeaders(method, options);
 
     return this.fetchRequest(url, method, options);
-  },
+  }
 
   fetchRequest(url, method, options) {
     return new EmberPromise((resolve, reject) => {
@@ -108,15 +108,15 @@ export default Service.extend({
         this.handleFetchError(reject, error.message);
       });
     });
-  },
+  }
 
   handleFetchError(reject, error) {
     reject(error);
     this.logFetchError(error);
-  },
+  }
 
   logFetchError(response) {
     const message = `[ERROR] Fetch error: ${response}`;
     warn(message, { id: 'travis.ajax.fetch' });
-  },
-});
+  }
+}

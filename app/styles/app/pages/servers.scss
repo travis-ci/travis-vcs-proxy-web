@@ -40,7 +40,6 @@
     width: 645px;
     margin-bottom: 23px;
     padding: 40px 112px;
-    border: 1px solid #CCCCCC;
     box-sizing: border-box;
   }
 
@@ -99,7 +98,6 @@
 
     .content-box {
       margin-bottom: 23px;
-      border: 1px solid #CCCCCC;
       box-sizing: border-box;
 
       .setup-input {
@@ -107,23 +105,33 @@
       }
 
       .servers-add {
-        margin: 35px 0;
+        padding: 35px 0;
       }
     }
   }
 
   .servers-add,
+  .servers-edit,
   .servers-remove {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 
     .no-server {
       margin-bottom: 24px;
     }
-  }  
+  }
 
   .servers-add,
+  .repositories-list,
+  .servers-list,
+  .first-setup {
+    border: 1px solid #CCCCCC;
+  }
+
+  .servers-add,
+  .servers-edit,
   .servers-remove,
   .first-setup {
     .button--green,
@@ -220,10 +228,6 @@
       text-align: center;
     }
 
-    .col-capitalized {
-      text-transform: capitalize;
-    }
-
     .button--green,
     .button--green-outline {
       width: 94px;
@@ -246,6 +250,14 @@
     color: #32AB52;
     text-transform: uppercase;
     margin-bottom: 16px;
+
+    a { 
+      color: #32AB52;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
     &-active {
       font-weight: normal;
