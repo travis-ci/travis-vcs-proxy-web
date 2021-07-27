@@ -72,6 +72,7 @@
         @route="repository.update-token"
         @model={{repository.id}}
         @title="Update repository access token"
+        @disabled={{not repository.canModify}}
       >
         <EmberTooltip @text="Update repository access token" />
         <SvgImage @name="icon-edit" @class="icon" />
@@ -82,6 +83,7 @@
         @route="repository.remove-token"
         @model={{repository.id}}
         @title="Delete repository"
+        @disabled={{not repository.canModify}}
       >
         <EmberTooltip @text="Delete repository" />
         <SvgImage @name="icon-delete" @class="icon" />

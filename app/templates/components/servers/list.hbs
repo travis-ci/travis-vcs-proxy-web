@@ -52,6 +52,7 @@
         @route="server.edit"
         @model={{server.id}}
         @title="Update server information"
+        @disabled={{server.isUser}}
       >
         <EmberTooltip @text="Update server information" />
         <SvgImage @name="icon-edit" @class="icon" />
@@ -62,6 +63,7 @@
         @route="server.remove"
         @model={{server.id}}
         @title="Delete this server"
+        @disabled={{server.isUser}}
       >
         <EmberTooltip @text="Delete this server" />
         <SvgImage @name="icon-delete" @class="icon" />

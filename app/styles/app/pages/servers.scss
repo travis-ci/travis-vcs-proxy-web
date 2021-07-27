@@ -191,6 +191,12 @@
       height: 24px;
       @include colorSVGFull($text-black, $text-black);
     }
+
+    a.disabled {
+      svg {
+        @include colorSVGFull($cement-grey, $cement-grey);
+      }
+    }
   }
 
   .repositories-list {

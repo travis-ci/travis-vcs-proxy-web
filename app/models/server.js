@@ -16,6 +16,14 @@ export default class ServerModel extends Model {
   @attr('string') permission;
   @hasMany('user') users;
 
+  get isUser() {
+    return this.permission === 'User';
+  }
+
+  get isOwner() {
+    return this.permission === 'Owner';
+  }
+
   @tracked repositories = dynamicQuery(this, function* ({ page = 1, filter = '', sort = 'name' }) {
     const limit = config.pagination.repositoriesPerPage;
     return yield this.store.paginated('repository', {

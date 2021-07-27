@@ -12,6 +12,10 @@ export default class RepositoryModel extends Model {
   @attr('date') lastSyncedAt;
   @attr('number') serverProviderId;
 
+  get canModify() {
+    return this.permission === 'admin' || this.permission === 'super';
+  }
+
   get serverProvider() {
     return this.store.peekRecord('server', this.serverProviderId)
       || this.store.findRecord('server', this.serverProviderId);
