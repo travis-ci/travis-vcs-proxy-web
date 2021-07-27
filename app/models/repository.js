@@ -9,6 +9,7 @@ export default class RepositoryModel extends Model {
   @attr('string') url;
   @attr('string') type;
   @attr('string') permission;
+  @attr('string') token;
   @attr('date') lastSyncedAt;
   @attr('number') serverProviderId;
 
