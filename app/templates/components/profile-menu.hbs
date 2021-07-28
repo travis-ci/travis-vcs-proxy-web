@@ -19,7 +19,6 @@
   {{else if this.auth.signedIn}}
 
     <div
-      data-test-header-account-link="true"
       class="pointer navigation-anchor navigation-profile-link signed-in"
       {{on 'click' (action 'toggleMenu')}}
     >
@@ -65,7 +64,6 @@
 
       <li>
         <a
-          data-test-signout-link
           href="/"
           title="Sign out of this account"
           class="topbar-menu-item"

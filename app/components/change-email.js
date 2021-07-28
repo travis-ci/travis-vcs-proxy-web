@@ -8,16 +8,14 @@ export default class ChangeEmail extends Component {
   @service api;
   @service flashes;
 
+  @tracked user = this.auth.currentUser;
+
   @tracked oldEmail = '';
   @tracked newEmail = '';
 
   @action
   changeEmail() {
-    this.api.patch('/v1/user/update_email', {
-      data: {
-        email: this.newEmail
-      }
-    }).then(() => {
+    this.user.updateEmail(this.newEmail).then(() => {
       this.flashes.success('Please check your email and confirm your account. If you need to generate a new confirmation email, please resend your confirmation email.');
       this.auth.signOut();
     }).catch(error => {

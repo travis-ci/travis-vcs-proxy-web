@@ -1,4 +1,5 @@
 import TravisRoute from 'travis/routes/basic';
+import { action } from '@ember/object';
 import { EVENTS } from 'travis/utils/dynamic-query';
 
 const { PAGE_CHANGED } = EVENTS;

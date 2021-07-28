@@ -5,16 +5,26 @@ import { inject as service } from '@ember/service';
 
 export default class RecoveryCodesModal extends Component {
   @service api;
+  @service auth;
+
+  @tracked user = this.auth.currentUser;
 
   @tracked isOpen = false;
 
   constructor() {
     super(...arguments);
 
-    this.api.get('/v1/user/two_factor_auth/codes').then((data) => {
+    this.user.twoFactorCodes().then((data) => {
       this.codes = data.codes;
+      this.joinedCodes = this.codes.join("\n");
     });
   }
 
   @tracked codes;
+  @tracked joinedCodes;
+
+  @action
+  printPage() {
+    window.print();
+  }
 }

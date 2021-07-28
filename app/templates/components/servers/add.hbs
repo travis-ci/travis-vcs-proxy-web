@@ -70,7 +70,11 @@
     Without Server level ticket / token your won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
   </div>
   <div>
+    {{#if this.args.searchNoServer}}
+    <button type='button' class='button--white' {{ on 'click' this.clearSearch }}>Cancel</button>
+    {{else}}
     <LinkTo @route='index' @tagName='button' @class='button--white'>Cancel</LinkTo>
+    {{/if}}
     <button type='button' class='button--green' {{ on 'click' (if this.args.editMode this.editServer this.addServer)}}>{{if this.args.editMode 'Update Server' 'Add Server'}}</button>
   </div>
 </div>

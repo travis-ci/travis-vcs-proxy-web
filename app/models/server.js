@@ -37,6 +37,15 @@ export default class ServerModel extends Model {
     }, { live: false });
   });
 
+  refreshToken(username, token) {
+    return this.api.post(`/v1/server_providers/${this.id}/authenticate`, {
+      data: {
+        username: username,
+        token: token
+      }
+    });
+  }
+
   forget() {
     return this.api.post(`/v1/server_providers/${this.id}/forget`);
   }

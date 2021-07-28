@@ -4,7 +4,7 @@
   @closeButton={{true}}
 >
   <div class="recovery-modal flex flex--v-center flex--center flex--col">
-    <h2>Two-Factor Authentication Backup Code</h2>
+    <h2>Two-Factor Authentication Backup Codes</h2>
     <h3>Your reset codes. If you lose access to your authentication device, you can use one of these emergency recovery codes to login to your account. Each code may be used only once. Please print them out and copy offline.</h3>
     <table>
       {{#each this.codes as |code|}}
@@ -14,8 +14,13 @@
       {{/each}}
     </table>
     <div>
-      <button type='button' class='button--green-outline w-156 ml-20'>Copy</button>
-      <button type='button' class='button--green w-156 ml-20'>Print</button>
+      <CopyButton
+        @clipboardText={{this.joinedCodes}}
+        @class='button--green-outline w-156'
+      >
+        Copy
+      </CopyButton>
+      <button type='button' class='button--green w-156 ml-20' {{ on 'click' this.printPage }}>Print</button>
     </div>
     <h3 class='new-codes'>You can get new codes. <LinkTo @route='sign-in'>Generate new codes</LinkTo></h3>
   </div>

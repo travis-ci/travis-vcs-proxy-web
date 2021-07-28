@@ -16,14 +16,19 @@
     and we value your honest feedback about your experience with us and the improvements we can make for our future collaboration
   </p>
   <p class="w-600 mt-24 mb-24">Before you remove your account, please choose the reasons why you are leaving</p>
-  <select name="reasons" class="reasons-buttons" multiple>
+  <select name="reasons" class="reasons-buttons" onchange={{action 'onSelectReason' value="target.value"}} multiple>
     <option value="1">Price</option>
     <option value="2">Support</option>
     <option value="3">Build Times</option>
     <option value="4">End Of Project</option>
     <option value="5">Other</option>
   </select>
-  <textarea class="reason-textarea mb-32" placeholder="Please list any other reasons why you might be leaving."></textarea>
+  <Textarea
+    @id='userFeedback'
+    @value={{this.feedbackText}}
+    @class='reason-textarea mb-32'
+    @placeholder='Please list any other reasons why you might be leaving.'
+  />
   <h2 class='text-black ta-c'>Confirmation</h2>
   <p>Enter your current Travis CI Proxy Service password to confirm your decision</p>
   <div>

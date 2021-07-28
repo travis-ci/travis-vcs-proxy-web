@@ -3,12 +3,24 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
+const removeReasons = {
+  1: 'Price',
+  2: 'Support',
+  3: 'Build Times',
+  4: 'End of Project',
+  5: 'Other'
+};
+
 export default class RemoveAccount extends Component {
   @service auth;
   @service api;
   @service flashes;
 
+  @tracked user = this.auth.currentUser;
   @tracked isFeedbackShown = false;
+  @tracked password = '';
+  @tracked feedbackText = '';
+  @tracked reason = '';
 
   @action
   togglePassword() {
@@ -21,15 +33,20 @@ export default class RemoveAccount extends Component {
   }
 
   @action
+  onSelectReason(value) {
+    this.reason = removeReasons[value];
+  }
+
+  @action
   removeAccount() {
-    this.api.patch('/v1/user/update_email', {
-      data: {
-        email: this.newEmail
-      }
-    }).then(() => {
-      this.flashes.success('Email has been successfully changed.');
-    }).catch(error => {
-      this.flashes.error(error);
-    });
+    if (this.reason) {
+      this.user.removeUser(this.password, { reason: this.reason, text: this.feedbackText }).then(() => {
+        //this.auth.signOut();
+      }).catch(error => {
+        this.flashes.error(error);
+      });  
+    } else {
+      this.flashes.notice('Please specify a reason.');
+    }
   }
 }

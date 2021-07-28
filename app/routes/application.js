@@ -2,12 +2,21 @@ import Route from '@ember/routing/route';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
+const NO_SIGN_IN_ROUTES = [
+  'setup-new-password',
+  'forgot-password',
+  'unconfirmed',
+  'confirmed'
+]
+
 export default class ApplicationRoute extends Route {
 	@service auth;
   @service router;
 
-  beforeModel() {
-    return this.auth.autoSignIn();
+  beforeModel(transition) {
+    if (!NO_SIGN_IN_ROUTES.includes(transition.targetName)) {
+      return this.auth.autoSignIn();
+    }
   }
 
   @action

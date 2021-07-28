@@ -11,18 +11,15 @@ export default class RepositoriesUpdateToken extends Component {
   @tracked token = '';
   @tracked username = '';
 
+  @tracked repo = this.args.repo;
+
   @action
   updateToken() {
-    this.api.patch(`/v1/repositories/${this.args.repo.id}/token`, {
-      data: {
-        token: this.token,
-        username: this.username
-      }
-    }).then(() => {
+    this.repo.updateToken(this.username, this.token).then(() => {
       this.flashes.notice('Repository Access Token has been successfully updated.');
       this.router.transitionTo('server.repositories', this.args.repo.serverProvider.id);
-    }).catch(error => {
-      this.flashes.error(error);
+    }).catch(() => {
+      this.flashes.error('Could not update Repository Access Token.');
     });
   }
 }

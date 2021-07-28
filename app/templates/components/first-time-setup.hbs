@@ -10,9 +10,21 @@
         @type='text'
         @placeholder='Enter URL'
         class='text-field'
+        {{ on 'keyup' this.searchByUrl }}
       />
     </div>
   </div>
+  {{#if (and this.searchMode this.foundServer)}}
+  <Servers::SearchResult
+    @foundServer={{this.foundServer}}
+    @clearSearch={{this.clearSearch}}
+  />
+  {{else}}
+  {{#if (and this.searchMode (not this.foundServer))}}
+  <h3 class='or'>You don’t have any Server with this URL yet</h3>
+  {{else}}
   <h3 class='or'>or</h3>
+  {{/if}}
   <Servers::Add />
+  {{/if}}
 </div>

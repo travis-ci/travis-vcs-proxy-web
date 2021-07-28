@@ -2,7 +2,6 @@
   {{#let this.messages.firstObject as |flash|}}
     {{#if flash}}
       <FlashItem
-        data-test-components-flash-item="true"
         @flash={{flash}}
         @close={{action "closeMessage"}}
       />

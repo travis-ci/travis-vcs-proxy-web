@@ -21,4 +21,17 @@ export default class RepositoryModel extends Model {
     return this.store.peekRecord('server', this.serverProviderId)
       || this.store.findRecord('server', this.serverProviderId);
   };
+
+  removeToken() {
+    return this.api.delete(`/v1/repositories/${this.id}/token`);
+  }
+
+  updateToken(username, token) {
+    return this.api.patch(`/v1/repositories/${this.args.repo.id}/token`, {
+      data: {
+        token: token,
+        username: username
+      }
+    });
+  }
 }

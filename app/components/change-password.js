@@ -8,6 +8,8 @@ export default class ChangePassword extends Component {
   @service api;
   @service flashes;
 
+  @tracked user = this.auth.currentUser;
+
   @tracked oldPassword = '';
   @tracked newPassword = '';
 
@@ -19,13 +21,7 @@ export default class ChangePassword extends Component {
   @action
   changePassword() {
     if (this.auth.checkPasswordComplexity(this.newPassword)) {
-      this.api.patch('/v1/user/update_password', {
-        data: {
-          current_password: this.oldPassword,
-          password: this.newPassword,
-          password_confirmation: this.newPassword  
-        }
-      }).then(() => {
+      this.user.updatePassword(this.oldPassword, this.newPassword).then(() => {
         this.flashes.success('Your password has been successfully changed');
         this.auth.signOut();
       }).catch(error => {

@@ -32,7 +32,7 @@ export default class ProfileMenu extends Component {
   constructor() {
     super(...arguments);
 
-    this.api.get('/v1/user/two_factor_auth/url').then((data) => {
+    this.user.twoFactorUrl().then((data) => {
       this.qrCodeUrl = data.url;
     }).catch((error) => {
       this.flashes.error(error);

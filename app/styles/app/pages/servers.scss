@@ -41,6 +41,14 @@
     margin-bottom: 23px;
     padding: 40px 112px;
     box-sizing: border-box;
+
+    .servers-add {
+      border: none;
+    }
+
+    .content-box-mini {
+      width: 100%;
+    }
   }
 
   h2.no-servers,
@@ -110,6 +118,14 @@
     }
   }
 
+  .content-box-mini {
+    display: flex;
+    width: 685px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 23px;
+  }
+
   .servers-add,
   .servers-edit,
   .servers-remove {
@@ -130,9 +146,15 @@
     border: 1px solid #CCCCCC;
   }
 
+  .servers-search-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
   .servers-add,
   .servers-edit,
   .servers-remove,
+  .servers-search-buttons,
   .first-setup {
     .button--green,
     .button--white,
@@ -214,8 +236,8 @@
       width: 15%;
     }
 
-    .col-34 {
-      width: 34%;
+    .col-30 {
+      width: 30%;
     }
 
     .col-7 {
@@ -228,6 +250,10 @@
 
     .col-12 {
       width: 12%;
+    }
+
+    .col-25 {
+      width: 25%;
     }
 
     .col-centered {

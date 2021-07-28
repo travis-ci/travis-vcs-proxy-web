@@ -1,0 +1,25 @@
+<div class='content-box-mini'>
+<div class='servers-list'>
+<table>
+<colgroup>
+  <col class='col-15' />
+  <col class='col-25' />
+  <col class='col-9' />
+</colgroup>
+<tr>
+  <th>Server name</th>
+  <th>Connection URL</th>
+  <th>Type</th>
+</tr>
+<tr>
+  <td>{{this.foundServer.name}}</td>
+  <td>{{this.foundServer.url}}</td>
+  <td class='capitalize-text'>{{this.foundServer.type}}</td>
+</tr>
+</table>
+</div>
+</div>
+<div class='servers-search-buttons'>
+  <button type='button' class='button--white' {{ on 'click' this.clearSearch }}>Cancel</button>
+  <button type='button' class='button--green' {{ on 'click' this.addFoundServer }}>Add Server</button>
+</div>
