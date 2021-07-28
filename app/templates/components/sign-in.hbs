@@ -71,7 +71,7 @@
   <button type='button' class='login-button create' {{ on 'click' this.signUp }}>Create account</button>
 </div>
 <div class='terms'>
-  By creating an account, you agree to the <LinkTo @route='sign-in'>Terms of Service</LinkTo> and <LinkTo @route='sign-in'>Privacy Policy</LinkTo>
+  By creating an account, you agree to the <ExternalLinkTo href={{this.config.urls.tos}} title="Terms of Service">Terms of Service</ExternalLinkTo> and <ExternalLinkTo href={{this.config.urls.privacyPolicy}} title="Privacy Policy">Privacy Policy</ExternalLinkTo>
 </div>
 <div class='create-account'>
   Already have an account? <LinkTo @route='sign-in'>Login</LinkTo>

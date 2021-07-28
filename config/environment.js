@@ -41,6 +41,9 @@ module.exports = function (environment) {
       support: 'mailto:support@travis-ci.com',
       travisVsJenkins: 'https://travis-ci.com/travisci-vs-jenkins',
       twitter: 'https://twitter.com/travisci',
+      tos: 'https://docs.travis-ci.com',
+      privacyPolicy: 'https://docs.travis-ci.com',
+      help: 'https://docs.travis-ci.com'
     },
 
     pagination: {
