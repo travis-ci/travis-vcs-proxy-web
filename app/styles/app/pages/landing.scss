@@ -343,6 +343,12 @@ main {
     &:hover {
       cursor: pointer;
     }
+
+    &:hover,
+    &:active {
+      color: darken($chateau-green, 10);
+      border: 1px solid darken($chateau-green, 10);
+    }
   }
 }
 

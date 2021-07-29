@@ -73,8 +73,8 @@
 
   &:hover,
   &:active {
-    color: white;
-    background-color: $chateau-green;
+    color: darken($chateau-green, 10);
+    border: 1px solid darken($chateau-green, 10);
     cursor: pointer;
   }
 
@@ -104,6 +104,11 @@
 .auth-button.create-account {
   color: white;
   background-color: $chateau-green;
+
+  &:hover,
+  &:active {
+    background-color: darken($chateau-green, 10);
+  }
 }
 
 .auth-button--white {
@@ -186,6 +191,7 @@
   &:hover,
   &:active {
     color: darken($chateau-green, 10);
+    border: 1px solid darken($chateau-green, 10);
   }
 }
 
@@ -317,6 +323,10 @@ input:focus + .slider {
 
 input:checked + .slider:before {
   transform: translateX(20px);
+}
+
+input:disabled + .slider {
+  background-color: $cement-grey;
 }
 
 /* Rounded sliders */

@@ -13,6 +13,13 @@
     padding-top: 10em;
     height: 100%;
   }
+
+  .error-text {
+    margin-top: 50px;
+    text-align: center;
+    h1 { font-size: 48px; }
+    p { font-size: 36px; }
+  }
 }
 
 .auth-window {
@@ -75,6 +82,11 @@
     &:hover {
       cursor: pointer;
     }
+
+    &:hover,
+    &:active {
+      background-color: darken($chateau-green, 10);
+    }
   }
 
   .login-button.create {
@@ -85,10 +97,10 @@
 
 .text-field {
   width: 334px;
-  height: 34px;
+  height: 30px;
   margin-bottom: 2px;
   border: none;
-  background-color: transparent;
+  background-color: transparent !important;
   outline: none;
   font-size: 16px;
 }
@@ -102,6 +114,14 @@
   box-sizing: border-box;
   border-radius: 2px;
   margin-bottom: 2px;
+
+  &:hover {
+    border: 1px solid $text-black;
+  }
+
+  &:focus-within {
+    border: 1px solid $chateau-green;
+  }
 }
 
 .password {

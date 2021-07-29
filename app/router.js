@@ -37,4 +37,6 @@ Router.map(function () {
     this.route('update-token', { path: '/update_token' });
     this.route('remove-token', { path: '/remove_token' });
   });
+
+  this.route('page-not-found', { path: '/*wildcard' });
 });
