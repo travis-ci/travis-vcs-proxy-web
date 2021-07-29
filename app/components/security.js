@@ -16,12 +16,21 @@ export default class ProfileMenu extends Component {
 
   @action
   enable2FA() {
-    return this.auth.enable2FA(this.otpAttempt);
+    this.auth.enable2FA(this.otpAttempt).then(() => {
+      this.showRecoveryModal();
+    });
   }
+
+  @tracked codes;
+  @tracked joinedCodes;
 
   @action
   showRecoveryModal() {
-    this.showRecoveryCodes = true;
+    this.user.twoFactorCodes().then((data) => {
+      this.codes = data.codes;
+      this.joinedCodes = this.codes.join("\n");
+      this.showRecoveryCodes = true;
+    });
   }
 
   @action

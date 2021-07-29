@@ -20,10 +20,10 @@
   <div>
     <button
       type='button'
-      class='button button--green w-156 mt-29 ml-180'
+      class='button button--green mt-29 ml-160'
       {{ on 'click' this.showRecoveryModal }}
     >
-      Show recovery codes
+      Generate new recovery codes
     </button>
   </div>
   {{else}}
@@ -77,4 +77,6 @@
 <Dialogs::RecoveryCodesModal
 @isOpen={{this.showRecoveryCodes}}
 @onClose={{action this.closeRecoveryModal}}
+@codes={{this.codes}}
+@joinedCodes={{this.joinedCodes}}
 />
