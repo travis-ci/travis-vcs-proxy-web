@@ -49,6 +49,11 @@
     color: $chateau-green;
     background-color: #BCE0C5;
 
+    .flash-message a {
+      color: darken($chateau-green, 10);
+      font-weight: 600;
+    }
+
     @include colorSVGFill($chateau-green);
 
     animation: fadeFlashOut 7s 1 ease forwards;
@@ -66,6 +71,11 @@
 
     @include colorSVGFill($brick-red);
 
+    .flash-message a {
+      color: darken($brick-red, 10);
+      font-weight: 600;
+    }
+
     .flash-message svg {
       height: 34px;
       width: 30px;
@@ -78,6 +88,11 @@
     background-color: #BDD4E4;
 
     @include colorSVGFill(#3E80AF);
+
+    .flash-message a {
+      color: darken(#3E80AF, 10);
+      font-weight: 600;
+    }
 
     .flash-message svg {
       height: 19px;

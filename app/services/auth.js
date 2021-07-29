@@ -11,6 +11,9 @@ const STATE = {
 };
 
 const TOKEN_EXPIRED_MSG = "You've been signed out, because your access token has expired.";
+const MUST_CONFIRM_EMAIL_API_MSG = "You have to confirm your email address before continuing.";
+const MUST_CONFIRM_EMAIL_MSG = `Your account is not confirmed. Please check your email and confirm your account.<br>If you need to generate a new confirmation email, please <a href="resend_confirmation?email={{email}}">resend your confirmation email</a>.`;
+export const CONFIRM_EMAIL_MSG = `Please check your email and confirm your account. If you need to generate a new confirmation email, please <a href="resend_confirmation?email={{email}}">resend your confirmation email</a>.`;
 
 export default class AuthService extends Service {
   @tracked state = STATE.SIGNED_OUT;
@@ -65,7 +68,11 @@ export default class AuthService extends Service {
         });
       }
     }).catch((error) => {
-      this.flashes.error(error);
+      if (error === MUST_CONFIRM_EMAIL_API_MSG) {
+        this.flashes.error(MUST_CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, email));
+      } else {
+        this.flashes.error(error);
+      }
     });
   }
 
@@ -81,7 +88,7 @@ export default class AuthService extends Service {
         }
       }
     ).then(() => {
-      this.flashes.notice('Please check your email and confirm your account. If you need to generate a new confirmation email, please resend your confirmation email.')
+      this.flashes.notice(CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, email));
       this.router.transitionTo('unconfirmed');
     }).catch((error) => {
       this.flashes.error(error);

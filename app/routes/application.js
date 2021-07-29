@@ -6,7 +6,8 @@ const NO_SIGN_IN_ROUTES = [
   'setup-new-password',
   'forgot-password',
   'unconfirmed',
-  'confirmed'
+  'confirmed',
+  'resend-confirmation'
 ]
 
 export default class ApplicationRoute extends Route {

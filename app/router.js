@@ -14,6 +14,7 @@ Router.map(function () {
   this.route('forgot-password', { path: '/forgot_password' });
   this.route('unconfirmed');
   this.route('confirmed');
+  this.route('resend-confirmation', { path: '/resend_confirmation' });
   this.route('account', function () {
     this.route('security');
     this.route('change-password', { path: 'change_password' });
