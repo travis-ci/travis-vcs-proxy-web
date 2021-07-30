@@ -41,7 +41,7 @@ export default class RemoveAccount extends Component {
   removeAccount() {
     if (this.reason) {
       this.user.removeUser(this.password, { reason: this.reason, text: this.feedbackText }).then(() => {
-        //this.auth.signOut();
+        this.auth.signOut();
       }).catch(error => {
         this.flashes.error(error);
       });  
