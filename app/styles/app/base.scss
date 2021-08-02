@@ -320,3 +320,11 @@ span.emoji.emoji-sizer {
     height: $i + 0%;
   }
 }
+
+@media print
+{    
+  .no-print, .no-print *
+  {
+      display: none !important;
+  }
+}
