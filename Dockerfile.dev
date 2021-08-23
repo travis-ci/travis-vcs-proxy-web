@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM ruby:3.0
 
 LABEL maintainer Travis CI GmbH <support+travis-web-docker-images@travis-ci.com>
 
@@ -7,23 +7,13 @@ RUN groupadd --gid 1000 node \
 
 ENV NPM_CONFIG_LOGLEVEL info
 
-RUN apt-get update && \
-    apt-get -y install gnupg2 && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     curl -sL https://deb.nodesource.com/setup_14.x | bash -s && \
     apt-get install -y --no-install-recommends \
         nodejs yarn \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /build
+WORKDIR /srv/app
 
-COPY . .
-RUN npm install --silent -g ember-cli
-RUN npm ci --silent
-RUN ember build --environment=production
-RUN cp docker/nginx.conf /etc/nginx/conf.d/travis.conf
-
-WORKDIR /app
-RUN cp -a /build/dist .
-RUN rm -rf /build
+CMD ["/srv/app/entrypoint.sh"]
