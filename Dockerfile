@@ -6,6 +6,7 @@ RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
 ENV NPM_CONFIG_LOGLEVEL info
+ARG API_ENDPOINT
 
 RUN apt-get update && \
     apt-get -y install gnupg2 && \
@@ -21,7 +22,7 @@ WORKDIR /build
 COPY . .
 RUN npm install --silent -g ember-cli
 RUN npm ci --silent
-RUN ember build --environment=production
+RUN API_ENDPOINT=${API_ENDPOINT} ember build --environment=production
 RUN cp docker/nginx.conf /etc/nginx/conf.d/travis.conf
 
 WORKDIR /app
