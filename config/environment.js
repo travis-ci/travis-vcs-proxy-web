@@ -1,7 +1,7 @@
 'use strict';
 
 const {
-	API_ENDPOINT,
+	VCS_PROXY_API_ENDPOINT,
 } = process.env;
 
 module.exports = function (environment) {
@@ -77,8 +77,8 @@ module.exports = function (environment) {
   }
 
   if (typeof process !== 'undefined') {
-    if (API_ENDPOINT) {
-      ENV.apiEndpoint = API_ENDPOINT;
+    if (VCS_PROXY_API_ENDPOINT) {
+      ENV.apiEndpoint = VCS_PROXY_API_ENDPOINT;
     }
   }
 

@@ -1,7 +1,7 @@
 module.exports = function (env) {
   return {
     clientAllowedKeys: [
-      'API_ENDPOINT'
+      'VCS_PROXY_API_ENDPOINT'
     ],
     failOnMissingKey: false,
   };
