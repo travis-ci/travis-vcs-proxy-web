@@ -1,4 +1,4 @@
-.settings-page,
+.settings,
 .servers-page {
     display: flex;
     flex-direction: column;
@@ -8,11 +8,13 @@
     min-height: 675px;
 }
 
+.settings-page {
+  width: $layout-max-width;
+  display: flex;
+}
+
 .servers-page-header,
 .settings-page-container {
-    width: $layout-max-width;
-    display: flex;
-
     .password-requirements {
       width: 334px;
       font-size: 12px;
@@ -20,6 +22,10 @@
       margin-bottom: 20px;
       color: #666666;
     }
+}
+
+.servers-page-header {
+  margin-right: 900px;
 }
 
 .avatar-img {
