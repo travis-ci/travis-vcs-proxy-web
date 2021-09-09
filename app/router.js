@@ -22,6 +22,9 @@ Router.map(function () {
     this.route('remove-account', { path: 'remove_account' });
     this.route('remove-account-confirm', { path: 'remove_account_confirm' });
   });
+  this.route('oauth', function () {
+    this.route('authorize', { path: 'authorize' });
+  });
   this.route('servers', function () {
     this.route('add');
   });
@@ -36,10 +39,6 @@ Router.map(function () {
   this.route('repository', { path: '/repositories/:id', resetNamespace: true }, function () {
     this.route('update-token', { path: '/update_token' });
     this.route('remove-token', { path: '/remove_token' });
-  });
-
-  this.route('oauth', function () {
-    this.route('authorize');
   });
 
   this.route('page-not-found', { path: '/*wildcard' });

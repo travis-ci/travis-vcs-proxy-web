@@ -40,7 +40,23 @@ export default class UserModel extends Model {
       data: {
         current_password: oldPassword,
         password: newPassword,
-        password_confirmation: newPassword  
+        password_confirmation: newPassword
+      }
+    });
+  }
+
+  getAuthorizedApps() {
+    return this.api.get('/v1/oauth/authorized_applications');
+  }
+
+  authorizeOauth(clientId, responseType, state, redirectUri) {
+    return this.api.post('/v1/oauth/authorize', {
+      data: {
+        client_id: clientId,
+        response_type: responseType,
+        redirect_uri: redirectUri,
+        scope: 'read',
+        state,
       }
     });
   }
