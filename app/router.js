@@ -38,5 +38,9 @@ Router.map(function () {
     this.route('remove-token', { path: '/remove_token' });
   });
 
+  this.route('oauth', function () {
+    this.route('authorize');
+  });
+
   this.route('page-not-found', { path: '/*wildcard' });
 });
