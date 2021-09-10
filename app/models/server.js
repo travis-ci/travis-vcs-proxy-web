@@ -17,7 +17,7 @@ export default class ServerModel extends Model {
   @hasMany('user') users;
 
   get isUser() {
-    return this.permission === 'User';
+    return !this.isOwner;
   }
 
   get isOwner() {
