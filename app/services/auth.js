@@ -90,8 +90,10 @@ export default class AuthService extends Service {
     ).then(() => {
       this.flashes.notice(CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, email));
       this.router.transitionTo('unconfirmed');
-    }).catch((error) => {
-      this.flashes.error(error);
+    }).catch((errors) => {
+      let error = [];
+      Object.keys(errors).forEach(key => error.push(key + ' ' + errors[key]));
+      this.flashes.error(error.join('; '));
     });
   }
 
@@ -143,7 +145,7 @@ export default class AuthService extends Service {
       if (userRecord) {
         this.currentUser = userRecord;
         storage.accounts.addObject(userRecord);
-        storage.set('user', userRecord);  
+        storage.set('user', userRecord);
       }
     });
   }
