@@ -105,12 +105,18 @@ export default class AJAXService extends Service {
           })
           .catch(error => this.handleFetchError(reject, error));
       }).catch(error => {
-        this.handleFetchError(reject, error.message);
+        this.handleFetchError(reject, error);
       });
     });
   }
 
   handleFetchError(reject, error) {
+    if (typeof error === 'object') {
+      let errors = [];
+      Object.keys(error).forEach(key => errors.push(key + ' ' + error[key]));
+      error = errors.join() + '.';
+    }
+
     reject(error);
     this.logFetchError(error);
   }

@@ -43,7 +43,8 @@ module.exports = function (environment) {
       twitter: 'https://twitter.com/travisci',
       tos: 'https://docs.travis-ci.com',
       privacyPolicy: 'https://docs.travis-ci.com',
-      help: 'https://docs.travis-ci.com'
+      help: 'https://docs.travis-ci.com',
+      twofactor: 'https://docs.travis-ci.com',
     },
 
     pagination: {

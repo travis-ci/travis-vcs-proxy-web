@@ -8,21 +8,26 @@ export default class FirstTimeSetup extends Component {
 
   @tracked serverUrl = '';
   @tracked searchMode = false;
+  @tracked searchRunning = false;
   @tracked foundServer = null;
 
   @action
   searchByUrl(event) {
     // Enter key
     if (event.keyCode === 13) {
+      this.foundServer = null;
+      this.searchRunning = true;
       this.api.get('/v1/server_providers/by_url', {
         data: {
           url: this.serverUrl
         }
       }).then((data) => {
         this.searchMode = true;
+        this.searchRunning = false;
         this.foundServer = data;
       }).catch((error) => {
         this.searchMode = true;
+        this.searchRunning = false;
       });
     }
   }

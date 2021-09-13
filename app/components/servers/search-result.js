@@ -11,8 +11,8 @@ export default class ServersSearchResult extends Component {
   @tracked user = this.auth.currentUser;
   @tracked servers = this.user.servers;
 
-  clearSearch = null;
-  foundServer = null;
+  @tracked clearSearch = null;
+  @tracked foundServer = null;
 
   constructor() {
     super(...arguments);

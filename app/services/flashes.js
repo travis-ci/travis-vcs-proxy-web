@@ -88,6 +88,7 @@ export default class Flashes extends Service {
   }
 
   error(message, aboveOverlay = false) {
+    this.clear();
     this.display('error', message, aboveOverlay);
   }
 

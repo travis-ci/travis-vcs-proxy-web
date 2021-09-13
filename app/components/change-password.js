@@ -12,6 +12,7 @@ export default class ChangePassword extends Component {
 
   @tracked oldPassword = '';
   @tracked newPassword = '';
+  @tracked passwordConfirmation = '';
 
   @action
   togglePassword(id) {
@@ -21,7 +22,7 @@ export default class ChangePassword extends Component {
   @action
   changePassword() {
     if (this.auth.checkPasswordComplexity(this.newPassword)) {
-      this.user.updatePassword(this.oldPassword, this.newPassword).then(() => {
+      this.user.updatePassword(this.oldPassword, this.newPassword, this.passwordConfirmation).then(() => {
         this.flashes.success('Your password has been successfully changed');
         this.auth.signOut();
       }).catch(error => {

@@ -35,12 +35,12 @@ export default class UserModel extends Model {
     });
   }
 
-  updatePassword(oldPassword, newPassword) {
+  updatePassword(oldPassword, newPassword, passwordConfirmation) {
     return this.api.patch('/v1/user/update_password', {
       data: {
         current_password: oldPassword,
         password: newPassword,
-        password_confirmation: newPassword
+        password_confirmation: passwordConfirmation
       }
     });
   }

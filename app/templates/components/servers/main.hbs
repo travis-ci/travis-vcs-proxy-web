@@ -30,6 +30,8 @@
     @foundServer={{this.foundServer}}
     @clearSearch={{this.clearSearch}}
   />
+  {{else if this.searchRunning}}
+  <LoadingIndicator />
   {{else}}
   <div class='content-box'>
     <Servers::Add

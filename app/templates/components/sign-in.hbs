@@ -12,9 +12,13 @@
       class='text-field'
     />
   </div>
-  <div class='float-right turf-green fw-600'>
+  <ExternalLinkTo
+    href={{this.config.urls.twofactor}}
+    title="What’s this?"
+    class='float-right turf-green fw-600'
+  >
     What’s this?
-  </div>
+  </ExternalLinkTo>
 </div>
 <div>
   <button type='button' class='button button--green button--very-large mt-24' {{ on 'click' this.signIn }}>Verify</button>

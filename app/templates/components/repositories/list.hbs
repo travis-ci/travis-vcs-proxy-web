@@ -82,10 +82,10 @@
       <LinkTo
         @route="repository.remove-token"
         @model={{repository.id}}
-        @title="Delete repository"
+        @title="Remove repository token"
         @disabled={{not repository.canModify}}
       >
-        <EmberTooltip @text="Delete repository" />
+        <EmberTooltip @text="Remove repository token" />
         <SvgImage @name="icon-delete" @class="icon" />
       </LinkTo>
     </td>

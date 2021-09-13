@@ -127,6 +127,10 @@ ul.flash.warning+.wrapper-main+#left {
   margin: 0;
   line-height: 1.14;
   font-size: 1.14rem;
+
+  span:first-letter {
+    text-transform: capitalize;
+  }
 }
 
 @keyframes fadeFlashOut {
