@@ -15,7 +15,7 @@ export default class ChangeEmail extends Component {
 
   @action
   changeEmail() {
-    if (this.oldEmail !== this.user.email[0]) {
+    if (this.oldEmail !== this.user.emails[0]) {
       this.flashes.error('Old email was enetered incorrectly.');
     } else if (this.newEmail === this.oldEmail) {
       this.flashes.error('New email can not be the same as the old email.');
