@@ -178,6 +178,10 @@
   &:active {
     background-color: darken($chateau-green, 10);
   }
+
+  &:disabled {
+    background-color: $asphalt-grey;
+  }
 }
 
 .button--green-outline {

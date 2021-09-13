@@ -10,6 +10,9 @@ export default class ForgotPassword extends Component {
   @service flashes;
 
   @tracked email = '';
+  get buttonDisabled() {
+    return this.email === '';
+  }
 
   @action
   sendPasswordReset() {
