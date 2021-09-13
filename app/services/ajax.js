@@ -112,9 +112,13 @@ export default class AJAXService extends Service {
 
   handleFetchError(reject, error) {
     if (typeof error === 'object') {
-      let errors = [];
-      Object.keys(error).forEach(key => errors.push(key + ' ' + error[key]));
-      error = errors.join() + '.';
+      if (error.message) {
+        error = error.message;
+      } else {
+        let errors = [];
+        Object.keys(error).forEach(key => errors.push(key + ' ' + error[key]));
+        error = errors.join() + '.';
+      }
     }
 
     reject(error);

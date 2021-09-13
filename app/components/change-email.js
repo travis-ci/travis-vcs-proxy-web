@@ -15,11 +15,17 @@ export default class ChangeEmail extends Component {
 
   @action
   changeEmail() {
-    this.user.updateEmail(this.newEmail).then(() => {
-      this.flashes.success('Please check your email and confirm your account. If you need to generate a new confirmation email, please resend your confirmation email.');
-      this.auth.signOut();
-    }).catch(error => {
-      this.flashes.error(error);
-    });
+    if (this.oldEmail !== this.user.email[0]) {
+      this.flashes.error('Old email was enetered incorrectly.');
+    } else if (this.newEmail === this.oldEmail) {
+      this.flashes.error('New email can not be the same as the old email.');
+    } else {
+      this.user.updateEmail(this.newEmail).then(() => {
+        this.flashes.success('Please check your email and confirm your account. If you need to generate a new confirmation email, please resend your confirmation email.');
+        this.auth.signOut();
+      }).catch(error => {
+        this.flashes.error(error);
+      });
+    }
   }
 }
