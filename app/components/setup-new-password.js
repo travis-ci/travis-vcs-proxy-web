@@ -10,6 +10,7 @@ export default class SetupNewPassword extends Component {
   @service router;
 
   @tracked newPassword = '';
+  @tracked passwordConfirmation = '';
 
   @action
   togglePassword(id) {
@@ -19,11 +20,16 @@ export default class SetupNewPassword extends Component {
   @action
   resetPassword() {
     if (this.auth.checkPasswordComplexity(this.newPassword)) {
+      if (this.newPassword !== this.passwordConfirmation) {
+        this.flashes.error('Passwords must match.');
+        return;
+      }
+
       this.api.post('/v1/user/reset_password', {
         data: {
           reset_password_token: this.args.resetPasswordToken,
           password: this.newPassword,
-          password_confirmation: this.newPassword
+          password_confirmation: this.passwordConfirmation
         }
       }).then(() => {
         this.flashes.success('Your password has been successfully changed');
