@@ -107,6 +107,9 @@ export default class AuthService extends Service {
       return this.handleLogin().then(() => {
         if (this.currentUser) {
           this.set('state', STATE.SIGNED_IN);
+        } else {
+          this.flashes.error(TOKEN_EXPIRED_MSG);
+          this.signOut();
         }
       });
     } catch (error) {
