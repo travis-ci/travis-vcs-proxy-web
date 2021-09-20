@@ -28,7 +28,7 @@ export default class RepositoryModel extends Model {
   }
 
   updateToken(username, token) {
-    return this.api.patch(`/v1/repositories/${this.args.repo.id}/token`, {
+    return this.api.patch(`/v1/repositories/${this.id}/token`, {
       data: {
         token: token,
         username: username
