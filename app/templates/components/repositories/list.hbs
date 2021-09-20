@@ -57,7 +57,6 @@
     <th>Repository name</th>
     <th>User access</th>
     <th>Last updated</th>
-    <th>Token</th>
     <th>Update token</th>
     <th>Delete token</th>
   </tr>
@@ -66,7 +65,6 @@
     <td>{{repository.name}}</td>
     <td class='capitalize-text'>{{repository.permission}}</td>
     <td>{{pretty-date repository.lastSyncedAt}}</td>
-    <td>{{repository.token}}</td>
     <td>
       <LinkTo
         @route="repository.update-token"
