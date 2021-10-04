@@ -2,10 +2,9 @@
   width: 334px;
 
   &-item {
-    display: flex;
     justify-content: flex-start;
     align-items: baseline;
-    margin: .5rem 0;
+    margin: .5rem .5rem .5rem 0;
     padding: 0;
     background-color: transparent;
     cursor: pointer;
@@ -28,7 +27,7 @@
       line-height: 0;
       background-color: transparent;
       cursor: pointer;
-      margin-right: 0.5rem;
+      margin-right: 0.2rem;
 
       &::before {
         content: '';

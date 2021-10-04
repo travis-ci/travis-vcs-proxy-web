@@ -34,7 +34,7 @@
     <div class='vcs-server-type'>
       <button
         autofocus={{true}}
-        class="vcs-server-type-item vcs-server-type-item--selected"
+        class="vcs-server-type-item {{if (eq this.serverType 'perforce') 'vcs-server-type-item--selected'}}"
         onclick={{action (mut this.serverType) 'perforce'}}
       >
         <span class="vcs-server-type-item__radio"></span>
@@ -42,8 +42,19 @@
           Perforce
         </span>
       </button>
+      <button
+        autofocus={{false}}
+        class="vcs-server-type-item {{if (eq this.serverType 'svn') 'vcs-server-type-item--selected'}}"
+        onclick={{action (mut this.serverType) 'svn'}}
+      >
+        <span class="vcs-server-type-item__radio"></span>
+        <span class="vcs-server-type-item__description">
+          SVN
+        </span>
+      </button>
     </div>
   </div>
+  {{#if (eq this.serverType 'perforce')}}
   <div class='setup-input'>
     <h3>Perforce Username</h3>
     <div class='entry-field'>
@@ -69,6 +80,33 @@
   <div class='perforce-ticket-warning'>
     Without Server level ticket / token your won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
   </div>
+  {{else if (eq this.serverType 'svn')}}
+  <div class='setup-input'>
+    <h3>SVN Realm</h3>
+    <div class='entry-field'>
+      <Input
+        @id='perforceUserName'
+        @value={{this.perforceUserName}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <div class='setup-input last'>
+    <h3>SSH Key</h3>
+    <div class='entry-field entry-field-large'>
+      <Textarea
+        @id='perforceToken'
+        @value={{this.perforceToken}}
+        @type='text'
+        class='text-field text-field-large'
+      />
+    </div>
+  </div>
+  <div class='perforce-ticket-warning'>
+    Without SSH Key your won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
+  </div>
+  {{/if}}
   <div>
     {{#if this.args.searchNoServer}}
     <button type='button' class='button--white' {{ on 'click' this.clearSearch }}>Cancel</button>
