@@ -10,10 +10,11 @@ export default class ServersAuthorizationDataRefresh extends Component {
   @tracked server = this.args.server;
   @tracked username = '';
   @tracked token = '';
+  @tracked svnRealm = '';
 
   @action
   refreshToken() {
-    this.server.refreshToken(this.username, this.token).then(() => {
+    this.server.refreshToken(this.username, this.token, this.svnRealm).then(() => {
       this.flashes.success(`Authorization Data Refreshing for "${this.server.name}" is successful.`);
       this.router.transitionTo('servers.index');
     }).catch(() => {

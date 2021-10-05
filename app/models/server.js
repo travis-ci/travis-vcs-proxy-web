@@ -13,6 +13,7 @@ export default class ServerModel extends Model {
   @attr('string') type;
   @attr('string') username;
   @attr('string') token;
+  @attr('string') svnRealm;
   @attr('string') permission;
   @hasMany('user') users;
 
@@ -37,16 +38,27 @@ export default class ServerModel extends Model {
     }, { live: false });
   });
 
-  refreshToken(username, token) {
+  refreshToken(username, token, svnRealm) {
     return this.api.post(`/v1/server_providers/${this.id}/authenticate`, {
       data: {
         username: username,
-        token: token
+        token: token,
+        svn_realm: svnRealm
       }
     });
   }
 
   forget() {
     return this.api.post(`/v1/server_providers/${this.id}/forget`);
+  }
+
+  addRepository(name, url) {
+    return this.api.post(`/v1/repositories`, {
+      data: {
+        server_provider_id: this.id,
+        name: name,
+        url: url
+      }
+    });
   }
 }

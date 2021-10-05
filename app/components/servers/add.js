@@ -18,8 +18,8 @@ export default class ServersAdd extends Component {
       this.serverName = this.server.name;
       this.connectionUrl = this.server.url;
       this.serverType = this.server.type;
-      this.perforceUserName = this.server.username;
-      this.perforceToken = this.server.token;
+      this.userName = this.server.username;
+      this.token = this.server.token;
     }
 
     if (this.args.url) {
@@ -34,8 +34,9 @@ export default class ServersAdd extends Component {
   @tracked serverName = '';
   @tracked connectionUrl = '';
   @tracked serverType = 'perforce';
-  @tracked perforceUserName = '';
-  @tracked perforceToken = '';
+  @tracked userName = '';
+  @tracked token = '';
+  @tracked svnRealm = '';
 
   @action
   addServer() {
@@ -43,8 +44,8 @@ export default class ServersAdd extends Component {
     server.name = this.serverName;
     server.url = this.connectionUrl;
     server.type = this.serverType;
-    server.username = this.perforceUserName;
-    server.token = this.perforceToken;
+    server.username = this.userName;
+    server.token = this.token;
     server.save().then(() => {
       this.flashes.success(`Server "${this.serverName}" is added.`);
       this.user.servers.pushObject(server);
@@ -63,8 +64,8 @@ export default class ServersAdd extends Component {
     this.server.name = this.serverName;
     this.server.url = this.connectionUrl;
     this.server.type = this.serverType;
-    this.server.username = this.perforceUserName;
-    this.server.token = this.perforceToken;
+    this.server.username = this.userName;
+    this.server.token = this.token;
     this.server.save().then(() => {
       this.flashes.success(`Server provider "${this.server.name}" has been successfully updated.`);
       this.router.transitionTo('servers.index');

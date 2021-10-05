@@ -59,8 +59,8 @@
     <h3>Perforce Username</h3>
     <div class='entry-field'>
       <Input
-        @id='perforceUserName'
-        @value={{this.perforceUserName}}
+        @id='username'
+        @value={{this.userName}}
         @type='text'
         class='text-field'
       />
@@ -70,8 +70,8 @@
     <h3>Server level ticket / token (optional)</h3>
     <div class='entry-field'>
       <Input
-        @id='perforceToken'
-        @value={{this.perforceToken}}
+        @id='token'
+        @value={{this.token}}
         @type='text'
         class='text-field'
       />
@@ -82,29 +82,40 @@
   </div>
   {{else if (eq this.serverType 'svn')}}
   <div class='setup-input'>
-    <h3>SVN Realm</h3>
+    <h3>SVN Realm (optional)</h3>
     <div class='entry-field'>
       <Input
-        @id='perforceUserName'
-        @value={{this.perforceUserName}}
+        @id='svnRealm'
+        @value={{this.svnRealm}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <div class='setup-input'>
+    <h3>Username</h3>
+    <div class='entry-field'>
+      <Input
+        @id='username'
+        @value={{this.userName}}
         @type='text'
         class='text-field'
       />
     </div>
   </div>
   <div class='setup-input last'>
-    <h3>SSH Key</h3>
+    <h3>SSH Key (optional)</h3>
     <div class='entry-field entry-field-large'>
       <Textarea
-        @id='perforceToken'
-        @value={{this.perforceToken}}
+        @id='token'
+        @value={{this.token}}
         @type='text'
         class='text-field text-field-large'
       />
     </div>
   </div>
   <div class='perforce-ticket-warning'>
-    Without SSH Key your won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
+    Without SSH Key you won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
   </div>
   {{/if}}
   <div>

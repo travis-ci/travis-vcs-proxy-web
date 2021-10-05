@@ -9,6 +9,7 @@ Read more in our
   Documentation
 </ExternalLinkTo>
 </p>
+{{#if (eq this.server.type 'perforce')}}
 <div class="mt-16">
   <h3 class="fs-14 fw-600 tt-u">Perforce Username</h3>
   <div class='entry-field'>
@@ -31,6 +32,41 @@ Read more in our
       />
   </div>
 </div>
+{{else if (eq this.server.type 'svn')}}
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">SVN Realm (optional)</h3>
+  <div class='entry-field'>
+      <Input
+      @id='svnRealm'
+      @value={{this.svnRealm}}
+      @type='text'
+      class='text-field'
+      />
+  </div>
+</div>
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">Username</h3>
+  <div class='entry-field'>
+      <Input
+      @id='username'
+      @value={{this.username}}
+      @type='text'
+      class='text-field'
+      />
+  </div>
+</div>
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">SSH Key</h3>
+  <div class='entry-field entry-field-large'>
+    <Textarea
+      @id='token'
+      @value={{this.token}}
+      @type='text'
+      class='text-field text-field-large'
+    />
+  </div>
+</div>
+{{/if}}
 <div class="mt-24">
   <LinkTo @route="server.repositories" @model={{this.args.server.id}} @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
   <button type='button' class='button--green w-156 ml-20' {{ on 'click' this.updateToken }}>Update</button>

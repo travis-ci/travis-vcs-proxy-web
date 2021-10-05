@@ -10,12 +10,14 @@ export default class RepositoriesUpdateToken extends Component {
 
   @tracked token = '';
   @tracked username = '';
+  @tracked svnRealm = '';
 
   @tracked repo = this.args.repo;
+  @tracked server = this.args.repo.serverProvider;
 
   @action
   updateToken() {
-    this.repo.updateToken(this.username, this.token).then(() => {
+    this.repo.updateToken(this.username, this.token, this.svnRealm).then(() => {
       this.flashes.notice('Repository Access Token has been successfully updated.');
       this.router.transitionTo('server.repositories', this.args.repo.serverProvider.id);
     }).catch(() => {

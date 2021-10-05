@@ -34,6 +34,7 @@ Router.map(function () {
     this.route('authorization-data-refresh', { path: '/authorization_data_refresh' });
     this.route('remove');
     this.route('repositories');
+    this.route('add-repository', { path: 'add_repository' });
   });
 
   this.route('repository', { path: '/repositories/:id', resetNamespace: true }, function () {

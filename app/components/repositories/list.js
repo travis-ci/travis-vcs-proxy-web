@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class RepositoriesList extends Component {
+  @tracked server = this.args.server;
   @tracked repositories = this.args.server.repositories;
   @tracked repoSearch = '';
   filterTimeout = null;

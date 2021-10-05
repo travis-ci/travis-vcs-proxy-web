@@ -1,0 +1,27 @@
+<h2 class='text-black ta-c fs-36 mt-24'>Add Repository</h2>
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">Name</h3>
+  <div class='entry-field'>
+      <Input
+      @id='name'
+      @value={{this.name}}
+      @type='text'
+      class='text-field'
+      />
+  </div>
+</div>
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">URL</h3>
+  <div class='entry-field'>
+      <Input
+      @id='url'
+      @value={{this.url}}
+      @type='text'
+      class='text-field'
+      />
+  </div>
+</div>
+<div class="mt-24">
+  <LinkTo @route="server.repositories" @model={{this.args.server.id}} @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
+  <button type='button' class='button--green w-156 ml-20' {{ on 'click' this.addRepository }}>Add Repository</button>
+</div>

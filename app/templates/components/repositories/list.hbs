@@ -11,6 +11,11 @@
       />
     </div>
   </div>
+  {{#if (eq this.server.type 'svn')}}
+  <LinkTo @class="button--green add-repository-button" @model={{this.server.id}} @route="server.add-repository">
+    Add Repository
+  </LinkTo>
+  {{/if}}
   <nav
     class="option-button {{if this.isSortMenuOpen 'is-open'}}"
     {{on 'click' (fn (mut this.isSortMenuOpen) true)}}

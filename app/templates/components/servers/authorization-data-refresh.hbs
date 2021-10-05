@@ -1,4 +1,5 @@
 <h2 class='text-black ta-c fs-36 mt-24'>Authorization Data Refresh</h2>
+{{#if (eq this.server.type 'perforce')}}
 <p class="text-black w-466 fs-18">Obtain the Perforce ticket either by using  
   <span class="code-example">login -a</span> or asking your
   Perforce administrator for a ticket for your account.
@@ -25,6 +26,41 @@
       />
   </div>
 </div>
+{{else if (eq this.server.type 'svn')}}
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">SVN Realm (optional)</h3>
+  <div class='entry-field'>
+      <Input
+      @id='svnRealm'
+      @value={{this.svnRealm}}
+      @type='text'
+      class='text-field'
+      />
+  </div>
+</div>
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">Username</h3>
+  <div class='entry-field'>
+      <Input
+      @id='username'
+      @value={{this.username}}
+      @type='text'
+      class='text-field'
+      />
+  </div>
+</div>
+<div class="mt-16">
+  <h3 class="fs-14 fw-600 tt-u">SSH Key</h3>
+  <div class='entry-field entry-field-large'>
+    <Textarea
+      @id='token'
+      @value={{this.token}}
+      @type='text'
+      class='text-field text-field-large'
+    />
+  </div>
+</div>
+{{/if}}
 <div class="mt-24">
   <LinkTo @route='index' @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
   <button type='button' class='button--green w-156 ml-20' {{ on 'click' this.refreshToken }}>Update</button>
