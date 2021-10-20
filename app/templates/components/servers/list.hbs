@@ -23,10 +23,10 @@
   </tr>
   {{#each this.servers as |server|}}
   <tr>
-    <td>{{server.name}}</td>
-    <td>{{server.url}}</td>
-    <td class='capitalize-text'>{{server.type}}</td>
-    <td>{{server.permission}}</td>
+    <td class='table-text'>{{server.name}}</td>
+    <td class='table-text'>{{server.url}}</td>
+    <td class='table-text capitalize-text'>{{server.type}}</td>
+    <td class='table-text'>{{server.permission}}</td>
     <td>
       <LinkTo
         @route="server.repositories"

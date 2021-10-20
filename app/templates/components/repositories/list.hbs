@@ -67,9 +67,9 @@
   </tr>
   {{#each this.repositories as |repository|}}
   <tr>
-    <td>{{repository.name}}</td>
-    <td class='capitalize-text'>{{repository.permission}}</td>
-    <td>{{pretty-date repository.lastSyncedAt}}</td>
+    <td class='table-text'>{{repository.name}}</td>
+    <td class='table-text capitalize-text'>{{repository.permission}}</td>
+    <td class='table-text'>{{pretty-date repository.lastSyncedAt}}</td>
     <td>
       <LinkTo
         @route="repository.update-token"
