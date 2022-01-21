@@ -11,6 +11,10 @@ export default class RepositoriesList extends Component {
   @tracked repoSearch = '';
   filterTimeout = null;
 
+  get userHasOrganizations() {
+    return this.user.orgPermissions.length > 0;
+  }
+
   @action
   changeSort(sort) {
     this.repositories.applySort(sort);

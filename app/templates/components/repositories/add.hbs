@@ -6,6 +6,7 @@
     <div class='entry-field-select'>
       <PowerSelect
         @searchEnabled={{true}}
+        @searchField="name"
         @disabled={{this.args.editMode}}
         @options={{this.organizations}}
         @selected={{this.selectedOrganization}}
