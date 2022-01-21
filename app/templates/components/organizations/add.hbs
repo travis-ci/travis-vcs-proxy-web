@@ -1,0 +1,63 @@
+<div class='{{if this.args.editMode 'organizations-edit' 'organizations-add'}}'>
+  {{#if this.args.editMode}}
+  <h1 class='update'>Update Organization</h1>
+  {{else}}
+  <h1 class='add'>Add Organization</h1>
+  <h3 class='create-organization'>
+    Travis CI Proxy Organization is a container for repositories and is mapped to a Travis CI<br />
+    organization. Single organization may hold multiple repositories. It is meant as organizational<br />
+    measure. User creating organization becomes an administrator of organization and can invite<br />
+    other Travis CI Proxy users to the organization. Read more in our
+    <ExternalLinkTo
+      href='#'
+      title="Help"
+      class="help-link"
+    >
+      Documentation.
+    </ExternalLinkTo>
+  </h3>
+  {{/if}}
+  <div class='setup-input'>
+    <h3>Organization name</h3>
+    <div class='entry-field'>
+      <Input
+        @id='organizationName'
+        @value={{this.organizationName}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+
+  <div class='setup-input'>
+    <h3>Description</h3>
+    <div class='entry-field'>
+      <Input
+        @id='organizationDescription'
+        @value={{this.organizationDescription}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+
+  <div class='setup-input'>
+    <h3>Listener Token (optional)</h3>
+    <div class='entry-field'>
+      <Input
+        @id='organizationListenerToken'
+        @value={{this.organizationListenerToken}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <div>
+    {{#if this.args.editMode}}
+    <LinkTo @route='organization.users' @model={{this.args.organization}} @tagName='button' @class='button--white'>Cancel</LinkTo>
+    {{else}}
+    <LinkTo @route='index' @tagName='button' @class='button--white'>Cancel</LinkTo>
+    {{/if}}
+    <button type='button' class='button--green' {{ on 'click' (if this.args.editMode this.editOrganization this.addOrganization)}}>{{if this.args.editMode 'Update' 'Add'}} Organization</button>
+  </div>
+</div>

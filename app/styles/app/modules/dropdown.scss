@@ -2,6 +2,7 @@
   position: relative;
   margin-left: auto;
   margin-top: auto;
+  margin-bottom: auto;
   width: 115px;
 
   &.is-open,
@@ -62,6 +63,7 @@ $dropdown-button-margin: -9px;
       margin-left: 8px;
       width: 20px;
       height: 11px;
+      margin-top: -5px;
     }
   }
 

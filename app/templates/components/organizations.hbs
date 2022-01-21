@@ -1,0 +1,13 @@
+<div class="organizations-page-header">
+  <div class="left-bar">
+    <UserAvatar
+      @name={{this.user.name}}
+      @size={{40}}
+      class="navigation-avatar"
+    />
+    <span class="user-name">{{this.user.name}}</span>
+  </div>
+</div>
+<div class="organizations-page">
+  {{outlet}}
+</div>

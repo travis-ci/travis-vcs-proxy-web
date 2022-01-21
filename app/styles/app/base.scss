@@ -315,6 +315,10 @@ span.emoji.emoji-sizer {
   color: $text-black;
 }
 
+.text-center {
+  text-align: center;
+}
+
 @for $i from 1 through 100 {
   .height-#{$i} {
     height: $i + 0%;

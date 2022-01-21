@@ -1,5 +1,6 @@
 .settings,
-.servers-page {
+.repositories-page,
+.organizations-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +14,8 @@
   display: flex;
 }
 
-.servers-page-header,
+.organizations-page-header,
+.repositories-page-header,
 .settings-page-container {
     .password-requirements {
       width: 334px;
@@ -24,7 +26,8 @@
     }
 }
 
-.servers-page-header {
+.repositories-page-header,
+.organizations-page-header {
   margin-right: 900px;
 }
 

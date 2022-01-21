@@ -7,9 +7,7 @@ export default class RepositoryAdapter extends ApplicationAdapter {
 
       delete query.custom;
   
-      if (custom && custom.server_id) {
-        return `${this.urlPrefix()}/server_providers/${custom.server_id}/repositories`
-      }  
+       return `${this.urlPrefix()}/user/repositories`      
     }
 
     return super.buildURL(...arguments);

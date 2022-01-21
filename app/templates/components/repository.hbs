@@ -1,7 +1,7 @@
-<div class="servers-page-header">
+<div class="organizations-page-header">
   <div class="left-bar">
     <div class="page-path">
-      <LinkTo @route="servers">VCS Servers</LinkTo> / <LinkTo @route="server.edit" @model={{this.args.repo.serverProvider.id}}>{{this.args.repo.serverProvider.name}}</LinkTo> / <LinkTo @route="server.repositories" @model={{this.args.repo.serverProvider.id}}>repositories</LinkTo> / <span class="page-path-active">{{this.args.repo.name}}</span>
+      <LinkTo @route="index">Home</LinkTo> / <LinkTo @route="organization.edit" @model={{this.args.repo.organization.id}}>{{this.args.repo.organization.name}}</LinkTo> / <LinkTo @route="repositories">repositories</LinkTo> / <span class="page-path-active">{{this.args.repo.name}}</span>
     </div>
     <UserAvatar
       @name={{this.user.name}}

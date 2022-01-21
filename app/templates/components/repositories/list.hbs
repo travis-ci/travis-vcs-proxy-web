@@ -1,9 +1,10 @@
+<h1>Repositories</h1>
 <div class='top-bar'>
   <div class='setup-input'>
     <h3>Find a repository</h3>
     <div class='entry-field'>
       <Input
-        @id='repoSearch'
+        @id='repositoryName'
         @value={{this.repoSearch}}
         @type='text'
         class='text-field'
@@ -11,6 +12,13 @@
       />
     </div>
   </div>
+
+  <LinkTo @class="button--green add-organization-button" @route="organizations.add">
+    Add Organization
+  </LinkTo>
+  <LinkTo @class="button--green add-repository-button" @route="repositories.add">
+    Add Repository
+  </LinkTo>
   <nav
     class="option-button {{if this.isSortMenuOpen 'is-open'}}"
     {{on 'click' (fn (mut this.isSortMenuOpen) true)}}
@@ -51,53 +59,71 @@
   </nav>
 </div>
 {{#unless this.repositories.isLoading}}
-<div class='repositories-list'>
-<table>
-  <tr>
-    <th>Repository name</th>
-    <th>User access</th>
-    <th>Last updated</th>
-    <th>Update token</th>
-    <th>Delete token</th>
-  </tr>
-  {{#each this.repositories as |repository|}}
-  <tr>
-    <td>{{repository.name}}</td>
-    <td class='capitalize-text'>{{repository.permission}}</td>
-    <td>{{pretty-date repository.lastSyncedAt}}</td>
-    <td>
-      <LinkTo
-        @route="repository.update-token"
-        @model={{repository.id}}
-        @title="Update repository access token"
-        @disabled={{not repository.canModify}}
-      >
-        <EmberTooltip @text="Update repository access token" />
-        <SvgImage @name="icon-edit" @class="icon" />
-      </LinkTo>
-    </td>
-    <td>
-      <LinkTo
-        @route="repository.remove-token"
-        @model={{repository.id}}
-        @title="Remove repository token"
-        @disabled={{not repository.canModify}}
-      >
-        <EmberTooltip @text="Remove repository token" />
-        <SvgImage @name="icon-delete" @class="icon" />
-      </LinkTo>
-    </td>
-  </tr>
-  {{/each}}
-</table>
-</div>
-<PaginationNavigation
-  @collection={{this.repositories}}
-  @route="server.repositories"
-  @queryParam="page"
-  @inner={{3}}
-  @outer={{1}}
-/>
+  {{#if this.repositories.length}}
+    <div class='repositories-list'>
+    <table>
+      <tr>
+        <th>Repository name</th>
+        <th>Repository type</th>
+        <th>Organization</th>
+        <th>Repository URL</th>
+        <th>User access</th>
+        <th>Last updated</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      {{#each this.repositories as |repository|}}
+      <tr>
+        <td>{{repository.name}}</td>
+        <td>{{repository.type}}</td>
+        <td>
+          <LinkTo
+            @route="organization.users"
+            @model={{repository.organization.id}}
+            @title={{repository.organization.name}}
+          >
+            {{repository.organization.name}}
+          </LinkTo>
+          </td>
+        <td>{{repository.url}}</td>
+        <td class='capitalize-text'>{{repository.permission}}</td>
+        <td>{{pretty-date repository.lastSyncedAt}}</td>
+        <td>
+          <LinkTo
+            @route="repository.edit"
+            @model={{repository.id}}
+            @title="Edit repository"
+            @disabled={{not repository.canModify}}
+          >
+            <EmberTooltip @text="Edit repository" />
+            <SvgImage @name="icon-edit" @class="icon" />
+          </LinkTo>
+        </td>
+        <td>
+          <LinkTo
+            @route="repository.remove"
+            @model={{repository.id}}
+            @title="Remove repository"
+            @disabled={{not repository.canModify}}
+          >
+            <EmberTooltip @text="Remove repository" />
+            <SvgImage @name="icon-delete" @class="icon" />
+          </LinkTo>
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+    </div>
+    <PaginationNavigation
+      @collection={{this.repositories}}
+      @route="repositories"
+      @queryParam="page"
+      @inner={{3}}
+      @outer={{1}}
+    />
+  {{else}}
+    <div class="no-repositories">You don't have any repositories yet. Add organization and repositories to begin work.</div>
+  {{/if}}
 {{else}}
 <LoadingIndicator />
 {{/unless}}

@@ -1,0 +1,320 @@
+.organizations-page {
+  h1, h2, h3 {
+    color: #142819;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  .setup-input {
+    h3 {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    margin-bottom: 12px;
+  }
+
+  .last {
+    margin-bottom: 4px;
+  }
+  
+  .setup-radio {
+    width: 334px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+
+  .first-setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 645px;
+    margin-bottom: 23px;
+    padding: 40px 112px;
+    box-sizing: border-box;
+
+    .organizations-add {
+      border: none;
+    }
+
+    .content-box-mini {
+      width: 100%;
+    }
+  }
+
+  h1.add {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  h2.no-organizations,
+  h1.update {
+    margin-bottom: 24px;
+  }
+
+  h3.find-organization,
+  h3.create-organization {
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  h3.or {
+    margin-bottom: 10px;
+  }
+
+  .perforce-ticket-warning {
+    width: 334px;
+    font-size: 12px;
+    margin-bottom: 18px;
+
+    a {
+      font-weight: 600;
+      color: $chateau-green;
+    }
+  }
+
+  .organizations-page-main {
+    width: 1040px;
+
+    h1 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-direction: row;
+
+      .button--green.active {
+        display: none;
+      }
+    }
+
+    .setup-input {
+      margin-right: auto;
+    }
+
+    .button--green {
+      margin: auto 0;
+      width: 157px;
+      height: 34px;
+      text-align: center;
+    }
+
+    .content-box {
+      margin-bottom: 23px;
+      box-sizing: border-box;
+
+      .setup-input {
+        margin-right: inherit;
+      }
+
+      .organizations-add {
+        padding: 35px 0;
+      }
+    }
+
+    .delete-organization-button {
+      margin-bottom: 21px;
+    }
+
+    .add-repository-button {
+      margin-bottom: 21px;
+      margin-left: 10px;
+    }
+  }
+
+  .content-box-mini {
+    display: flex;
+    width: 685px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 23px;
+  }
+
+  .organizations-add,
+  .organizations-edit,
+  .organizations-remove {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    .no-organization {
+      margin-bottom: 24px;
+    }
+  }
+
+  .repositories-list,
+  .organizations-list,
+  .first-setup {
+    border: 1px solid #CCCCCC;
+  }
+
+  .organizations-search-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .organizations-add,
+  .organizations-edit,
+  .organizations-remove,
+  .organizations-search-buttons,
+  .first-setup {
+    .button--green,
+    .button--white,
+    .button--red {
+      width: 157px;
+      height: 38px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .button--white {
+      margin-right: 8px;
+      border: none;
+    }
+
+    .button--green,
+    .button--red {
+      margin-left: 8px;
+    }
+  }
+
+  .organizations-list,
+  .repositories-list {
+    table {
+      width: 100%;
+      color: $text-black;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: 25px;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-right: 25px;
+    }
+
+    th, td {
+      font-size: 16px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: 600;
+      border-bottom: 1px solid #C4C4C4;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      @include colorSVGFull($text-black, $text-black);
+    }
+
+    a.disabled {
+      svg {
+        @include colorSVGFull($cement-grey, $cement-grey);
+      }
+    }
+  }
+
+  .repositories-list {
+    table {
+      text-align: center;
+    }
+
+    th {
+      text-align: center;
+    }
+  }
+
+  .organizations-list {
+    .col-15 {
+      width: 15%;
+    }
+
+    .col-30 {
+      width: 30%;
+    }
+
+    .col-7 {
+      width: 7%;
+    }
+
+    .col-9 {
+      width: 9%;
+    }
+
+    .col-12 {
+      width: 12%;
+    }
+
+    .col-25 {
+      width: 25%;
+    }
+
+    .col-centered {
+      text-align: center;
+    }
+
+    .button--green,
+    .button--green-outline {
+      width: 94px;
+      height: 26px;
+      font-size: 14px;
+      padding: 0;
+    }
+  }
+
+  .organizations-remove {
+    h3 {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+  }
+
+  .page-path {
+    font-size: 14px;
+    font-weight: 600;
+    color: #32AB52;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    a { 
+      color: #32AB52;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-active {
+      font-weight: normal;
+      color: #666666;
+    }
+  }
+
+  .code-example {
+    background-color: #f0f0f0;
+    font-family: $font-family-monospace;
+    font-size: 16px;
+  }
+}

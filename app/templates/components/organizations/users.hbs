@@ -1,0 +1,97 @@
+<h1>{{this.organization.name}}</h1>
+<div class='top-bar'>
+  <LinkTo @class="button--red delete-organization-button" @route="organization.remove">
+    Delete Organization
+  </LinkTo>
+  <LinkTo @class="button--green add-repository-button" @route="organization.edit">
+    Edit Organization
+  </LinkTo>
+  <LinkTo @class="button--green add-repository-button" @route="organization.invite">
+    Invite user
+  </LinkTo>
+  <nav
+    class="option-button {{if this.isSortMenuOpen 'is-open'}}"
+    {{on 'click' (fn (mut this.isSortMenuOpen) true)}}
+    {{on 'mouseleave' (fn (mut this.isSortMenuOpen) false)}}
+  >
+    <button class="option-display" type="button" title="Show more options">
+      <span class="label-align">
+        SORT BY
+        <SvgImage @name="icon-dropdown-arrow" @class="icon" />
+      </span>
+    </button>
+    <ul class="option-dropdown">
+      <li>
+        <button
+          type="button"
+          onclick={{action this.changeSort 'name'}}
+        >
+          Name
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          onclick={{action this.changeSort 'permission'}}
+        >
+          User access
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+{{#unless this.users.isLoading}}
+<div class='organizations-list'>
+<table>
+  <colgroup>
+    <col class='col-15' />
+    <col class='col-7' />
+    <col class='col-7' />
+    <col class='col-7' />
+  </colgroup>
+  <tr>
+    <th>User name</th>
+    <th>Organization role</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  {{#each this.users as |user|}}
+  <tr>
+    <td>{{user.login}}</td>
+    <td>{{user.permission}}</td>
+    <td class='col-centered'>
+      <LinkTo
+        @route="organization.user.edit"
+        @model={{user.id}}
+        @title="Update user information"
+        @disabled={{true}}
+      >
+        <EmberTooltip @text="Update user information" />
+        <SvgImage @name="icon-edit" @class="icon" />
+      </LinkTo>
+    </td>
+    <td class='col-centered'>
+      <LinkTo
+        @route="organization.user.remove"
+        @model={{user.id}}
+        @disabled={{or (not this.isOrganizationAdmin) (eq user.id this.user.id)}}
+        @title="Delete this user"
+      >
+        <EmberTooltip @text="Delete this user" />
+        <SvgImage @name="icon-delete" @class="icon" />
+      </LinkTo>
+    </td>
+  </tr>
+  {{/each}}
+</table>
+</div>
+<PaginationNavigation
+  @collection={{this.users}}
+  @route="organization.users"
+  @queryParam="page"
+  @inner={{3}}
+  @outer={{1}}
+/>
+{{else}}
+<LoadingIndicator />
+{{/unless}}

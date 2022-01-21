@@ -12,16 +12,35 @@ export default class UserModel extends Model {
   @attr('string') login;
   @attr('string') name;
   @attr emails;
+  @attr orgPermissions;
+  @attr('string') permission;
   @attr('boolean') otpRequiredForLogin;
 
-  @tracked servers = dynamicQuery(this, function* ({ page = 1 }) {
-    const limit = config.pagination.serversPerPage;
-    return yield this.store.paginated('server', {
+  @tracked organizations = dynamicQuery(this, function* ({ sort = 'name', page = 1 }) {
+    const limit = config.pagination.organizationsPerPage || 1;
+    const res= this.store.paginated('organization', {
       limit,
       page,
-      sort_by: 'name',
+      sort_by: sort,
     }, { live: false });
+    return yield res;
   });
+
+  @tracked repositories = dynamicQuery(this, function* ({ sort = 'name', filter = '', page = 1 }) {
+    const limit = config.pagination.repositoriesPerPage || 1;
+    const res= this.store.paginated('repository', {
+      limit,
+      page,
+      sort_by: sort,
+      filter
+    }, { live: false });
+    return yield res;
+  });
+
+  isOrganizationAdmin(orgId) {
+    orgId = parseInt(orgId);
+    return this.orgPermissions.find((org) => org.id === orgId).permission === 'owner';
+  }
 
   reload(options = {}) {
     return this.store.queryRecord('user', {});

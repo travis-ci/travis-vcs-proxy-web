@@ -1,0 +1,133 @@
+<div class='{{if this.args.editMode 'repositories-edit' 'repositories-add'}}'>
+  <h2 class='text-black ta-c fs-36'>{{if this.args.editMode 'Edit' 'Add'}} Repository</h2>
+
+  <div class="mt-16">
+    <h3 class="fs-14 fw-600 tt-u">Organization</h3>
+    <div class='entry-field-select'>
+      <PowerSelect
+        @searchEnabled={{true}}
+        @disabled={{this.args.editMode}}
+        @options={{this.organizations}}
+        @selected={{this.selectedOrganization}}
+        @onChange={{fn (mut this.selectedOrganization)}} as |org|>
+        {{org.name}}
+      </PowerSelect>
+    </div>
+  </div>
+  <div class="mt-16">
+    <h3 class="fs-14 fw-600 tt-u">Name</h3>
+    <div class='entry-field'>
+        <Input
+        @id='name'
+        @value={{this.name}}
+        @type='text'
+        class='text-field'
+        />
+    </div>
+  </div>
+  <div class="mt-16">
+    <h3 class="fs-14 fw-600 tt-u">URL</h3>
+    <div class='entry-field'>
+        <Input
+        @id='url'
+        @value={{this.url}}
+        @type='text'
+        class='text-field'
+        />
+    </div>
+  </div>
+
+  <div class='setup-input'>
+    <h3>Type</h3>
+    <div class='vcs-server-type'>
+      <button
+        autofocus={{true}}
+        class="vcs-server-type-item {{if (eq this.type 'perforce') 'vcs-server-type-item--selected'}}"
+        onclick={{action (mut this.type) 'perforce'}}
+      >
+        <span class="vcs-server-type-item__radio"></span>
+        <span class="vcs-server-type-item__description">
+          Perforce
+        </span>
+      </button>
+      <button
+        autofocus={{false}}
+        class="vcs-server-type-item {{if (eq this.type 'svn') 'vcs-server-type-item--selected'}}"
+        onclick={{action (mut this.type) 'svn'}}
+      >
+        <span class="vcs-server-type-item__radio"></span>
+        <span class="vcs-server-type-item__description">
+          SVN
+        </span>
+      </button>
+    </div>
+  </div>
+  {{#if (eq this.type 'perforce')}}
+  <div class='setup-input'>
+    <h3>Perforce Username</h3>
+    <div class='entry-field'>
+      <Input
+        @id='username'
+        @value={{this.username}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <div class='setup-input last'>
+    <h3>Server level ticket / token (optional)</h3>
+    <div class='entry-field'>
+      <Input
+        @id='token'
+        @value={{this.token}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <div class='perforce-ticket-warning'>
+    Without Server level ticket / token your won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
+  </div>
+  {{else if (eq this.type 'svn')}}
+  <div class='setup-input'>
+    <h3>SVN Realm (optional)</h3>
+    <div class='entry-field'>
+      <Input
+        @id='svnRealm'
+        @value={{this.svnRealm}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <div class='setup-input'>
+    <h3>Username</h3>
+    <div class='entry-field'>
+      <Input
+        @id='username'
+        @value={{this.username}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
+  </div>
+  <div class='setup-input last'>
+    <h3>SSH Key (optional)</h3>
+    <div class='entry-field entry-field-large'>
+      <Textarea
+        @id='token'
+        @value={{this.token}}
+        @type='text'
+        class='text-field text-field-large'
+      />
+    </div>
+  </div>
+  <div class='perforce-ticket-warning'>
+    Without SSH Key you won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
+  </div>
+  {{/if}}
+  <div class="mt-24">
+    <LinkTo @route="repositories" @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
+    <button type='button' class='button--green w-156 ml-20' {{ on 'click' (if this.args.editMode this.editRepository this.addRepository)}}>{{if this.args.editMode 'Update' 'Add'}} Repository</button>
+  </div>
+</div>

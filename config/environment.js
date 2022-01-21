@@ -41,15 +41,15 @@ module.exports = function (environment) {
       support: 'mailto:support@travis-ci.com',
       travisVsJenkins: 'https://travis-ci.com/travisci-vs-jenkins',
       twitter: 'https://twitter.com/travisci',
-      tos: 'https://docs.travis-ci.com',
-      privacyPolicy: 'https://docs.travis-ci.com',
+      tos: 'https://www.ideracorp.com/legal/TravisCI#tabs-2',
+      privacyPolicy: 'https://www.ideracorp.com/legal/TravisCI#tabs-3',
       help: 'https://docs.travis-ci.com',
       twofactor: 'https://docs.travis-ci.com',
     },
 
     pagination: {
-      serversPerPage: 20,
-      repositoriesPerPage: 20
+      usersPerPage: 20,
+      repositoriesPerPage: 20,
     }
   };
 
