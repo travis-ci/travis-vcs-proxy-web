@@ -16,7 +16,7 @@ export default class OrganizationsRemoveUser extends Component {
       this.flashes.success(`User "${this.user.name}" successfully removed from "${this.organization.name}"`);
       this.router.transitionTo('repositories.index');
     }).catch((error) => {
-      this.flashes.success(`User "${this.user.name}" couldn't be removed from "${this.organization.name}"`);
+      this.flashes.error(`User "${this.user.name}" couldn't be removed from "${this.organization.name}"`);
     });
   }
 }

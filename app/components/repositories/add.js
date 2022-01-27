@@ -86,7 +86,11 @@ export default class RepositoriesAdd extends Component {
             this.router.transitionTo('repositories.index');
           })
           .catch((error) => {
-            this.flashes.error('Could not add repository.');
+            if (error.errors) {
+              this.flashes.error(error.errors[0]);
+            } else {
+              this.flashes.error('Could not add repository.');
+            }
           });
       });
   }
