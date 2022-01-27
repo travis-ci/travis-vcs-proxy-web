@@ -1,6 +1,6 @@
 <div class='{{if this.args.editMode 'organizations-edit' 'organizations-add'}}'>
   {{#if this.args.editMode}}
-  <h1 class='update'>Update Organization</h1>
+  <h1 class='update'>Organization {{this.args.organization.name}}</h1>
   {{else}}
   <h1 class='add'>Add Organization</h1>
   <h3 class='create-organization'>
@@ -9,7 +9,7 @@
     measure. User creating organization becomes an administrator of organization and can invite<br />
     other Travis CI Proxy users to the organization. Read more in our
     <ExternalLinkTo
-      href='#'
+      href={{this.config.urls.docs}}
       title="Help"
       class="help-link"
     >
@@ -30,7 +30,7 @@
   </div>
 
   <div class='setup-input'>
-    <h3>Description</h3>
+    <h3>Short Description</h3>
     <div class='entry-field'>
       <Input
         @id='organizationDescription'
@@ -42,7 +42,7 @@
   </div>
 
   <div class='setup-input'>
-    <h3>Listener Token (optional)</h3>
+    <h3>TCI Proxy Listener Token (optional)</h3>
     <div class='entry-field'>
       <Input
         @id='organizationListenerToken'
@@ -52,12 +52,15 @@
       />
     </div>
   </div>
+  <div class='perforce-ticket-warning'>
+    Listener token is a token allowing Version Control System server hooks to send notification on commits to TCI Proxy. If you need more information about how to set up and use listener token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
+  </div>
   <div>
     {{#if this.args.editMode}}
     <LinkTo @route='organization.users' @model={{this.args.organization}} @tagName='button' @class='button--white'>Cancel</LinkTo>
     {{else}}
     <LinkTo @route='index' @tagName='button' @class='button--white'>Cancel</LinkTo>
     {{/if}}
-    <button type='button' class='button--green' {{ on 'click' (if this.args.editMode this.editOrganization this.addOrganization)}}>{{if this.args.editMode 'Update' 'Add'}} Organization</button>
+    <button type='button' class='button--green' {{ on 'click' (if this.args.editMode this.editOrganization this.addOrganization)}}>{{if this.args.editMode 'Save' 'Add Organization'}}</button>
   </div>
 </div>

@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import config from 'travis/config/environment';
 
 export default class RepositoriesAdd extends Component {
   @service api;
@@ -20,6 +21,8 @@ export default class RepositoriesAdd extends Component {
   @tracked token = '';
   @tracked svnRealm = '';
   @tracked selectedOrganization = null;
+
+  config = config;
 
   constructor() {
     super(...arguments);
@@ -53,6 +56,7 @@ export default class RepositoriesAdd extends Component {
     this.repository.username = this.username;
     this.repository.token = this.token;
     this.repository.svnRealm = this.svnRealm;
+    this.repository.ownerId = this.selectedOrganization.id;
     this.repository.save().then(() => {
       this.flashes.success(`Repository "${this.repository.name}" has been successfully updated.`);
       this.router.transitionTo('repositories.index');

@@ -7,7 +7,6 @@
       <PowerSelect
         @searchEnabled={{true}}
         @searchField="name"
-        @disabled={{this.args.editMode}}
         @options={{this.organizations}}
         @selected={{this.selectedOrganization}}
         @onChange={{fn (mut this.selectedOrganization)}} as |org|>
