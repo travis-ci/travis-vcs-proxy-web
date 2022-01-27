@@ -14,12 +14,12 @@ export default class OrganizationModel extends Model {
   @attr('string') permission;
   @hasMany('repository') repositories;
 
-  @tracked users = dynamicQuery(this, function* ({ page = 1 }) {
+  @tracked users = dynamicQuery(this, function* ({ sort = 'name', page = 1 }) {
     const limit = config.pagination.usersPerPage;
     return yield this.store.paginated('user', {
       limit,
       page,
-      sort_by: 'name',
+      sort_by: sort,
       custom: {
         org_id: this.id
       },
@@ -59,7 +59,7 @@ export default class OrganizationModel extends Model {
   }
 
   removeUser(userId) {
-    return this.api.post(`/v1/organizations/${this.id}/users/${userId}/remove`);
+    return this.api.post(`/v1/organizations/${this.id}/user/${userId}/remove`);
   }
 
   addRepository(name, url, type, username, token) {
