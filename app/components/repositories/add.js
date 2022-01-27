@@ -22,6 +22,8 @@ export default class RepositoriesAdd extends Component {
   @tracked svnRealm = '';
   @tracked selectedOrganization = null;
 
+  @tracked isOrganizationAdmin = this.user.isOrganizationAdmin;
+
   config = config;
 
   constructor() {
