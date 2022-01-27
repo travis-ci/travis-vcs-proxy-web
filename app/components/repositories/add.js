@@ -50,7 +50,7 @@ export default class RepositoriesAdd extends Component {
 
   @action
   editRepository() {
-    this.repository.name = this.name;
+    this.repository.displayName = this.name;
     this.repository.url = this.url;
     this.repository.type = this.type;
     this.repository.username = this.username;
@@ -58,10 +58,10 @@ export default class RepositoriesAdd extends Component {
     this.repository.svnRealm = this.svnRealm;
     this.repository.ownerId = this.selectedOrganization.id;
     this.repository.save().then(() => {
-      this.flashes.success(`Repository "${this.repository.name}" has been successfully updated.`);
+      this.flashes.success(`Repository "${this.repository.displayName}" has been successfully updated.`);
       this.router.transitionTo('repositories.index');
     }).catch((error) => {
-      this.flashes.error(`Could not update Repository "${this.repository.name}".`);
+      this.flashes.error(`Could not update Repository "${this.repository.displayName}".`);
     });
   }
 

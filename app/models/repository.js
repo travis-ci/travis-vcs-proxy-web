@@ -7,6 +7,7 @@ export default class RepositoryModel extends Model {
   @service api;
 
   @attr('string') name;
+  @attr('string') displayName;
   @attr('string') url;
   @attr('string') type;
   @attr('string') permission;
