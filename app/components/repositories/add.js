@@ -86,8 +86,8 @@ export default class RepositoriesAdd extends Component {
             this.router.transitionTo('repositories.index');
           })
           .catch((error) => {
-            if (error.errors) {
-              this.flashes.error(error.errors[0]);
+            if (error) {
+              this.flashes.error(`Could not add repository: ${error.split(/ (.+)/)[1]}`);
             } else {
               this.flashes.error('Could not add repository.');
             }
