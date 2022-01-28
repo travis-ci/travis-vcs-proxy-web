@@ -1,14 +1,16 @@
 <h1>{{this.organization.name}}</h1>
 <div class='top-bar'>
-  <LinkTo @class="button--red delete-organization-button" @route="organization.remove">
-    Delete Organization
-  </LinkTo>
-  <LinkTo @class="button--green add-repository-button" @route="organization.edit">
-    Edit Organization
-  </LinkTo>
-  <LinkTo @class="button--green add-repository-button" @route="organization.invite">
-    Invite user
-  </LinkTo>
+  {{#if this.isOrganizationAdmin}}
+    <LinkTo @class="button--red delete-organization-button" @route="organization.remove">
+      Delete Organization
+    </LinkTo>
+    <LinkTo @class="button--green add-repository-button" @route="organization.edit">
+      Edit Organization
+    </LinkTo>
+    <LinkTo @class="button--green add-repository-button" @route="organization.invite">
+      Invite user
+    </LinkTo>
+  {{/if}}
   <nav
     class="option-button {{if this.isSortMenuOpen 'is-open'}}"
     {{on 'click' (fn (mut this.isSortMenuOpen) true)}}

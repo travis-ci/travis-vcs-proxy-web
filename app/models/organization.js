@@ -16,6 +16,7 @@ export default class OrganizationModel extends Model {
 
   @tracked users = dynamicQuery(this, function* ({ sort = 'email', page = 1 }) {
     const limit = config.pagination.usersPerPage;
+    if (sort === 'name') sort = 'email';
     return yield this.store.paginated('user', {
       limit,
       page,
