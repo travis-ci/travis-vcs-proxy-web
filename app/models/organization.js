@@ -14,7 +14,7 @@ export default class OrganizationModel extends Model {
   @attr('string') permission;
   @hasMany('repository') repositories;
 
-  @tracked users = dynamicQuery(this, function* ({ sort = 'name', page = 1 }) {
+  @tracked users = dynamicQuery(this, function* ({ sort = 'email', page = 1 }) {
     const limit = config.pagination.usersPerPage;
     return yield this.store.paginated('user', {
       limit,
