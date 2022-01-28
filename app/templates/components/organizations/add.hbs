@@ -22,6 +22,7 @@
     <div class='entry-field'>
       <Input
         @id='organizationName'
+        @disabled={{this.args.editMode}}
         @value={{this.organizationName}}
         @type='text'
         class='text-field'
