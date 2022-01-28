@@ -80,7 +80,7 @@ export default class OrganizationModel extends Model {
     return this.api.post(`/v1/organizations/${this.id}/invite`, {
       data: {
         user_email: email,
-        permission: permission.toLowerCase(),
+        permission: permission,
       },
     });
   }

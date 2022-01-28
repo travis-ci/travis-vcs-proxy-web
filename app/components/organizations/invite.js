@@ -14,11 +14,14 @@ export default class OrganizationsAdd extends Component {
   @tracked email = '';
   @tracked selectedRole = this.roles[1];
 
-  roles = ['Owner', 'Member'];
+  roles = [
+    { id: 'owner', name: 'Admin' },
+    { id: 'member', name: 'Member' },
+  ];
 
   @action
   inviteUser() {
-    this.organization.inviteUser(this.email, this.selectedRole).then(() => {
+    this.organization.inviteUser(this.email, this.selectedRole.id).then(() => {
       this.flashes.success('Successfully invited user.');
       this.router.transitionTo('repositories.index');
     }).catch(() => {
