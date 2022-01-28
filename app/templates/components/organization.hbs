@@ -1,7 +1,7 @@
 <div class="organizations-page-header">
   <div class="left-bar">
     <div class="page-path">
-      <LinkTo @route="repositories">Home</LinkTo> / <LinkTo @route="organization.users" @model={{this.args.organization.id}}>{{this.args.organization.name}}</LinkTo> / <span class="page-path-active">Users</span>
+      <LinkTo @route="repositories">Home</LinkTo> / <LinkTo @route="organization.users" @model={{this.args.organization.id}}>{{this.args.organization.name}}</LinkTo> / <span class="page-path-active">{{this.routeName}}</span>
     </div>
     <UserAvatar
       @name={{this.user.name}}
