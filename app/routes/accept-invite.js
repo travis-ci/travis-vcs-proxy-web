@@ -16,7 +16,7 @@ export default class AcceptInviteRoute extends TravisRoute {
 
   model(params) {
     if (!this.auth.signedIn) {
-      this.flashes.success('Please sign in or create an account before continuing.');
+      this.flashes.error('Please sign in or create an account before continuing.');
       this.router.transitionTo('sign-in');
     } else {
       const token = params.token;
@@ -24,11 +24,12 @@ export default class AcceptInviteRoute extends TravisRoute {
         data: {
           token
         }
-      }).then(() => {
-        this.flashes.success('Successfully accepted invite.');
+      }).then((org) => {
+        let name = org.permission === 'Owner' ? 'admin' : 'member';
+        this.flashes.success(`Great! You are now a ${name} of ${org.name} organization.`);
         this.router.transitionTo('index');
       }).catch((error) => {
-        this.flashes.error('Could not accept invite.');
+        this.flashes.error('You are trying to use a link, which is already expired. Please use the up to date link.');
         this.router.transitionTo('index');
       });;
     }

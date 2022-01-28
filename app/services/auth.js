@@ -185,7 +185,7 @@ export default class AuthService extends Service {
 
     const currentURL = new URL(window.location.href);
     const redirectUrl = currentURL.pathname;
-    if (redirectUrl !== '/' && redirectUrl !== '/sign_in') {
+    if (redirectUrl !== '/' && redirectUrl !== '/sign_in' && redirectUrl !== '/accept_invite') {
       this.router.transitionTo('sign-in');
     }
   }
