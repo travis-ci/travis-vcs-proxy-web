@@ -16,7 +16,7 @@ export default class AcceptInviteRoute extends TravisRoute {
 
   model(params) {
     if (!this.auth.signedIn) {
-      this.flashes.error('Please sign in or create an account before continuing.');
+      this.flashes.error('Please sign in to the TCI Proxy first and refresh the page with the url to TCI Proxy sign-in page.');
       this.router.transitionTo('sign-in');
     } else {
       const token = params.token;
