@@ -63,7 +63,11 @@ export default class RepositoriesAdd extends Component {
       this.flashes.success(`Repository "${this.repository.displayName}" has been successfully updated.`);
       this.router.transitionTo('repositories.index');
     }).catch((error) => {
-      this.flashes.error(`Could not update Repository "${this.repository.displayName}".`);
+      if (error) {
+        this.flashes.error(`${error.split(/ (.+)/)[1]}`);
+      } else {
+        this.flashes.error(`Could not update Repository "${this.repository.displayName}".`);
+      }
     });
   }
 
@@ -87,7 +91,7 @@ export default class RepositoriesAdd extends Component {
           })
           .catch((error) => {
             if (error) {
-              this.flashes.error(`Could not add repository: ${error.split(/ (.+)/)[1]}`);
+              this.flashes.error(`${error.split(/ (.+)/)[1]}`);
             } else {
               this.flashes.error('Could not add repository.');
             }
