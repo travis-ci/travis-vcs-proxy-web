@@ -16,6 +16,7 @@ export default class RepositoryModel extends Model {
   @attr('string') username;
   @attr('date') lastSyncedAt;
   @attr('number') ownerId;
+  @attr('string') listener_token;
 
   get canModify() {
     return this.permission === 'admin' || this.permission === 'super';

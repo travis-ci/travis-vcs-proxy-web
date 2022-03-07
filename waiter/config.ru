@@ -18,9 +18,11 @@ end
 
 use Travis::Web::ApiRedirect do |app|
   app.settings.api_endpoint = ENV['VCS_PROXY_API_ENDPOINT'] if ENV['VCS_PROXY_API_ENDPOINT']
+  app.settings.beta = ENV['VCS_PROXY_BETA'] if ENV['VCS_PROXY_BETA']
 end
 
 ENV['VCS_PROXY_API_ENDPOINT'] ||= "http://travis-vcs-proxy.travis-ci.com"
+ENV['VCS_PROXY_BETA'] ||= 'false'
 
 ENV['SSH_KEY_ENABLED'] = 'true' unless ENV.has_key?('SSH_KEY_ENABLED')
 ENV['CACHES_ENABLED'] = 'true' unless ENV.has_key?('CACHES_ENABLED')
@@ -31,6 +33,7 @@ run Travis::Web::App.build(
   userlike:        ENV['USERLIKE'],
   environment:     ENV['RACK_ENV'] || 'development',
   api_endpoint:    ENV['VCS_PROXY_API_ENDPOINT'],
+  beta:            ENV['VCS_PROXY_BETA'],
   ga_code:         ENV['GA_CODE'],
   root:            File.expand_path('../../dist', __FILE__),
   server_start:    Time.now,

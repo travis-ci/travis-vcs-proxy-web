@@ -8,6 +8,9 @@
     >
       Login
     </button>
+
+    {{#unless this.isBeta}}
+
     <button
       class="auth-button create-account pointer"
       type="button"
@@ -15,6 +18,7 @@
     >
       Create account
     </button>
+    {{/unless}}
 
   {{else if this.auth.signedIn}}
 

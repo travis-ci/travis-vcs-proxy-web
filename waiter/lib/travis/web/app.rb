@@ -194,6 +194,7 @@ class Travis::Web::App
 
       config['defaultTitle'] = title
       config['apiEndpoint'] = options[:api_endpoint] if options[:api_endpoint]
+      config['beta'] = options[:beta]
 
       config['ajaxPolling'] = true if options[:ajax_polling]
       config['userlike'] = true if options[:userlike]

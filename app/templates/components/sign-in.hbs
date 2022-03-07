@@ -64,9 +64,11 @@
 <div>
   <button type='button' class='login-button' {{ on 'click' this.signIn }}>Login</button>
 </div>
+{{#unless this.isBeta }}
 <div class='create-account'>
   Don't have an account? <LinkTo @route='sign-up'>Create Account</LinkTo>
 </div>
+{{/unless}}
 {{else if this.args.isSignUp}}
 <div class='password-requirements'>
   Password must include at least 6 characters including at least one non-alphabetic character (number or special character)

@@ -2,6 +2,7 @@
 
 const {
 	VCS_PROXY_API_ENDPOINT,
+        VCS_PROXY_BETA,
 } = process.env;
 
 module.exports = function (environment) {
@@ -28,6 +29,7 @@ module.exports = function (environment) {
 
     apiEndpoint: 'https://travis-vcs-proxy.travis-ci.org',
     statusPageStatusUrl: 'https://pnpcptp8xh9k.statuspage.io/api/v2/status.json',
+    beta: false,
 
     urls: {
       blog: 'https://blog.travis-ci.com',
@@ -80,6 +82,9 @@ module.exports = function (environment) {
   if (typeof process !== 'undefined') {
     if (VCS_PROXY_API_ENDPOINT) {
       ENV.apiEndpoint = VCS_PROXY_API_ENDPOINT;
+    }
+    if (VCS_PROXY_BETA) {
+      ENV.beta = VCS_PROXY_BETA;
     }
   }
 

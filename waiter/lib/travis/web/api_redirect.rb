@@ -4,6 +4,7 @@ class Travis::Web::ApiRedirect < Sinatra::Base
   disable :protection, :static
   set api_endpoint: 'https://travis-vcs-proxy.travis-ci.com'
   set redirect_png: ENV['REDIRECT_PNG']
+  set beta: false
 
   class NotPublicImages
     Match = Struct.new(:captures)

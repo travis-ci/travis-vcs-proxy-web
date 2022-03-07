@@ -37,6 +37,7 @@ export default class RepositoriesAdd extends Component {
       this.username = this.repository.username;
       this.token = this.repository.token;
       this.svnRealm = this.repository.svnRealm;
+      this.repositoryListenerToken = this.repository.listener_token;
 
       this.organizations.then((orgs) => {
         this.selectedOrganization = orgs.find(

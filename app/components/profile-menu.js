@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import config from 'travis/config/environment';
 
 export default class ProfileMenu extends Component {
   @service auth;
@@ -11,6 +12,8 @@ export default class ProfileMenu extends Component {
   @tracked isMenuOpen = false;
 
   @tracked user = this.auth.currentUser;
+
+  isBeta = config.beta == "true";
 
   get userName() {
     if (this.user) {

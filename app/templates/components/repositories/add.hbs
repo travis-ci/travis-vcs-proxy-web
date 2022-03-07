@@ -75,7 +75,7 @@
       />
     </div>
   </div>
-  <div class='setup-input last'>
+  <div class='setup-input'>
     <h3>Server level ticket / token</h3>
     <div class='entry-field'>
       <Input
@@ -112,7 +112,7 @@
       />
     </div>
   </div>
-  <div class='setup-input last'>
+  <div class='setup-input'>
     <h3>SSH Key</h3>
     <div class='entry-field entry-field-large'>
       <Textarea
@@ -125,6 +125,19 @@
   </div>
   <div class='perforce-ticket-warning'>
     Without SSH Key you won't be able to connect to the Server. If you need more information about how to generate server token please read this <ExternalLinkTo href={{this.config.urls.docs}} title="Travis CI Docs">Help Article</ExternalLinkTo>
+  </div>
+  {{/if}}
+  {{#if this.args.editMode}}
+  <div class='setup-input last'>
+    <h3>TCI Proxy Listener Token</h3>
+    <div class='entry-field'>
+      <Input
+        @id='repositoryListenerToken'
+        @value={{this.repositoryListenerToken}}
+        @type='text'
+        class='text-field'
+      />
+    </div>
   </div>
   {{/if}}
   <div class="mt-24">

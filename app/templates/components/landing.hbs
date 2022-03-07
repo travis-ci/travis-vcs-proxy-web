@@ -14,9 +14,11 @@
           <p>
             A service meant to serve as a proxy layer between Perforce version control system and Travis CI. Please Create Account if you want to use your Perforce depots in Travis CI.
           </p>
+          {{#unless isBeta}}
           <div>
             <LinkTo @route='sign-up' class='landing-button'>Create Account</LinkTo>
           </div>
+          {{/unless}}
         </div>
 
         <div class="landing-hero-login">
