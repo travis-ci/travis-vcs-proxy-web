@@ -19,7 +19,7 @@ export default class RepositoryModel extends Model {
   @attr('string') listener_token;
 
   get canModify() {
-    return this.permission === 'admin' || this.permission === 'super';
+    return true;
   }
 
   get organization() {

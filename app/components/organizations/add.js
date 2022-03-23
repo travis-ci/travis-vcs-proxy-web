@@ -37,6 +37,7 @@ export default class OrganizationAdd extends Component {
     organization.save().then(() => {
       this.flashes.success(`Organization "${this.organizationName}" is added.`);
       this.user.organizations.pushObject(organization);
+      this.user.orgPermissions.pushObject({id: organization.id, permission: 'admin'});
       if (this.args.searchNoOrganization) {
         this.clearSearch();
       } else {
