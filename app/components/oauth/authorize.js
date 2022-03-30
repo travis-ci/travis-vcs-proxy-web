@@ -15,9 +15,11 @@ export default class OauthAuthorize extends Component {
     super(...arguments);
     this.isLoading = true;
     const self = this;
+    let oauthFound = false;
     this.auth.currentUser.getAuthorizedApps().then((data) => {
       for (const app of data) {
         if (app.uid === self.args.clientId) {
+          oauthFound = true;
           this.auth.currentUser
             .authorizeOauth(
               self.args.clientId,
@@ -37,7 +39,9 @@ export default class OauthAuthorize extends Component {
           break;
         }
       }
-      this.isLoading = false;
+      if (!oauthFound) {
+        this.isLoading = false;
+      }
     });
   }
 
