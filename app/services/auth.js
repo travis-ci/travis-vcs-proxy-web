@@ -100,6 +100,27 @@ export default class AuthService extends Service {
     });
   }
 
+  betaSignUp(email, password, organization, role, current_user) {
+    this.api.post(
+      '/v1/users',
+      {
+        data: {
+          user: {
+            email,
+            password,
+          },
+          organization: {
+            id: organization,
+            role
+          },
+          current_user: {
+            id: current_user
+          }
+        }
+      }
+    ).then(() => {});
+  }
+
   autoSignIn() {
     console.log('Automatically signing in');
     this.set('state', STATE.SIGNING_IN);
