@@ -1,0 +1,11 @@
+{{page-title "Home"}}
+
+{{#if this.auth.signedIn}}
+  <Dashboard>
+    <Repositories />
+  </Dashboard>
+{{else if (not this.auth.signingIn)}}
+  <div class="wrapper centered">
+    <Landing />
+  </div>
+{{/if}}

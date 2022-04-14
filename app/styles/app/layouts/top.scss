@@ -1,0 +1,48 @@
+.top {
+  background-color: white;
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+
+  svg.travis-logo {
+    margin-top: 1.14rem;
+    width: 110px;
+    height: 45px;
+  }
+}
+
+.topbar {
+  height: auto;
+  max-height: $top-height;
+  padding: 0 math.div($column-gutter, 2) 20px math.div($column-gutter, 2);
+  clear: both;
+  overflow: hidden;
+  font-size: $font-size-m;
+  color: $asphalt-grey;
+  transition: max-height 0.3s ease-in-out;
+
+  @media #{$medium-up} {
+    padding: 0 math.div($column-gutter, 2) 76px math.div($column-gutter, 2);
+  }
+
+  a:not(.auth-button) {
+    color: $asphalt-grey;
+  }
+
+  &.expanded {
+    max-height: 500px;
+  }
+
+  .layout-striped & {
+    max-width: $layout-max-width;
+    margin: auto;
+  }
+
+  @media #{$medium-up} {
+    &,
+    &.expanded {
+      position: relative;
+      height: $top-height;
+      overflow: visible;
+    }
+  }
+}

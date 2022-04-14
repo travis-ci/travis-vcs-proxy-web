@@ -1,0 +1,125 @@
+<footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <div class="travis-footer">
+        <SvgImage @name="travisci-proxy-logo-grayscale" @class="travis-logo" />
+      </div>
+    </div>
+    <div class="footer-elem"></div>
+      <div class="footer-elem">
+        <h3 class="footer-title">
+          &copy;Travis CI, GmbH
+        </h3>
+        <address>
+          Bonner Straße 12<br />
+          51379 Leverkusen, Germany
+        </address>
+        <ul>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.jobs}}
+              title="Jobs at Travis CI"
+            >
+              Work with Travis CI
+            </ExternalLinkTo>
+          </li>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.blog}}
+              title="Travis CI Blog"
+            >
+              Blog
+            </ExternalLinkTo>
+          </li>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.support}}
+              title="Email Travis CI support"
+            >
+              Email
+            </ExternalLinkTo>
+          </li>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.twitter}}
+              title="Travis CI on Twitter"
+            >
+              Twitter
+            </ExternalLinkTo>
+          </li>
+        </ul>
+      </div>
+    <div class="footer-elem">
+      <h3 class="footer-title">
+        Help
+      </h3>
+      <ul>
+        <li>
+          <ExternalLinkTo
+            href={{this.config.urls.docs}}
+            title="Travis CI Docs"
+          >
+            Documentation
+          </ExternalLinkTo>
+        </li>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.community}}
+              title="Travis CI Community"
+            >
+              Community
+            </ExternalLinkTo>
+          </li>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.changelog}}
+              title="Travis CI Changelog"
+            >
+              Changelog
+            </ExternalLinkTo>
+          </li>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.travisVsJenkins}}
+              title="Travis CI vs Jenkins"
+            >
+              Travis CI vs Jenkins
+            </ExternalLinkTo>
+          </li>
+      </ul>
+    </div>
+      <div class="footer-elem">
+        <h3 class="footer-title">
+          Company
+        </h3>
+        <ul>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.imprint}}
+              title="Imprint"
+            >
+              Imprint
+            </ExternalLinkTo>
+          </li>
+          <li>
+            <ExternalLinkTo
+              href={{this.config.urls.legal}}
+              title="Legal"
+            >
+              Legal
+            </ExternalLinkTo>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-elem">
+        <h3 class="footer-title">
+          Travis CI Status
+        </h3>
+        <ul>
+          <li>
+            <TravisStatus />
+          </li>
+        </ul>
+      </div>
+  </div>
+</footer>

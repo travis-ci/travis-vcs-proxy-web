@@ -1,0 +1,42 @@
+<div class='organizations-add'>
+<h1 class='add'>Invite to {{this.organization.name}}</h1>
+<h3 class='create-organization'>
+  Invited user must create or have an account in Travis CI Proxy. They will receive invitation link via<br />
+  email. Clicking the link will accept the invitation. Read more in our
+  <ExternalLinkTo
+    href='#'
+    title="Help"
+    class="help-link"
+  >
+    Documentation.
+  </ExternalLinkTo>
+</h3>
+<div class='setup-input'>
+  <h3>User email</h3>
+  <div class='entry-field'>
+    <Input
+      @id='email'
+      @value={{this.email}}
+      @type='text'
+      class='text-field'
+    />
+  </div>
+</div>
+
+<div class='setup-input'>
+  <h3>User role</h3>
+  <div class='entry-field-select'>
+    <PowerSelect
+      @options={{this.roles}}
+      @selected={{this.selectedRole}}
+      @onChange={{fn (mut this.selectedRole)}} as |role|>
+      {{role.name}}
+    </PowerSelect>
+  </div>
+</div>
+
+<div>
+  <LinkTo @route='organization.users' @tagName='button' @class='button--white'>Cancel</LinkTo>
+  <button type='button' class='button--green' {{ on 'click' this.inviteUser}}>Send</button>
+</div>
+</div>

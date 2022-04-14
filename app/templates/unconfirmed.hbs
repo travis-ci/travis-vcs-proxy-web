@@ -1,0 +1,39 @@
+{{page-title "First Page Without Confirmation"}}
+
+<div class="landing">
+  <div id="top" class="top landing-page">
+    <header class="top">
+      <div class="topbar" >
+        <h1 id="logo" class="logo">
+          <LinkTo @route="index">
+            <SvgImage @name="travisci-proxy-logo-grayscale" @class="travis-logo" />
+          </LinkTo>
+        </h1>
+      </div>
+    </header>
+  </div>
+  <FlashDisplay />
+
+  <main class='auth-page'>
+    <div class='auth-page-container'>
+      <div class='page-without-confirmation text-black fs-18'>
+        <SvgImage @name="email-icon" @class="email-icon mb-32" />
+        <h1 class='fs-36'>We’re glad to see you here</h1>
+        <p class='w-497 mb-0'>Thank you for creating an account at Travis CI VCS Proxy Service.
+          After account confirmation you will have access to all our best features.
+        </p>
+        <p class='mt-16 mb-24 '>If you need more information about confirmation account please visit
+            <ExternalLinkTo
+              href='#'
+              title="Help"
+            >
+              Help
+            </ExternalLinkTo> page
+          </p>
+        <p>
+          Is your account already confirmed? <LinkTo @route='sign-in'>Login</LinkTo>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>

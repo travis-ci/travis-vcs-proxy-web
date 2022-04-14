@@ -1,0 +1,28 @@
+<main class='settings'>
+  <div class="settings-page">
+    <div class="left-bar">
+      <UserAvatar
+        @name={{this.user.name}}
+        @size={{40}}
+        class="navigation-avatar"
+      />
+      <span class="user-name">{{this.user.name}}</span>
+
+      <div class="left-bar-container fs-18">
+        <LinkTo @class="left-bar-link" @route="account.security">
+            Security
+        </LinkTo>
+        <LinkTo @class="left-bar-link" @route="account.change-password">
+            Change password
+        </LinkTo>
+        <LinkTo @class="left-bar-link" @route="account.change-email">
+            Change email
+        </LinkTo>
+        <LinkTo @class="left-bar-link" @route="account.remove-account">
+            Remove account
+        </LinkTo>
+      </div>
+    </div>
+    {{yield}}
+  </div>
+</main>

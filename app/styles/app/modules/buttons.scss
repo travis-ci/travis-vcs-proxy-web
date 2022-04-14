@@ -1,0 +1,369 @@
+%button {
+  display: inline-block;
+  padding: 0.7em 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 2px;
+  border: none;
+  vertical-align: middle;
+  line-height: 1;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 14px;
+
+  &.disabled {
+    background-color: $cement-grey;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $cement-grey;
+    }
+  }
+}
+
+.button {
+  @extend %button;
+
+  position: relative;
+  overflow: visible;
+  outline: none;
+  text-align: center;
+  color: white;
+  background-color: darken($pebble-grey, 10);
+
+  &.already-migrated {
+    background-color: $oxide-blue;
+    &:hover {
+      background-color: darken($oxide-blue, 5%);
+    }
+  }
+
+  &--flex {
+    display: inline-flex;
+  }
+}
+
+.no-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus,
+.button:active,
+.button.active {
+  border-color: $pebble-grey;
+  background-color: $cement-grey;
+}
+
+.auth-button {
+  @extend %button;
+
+  height: 36px;
+  width: 136px;
+  color: $chateau-green;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid $chateau-green;
+  border-radius: 2px;
+  padding: 9px 19px;
+  line-height: 0.5;
+  margin-left: 18px;
+
+  &:hover,
+  &:active {
+    color: darken($chateau-green, 10);
+    border: 1px solid darken($chateau-green, 10);
+    cursor: pointer;
+  }
+
+  .label-align {
+    line-height: 1.4;
+  }
+
+  .loading-indicator {
+    vertical-align: top;
+    margin-left: 0.3em;
+
+    i {
+      background-color: white;
+      width: 6px;
+      height: 6px;
+    }
+  }
+}
+
+.auth-button.signed-out {
+  .icon {
+    margin: 0 0 0 4px;
+    vertical-align: top;
+  }
+}
+
+.auth-button.create-account {
+  color: white;
+  background-color: $chateau-green;
+
+  &:hover,
+  &:active {
+    background-color: darken($chateau-green, 10);
+  }
+}
+
+.auth-button--white {
+  @extend %button;
+
+  vertical-align: baseline;
+  border: 1px solid #f1f1f1 !important;
+  padding: 0.7em 0.8em !important;
+  border-radius: 2px;
+  font-size: inherit;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: $oxide-blue !important;
+    border-color: $oxide-blue !important;
+  }
+}
+
+.button--blue {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $oxide-blue;
+  border: 1px solid $oxide-blue;
+
+  &:hover,
+  &:active {
+    background-color: darken($oxide-blue, 10);
+  }
+  &:disabled {
+    background-color: $cement-grey;
+    border-color: $cement-grey;
+    cursor: not-allowed;
+  }
+}
+
+.button--white {
+  @extend %button;
+  border: 1px solid $pebble-grey;
+  color: $asphalt-grey;
+
+  &.button--hover {
+    transition: all 0.1s linear;
+
+    &:hover {
+      border-color: darken($pebble-grey, 10);
+      color: darken($asphalt-grey, 20);
+      background-color: lighten($pebble-grey, 2);
+    }
+  }
+
+  &.no-border {
+    border: 0;
+  }
+}
+
+.button--green {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $chateau-green;
+
+  &:hover,
+  &:active {
+    background-color: darken($chateau-green, 10);
+  }
+
+  &:disabled {
+    background-color: $asphalt-grey;
+  }
+}
+
+.button--green-outline {
+  @extend %button;
+
+  border: none;
+  background-color: white;
+  color: $chateau-green;
+  border: 1px solid $chateau-green;
+
+  &:hover,
+  &:active {
+    color: darken($chateau-green, 10);
+    border: 1px solid darken($chateau-green, 10);
+  }
+}
+
+.button--white-and-teal {
+  @extend %button;
+
+  margin-right: 1em;
+
+  color: $oxide-blue;
+  border: 1px solid $oxide-blue;
+
+  &:hover,
+  &:active {
+    background-color: $oxide-blue;
+    color: white;
+  }
+}
+
+.button--orange {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $brick-orange;
+
+  &:hover {
+    background-color: darken($brick-orange, 10);
+  }
+}
+
+.button--red {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $brick-red;
+
+  &:hover {
+    background-color: darken($brick-red, 10);
+  }
+}
+
+.button--dark-grey {
+  @extend %button;
+
+  border: none;
+  color: white;
+  background-color: $asphalt-grey;
+
+  &:hover,
+  &:active {
+    background-color: darken($asphalt-grey, 10);
+  }
+}
+
+.button--compact {
+  padding: 3px 7px;
+}
+
+.button--large {
+  font-size: 1.2em;
+  padding: 18px 30px;
+  border-radius: 3px;
+}
+
+.button--very-large {
+  font-size: 16px;
+  border-radius: 2px;
+  width: 334px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inactive {
+  cursor: default;
+  background: $dry-cement !important;
+  color: white;
+
+  &:hover,
+  &:active {
+    background: $dry-cement !important;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-right: 15px;
+  transform: translateY(2px);
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #D8D8D8;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: $chateau-green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $chateau-green;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+input:disabled + .slider {
+  background-color: $cement-grey;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@mixin labelless {
+  display: inline-flex;
+  padding-top: 2px;
+  margin-left: 5px;
+
+  button,
+  a.disabled {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin-right: 5px;
+    border-radius: 30px;
+    border-color: $cement-grey;
+    transform: translate(0, 1px) scale(0.85);
+
+    &:hover, &:active {
+      border-color: $oxide-blue;
+    }
+
+    .label-align {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<span class='avatar-wrapper'>
+  <span class="{{if this.small 'avatar--small' 'avatar'}}">
+    <span
+      class="pseudo-avatar"
+      aria-hidden="true"
+      data-initials={{this.userInitials}}
+    ></span>
+    {{#if this.url}}
+      <img
+        class="real-avatar"
+        src="{{this.url}}"
+        alt="{{this.name}} avatar"
+      />
+    {{/if}}
+  </span>
+</span>

@@ -1,0 +1,19 @@
+FROM ruby:3.0
+
+LABEL maintainer Travis CI GmbH <support+travis-web-docker-images@travis-ci.com>
+
+RUN groupadd --gid 1000 node \
+  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+
+ENV NPM_CONFIG_LOGLEVEL info
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash -s && \
+    apt-get install -y --no-install-recommends \
+        nodejs yarn \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /srv/app
+
+CMD ["/srv/app/entrypoint.sh"]

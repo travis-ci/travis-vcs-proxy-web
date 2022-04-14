@@ -1,0 +1,15 @@
+<h2>OAuth Authorization</h2>
+
+{{#if this.isLoading}}
+<LoadingIndicator />
+{{else}}
+<div>
+  <button
+    type='button'
+    class='button button--green mt-29 ml-160'
+    {{ on 'click' this.authorize }}
+  >
+    Authorize
+  </button>
+</div>
+{{/if}}

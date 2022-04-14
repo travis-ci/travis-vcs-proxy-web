@@ -1,0 +1,10 @@
+<ul class='{{this.classes}}'>
+  {{#let this.messages.firstObject as |flash|}}
+    {{#if flash}}
+      <FlashItem
+        @flash={{flash}}
+        @close={{action "closeMessage"}}
+      />
+    {{/if}}
+  {{/let}}
+</ul>

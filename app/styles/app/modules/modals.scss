@@ -1,0 +1,123 @@
+.travis-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.flex {
+  display: flex;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+.rounded-sm {
+  border-radius: .1429rem;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.mr-8 {
+  margin-right: 30px;
+}
+
+.mt-8 {
+  margin-top: 30px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.travis-modal {
+  width: 770px;
+}
+
+.w-5 {
+    width: 20px;
+}
+
+.h-5 {
+    height: 20px;
+}
+
+.recovery-modal {
+  width: 500px;
+  height: 534px;
+  margin-right: auto;
+  margin-left: auto;
+
+  color: $text-black;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 24px !important;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  table {
+    margin-top: 27px;
+    margin-bottom: 29px;
+  }
+
+  a {
+    color: $chateau-green;
+    font-weight: 600;
+  }
+
+  .new-codes {
+    margin-top: 17px;
+  }
+}

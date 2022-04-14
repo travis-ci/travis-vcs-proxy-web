@@ -1,0 +1,10 @@
+{{page-title "Sign Up"}}
+
+<AuthPage>
+  {{#if config.beta}}
+  {{sign-in isSignUp=false}}
+  {{else}}
+  {{sign-in isSignUp=true}}
+  {{/if}}
+</AuthPage>
+

@@ -1,0 +1,334 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  color: $asphalt-grey;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: $font-family-sans-serif;
+  line-height: 1.45;
+  background-color: white;
+  scroll-behavior: smooth;
+}
+
+@-moz-document url-prefix() {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-normal;
+}
+
+input {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+button {
+  background: white;
+  border: none;
+  font-family: $font-family-sans-serif;
+  font-size: inherit;
+  color: $asphalt-grey;
+}
+
+textarea {
+  height: auto;
+  min-height: 50px;
+}
+
+address {
+  font-style: normal;
+}
+
+select {
+  width: 100%;
+}
+
+strong {
+  font-weight: 400;
+}
+
+a {
+  color: $asphalt-grey;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.display {
+  display: block !important;
+}
+
+.display-inline {
+  display: inline-block !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--space-between {
+    justify-content: space-between;
+  }
+
+  &--flex-start {
+    justify-content: flex-start;
+  }
+
+  &--v-center {
+    align-items: center;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--one {
+    flex: 1;
+  }
+
+  &--col {
+    flex-direction: column;
+  }
+
+  &--col-2 {
+    flex-basis: 50%;
+  }
+
+  &--col-3 {
+    flex-basis: 33.33%;
+  }
+
+  &--col-4 {
+    flex-basis: 25%;
+  }
+}
+
+.capitalize-text {
+  text-transform: capitalize;
+}
+
+@media #{$large-up} {
+  .flex-md-row {
+    flex-direction: row;
+  }
+}
+
+@media #{$large-up} {
+  .flex-md-col {
+    flex-direction: column;
+  }
+}
+
+
+.pointer {
+  cursor: pointer;
+}
+
+.helptext {
+  font-size: $font-size-m;
+  color: $cement-grey;
+
+  @include linkStyle;
+}
+
+span.emoji.emoji-sizer {
+  width: 20px;
+  height: 20px;
+  margin: (-4px) 0;
+  display: inline-block;
+  background-size: contain;
+}
+
+.warning {
+  color: #c00;
+
+  a {
+    color: #c00;
+    text-decoration: underline;
+  }
+}
+
+.small-title {
+  font-size: 18px;
+  color: $oxide-blue;
+}
+
+.blank-list {
+  @include resetul;
+}
+
+.monospace {
+  font-family: Cousine, monospace;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+.float-right {
+  float: right;
+}
+
+.m-l-s {
+  margin-left: 0.6rem;
+}
+
+.margin-top-0 {
+  margin-top: 0;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.margin-left-s {
+  margin-left: 10px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.vertical-align {
+  vertical-align: middle;
+}
+
+.snapshot-hide {
+  @include snapshotHide;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.link {
+  cursor: pointer;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+  color: $asphalt-grey;
+  margin: auto 1px;
+
+  &:hover,
+  &--teal {
+    color: $oxide-blue;
+    border-bottom-color: $oxide-blue;
+  }
+
+  &--underline:not(&--teal) {
+    border-bottom-color: $asphalt-grey;
+  }
+}
+
+.font {
+  &--italic {
+    font-style: italic;
+  }
+
+  &--light {
+    font-weight: 100;
+  }
+
+  &--bold {
+    font-weight: 500;
+  }
+
+  &--bolder {
+    font-weight: 700;
+  }
+}
+
+.color-asphalt-grey {
+  color: $asphalt-grey;
+}
+
+.cement-grey {
+  color: $cement-grey;
+}
+
+.color-oxide-blue {
+  color: $oxide-blue;
+}
+
+.red {
+  color: $ansi-red;
+}
+
+.red-bold {
+  color: $ansi-red-bold;
+}
+
+.dark-red {
+  color: #DB4545;
+}
+
+.turf-green {
+  color: $turf-green;
+}
+
+.text-black {
+  color: $text-black;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@for $i from 1 through 100 {
+  .height-#{$i} {
+    height: $i + 0%;
+  }
+}
+
+@media print
+{    
+  .no-print, .no-print *
+  {
+      display: none !important;
+  }
+}

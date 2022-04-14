@@ -1,0 +1,12 @@
+<main class='auth-page'>
+  <FlashDisplay />
+  <div class='auth-page-container'>
+    <div class='auth-window'>
+      <LinkTo @route="index">
+        <SvgImage @name="travisci-proxy-logo-grayscale" @class="travis-logo" />
+      </LinkTo>
+      {{yield}}
+    </div>
+  </div>
+</main>
+<SimpleFooter />

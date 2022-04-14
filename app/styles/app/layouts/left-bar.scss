@@ -1,0 +1,25 @@
+.left-bar {
+  width: fit-content;
+
+  .user-name {
+    margin-left: 6px;
+    font-size: 16px;
+    color: #333333;
+  }
+}
+
+.left-bar-container {
+  display: block;
+  margin-top: 42px;
+}
+
+.left-bar-link {
+  display: block;
+  color: #333333;
+  line-height: 150%;
+  margin-bottom: 24px;
+
+  &.active {
+    color: $chateau-green;
+  }
+}

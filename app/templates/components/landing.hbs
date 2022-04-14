@@ -1,0 +1,32 @@
+<div class="landing">
+  <div id="top" class="top landing-page">
+    <TopBar />
+    <FlashDisplay />
+  </div>
+
+  <main>
+    <section class="landing-hero-section section--grey">
+      <div class="landing-hero-container">
+        <div class="landing-hero-text">
+          <h1>
+            Travis CI VCS Proxy Service
+          </h1>
+          <p>
+            A service meant to serve as a proxy layer between Perforce and SVN version control systems and Travis CI. Please create or log into Account if you want to use your Perforce depots / SVN repositories in Travis CI.
+          </p>
+          {{#unless isBeta}}
+          <div>
+            <LinkTo @route='sign-up' class='landing-button'>Create Account</LinkTo>
+          </div>
+          {{/unless}}
+        </div>
+
+        <div class="landing-hero-login">
+          {{sign-in isLanding=true}}
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<PageFooter />

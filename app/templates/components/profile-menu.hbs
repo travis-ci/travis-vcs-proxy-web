@@ -1,0 +1,84 @@
+<div class="profile menu {{this.auth.state}} {{if this.isMenuOpen 'open'}}">
+  {{#if this.auth.signedOut}}
+
+    <button
+      class="auth-button signed-out pointer"
+      type="button"
+      {{on 'click' (action 'signIn')}}
+    >
+      Login
+    </button>
+
+    {{#unless this.isBeta}}
+
+    <button
+      class="auth-button create-account pointer"
+      type="button"
+      {{on 'click' (action 'signUp')}}
+    >
+      Create account
+    </button>
+    {{/unless}}
+
+  {{else if this.auth.signedIn}}
+
+    <div
+      class="pointer navigation-anchor navigation-profile-link signed-in"
+      {{on 'click' (action 'toggleMenu')}}
+    >
+      <UserAvatar
+        @name={{this.user.name}}
+        @size={{40}}
+        class="navigation-avatar"
+      />
+      <SvgImage @name="icon-dropdown-arrow" @class="icon" />
+    </div>
+
+    <ul class="navigation-nested">
+
+      <li class="username navigation-nested__header">
+        <div class="username__text">
+          {{this.userName}}
+        </div>
+      </li>
+
+      <li>
+        <LinkTo
+          @route="index"
+          @title="Repositories"
+          class="signed-in topbar-menu-item"
+        >
+          <div class="topbar-menu-item__label">
+            Repositories
+          </div>
+        </LinkTo>
+      </li>
+
+      <li>
+        <LinkTo
+          @route="account"
+          @title="Your profile"
+          class="signed-in topbar-menu-item"
+        >
+          <div class="topbar-menu-item__label">
+            Settings
+          </div>
+        </LinkTo>
+      </li>
+
+      <li>
+        <a
+          href="/"
+          title="Sign out of this account"
+          class="topbar-menu-item"
+          {{action "signOut"}}
+        >
+          <div class="topbar-menu-item__label">
+            Sign Out
+          </div>
+        </a>
+      </li>
+    </ul>
+
+  {{/if}}
+</div>
