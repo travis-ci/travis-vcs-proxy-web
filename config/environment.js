@@ -35,7 +35,7 @@ module.exports = function (environment) {
       blog: 'https://blog.travis-ci.com',
       changelog: 'https://changelog.travis-ci.com',
       community: 'https://travis-ci.community',
-      docs: 'https://docs.travis-ci.com',
+      docs: 'https://docs.travis-ci.com/user/travis-ci-vcs-proxy-get-started',
       imprint: 'https://docs.travis-ci.com/imprint.html',
       legal: 'https://ideracorp.com/legal/TravisCI',
       jobs: 'https://travisci.workable.com/',
@@ -45,8 +45,8 @@ module.exports = function (environment) {
       twitter: 'https://twitter.com/travisci',
       tos: 'https://www.ideracorp.com/legal/TravisCI#tabs-2',
       privacyPolicy: 'https://www.ideracorp.com/legal/TravisCI#tabs-3',
-      help: 'https://docs.travis-ci.com',
-      twofactor: 'https://docs.travis-ci.com',
+      help: 'https://docs.travis-ci.com/user/travis-ci-vcs-proxy',
+      twofactor: 'https://docs.travis-ci.com/user/travis-ci-vcs-proxy',
     },
 
     pagination: {
