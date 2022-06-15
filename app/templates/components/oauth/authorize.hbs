@@ -1,15 +1,28 @@
-<h2>OAuth Authorization</h2>
+<h2>Authorization</h2>
 
 {{#if this.isLoading}}
 <LoadingIndicator />
 {{else}}
-<div>
-  <button
-    type='button'
-    class='button button--green mt-29 ml-160'
-    {{ on 'click' this.authorize }}
-  >
-    Authorize
-  </button>
+<div class="fs-18 mt-16">Travis CI is authorized to</div>
+<div class="flex flex--col">
+  <div class="fs-16">
+    <li>obtain read access to organization in Travis CI VCS Proxy</li>
+    <li>obtain read access to the repository configured via Travis CI VCS Proxy</li>
+    <li>obtain read access to the email adresses of Travis CI VCS Proxy users linked with the organization</li>
+  </div>
+  <div class="fs-16 ml-20">
+    in order to enable building with Travis CI.
+  </div>
+  <div class="flex--v-center flex--center mt-16">
+    <div>
+      <button
+        type='button'
+        class='button button--green mt-29'
+        {{ on 'click' this.authorize }}
+      >
+        Authorize
+      </button>
+    </div>
+  </div>
 </div>
 {{/if}}
