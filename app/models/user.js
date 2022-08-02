@@ -68,6 +68,10 @@ export default class UserModel extends Model {
     return this.api.get('/v1/oauth/authorized_applications');
   }
 
+  revokeAuthorizedApp(id) {
+    return this.api.delete(`/v1/oauth/authorized_applications/${id}`);
+  }
+
   authorizeOauth(clientId, responseType, state, redirectUri) {
     return this.api.post('/v1/oauth/authorize', {
       data: {

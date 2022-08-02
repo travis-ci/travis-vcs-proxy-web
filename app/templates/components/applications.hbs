@@ -1,0 +1,22 @@
+<div class="settings-page-container">
+  <h2 class='text-black ta-c fs-36 mt-24'>Authorized Applications</h2>
+    <div class='repositories-list'>
+      <table>
+        <tr>
+          <th>Repository name</th>
+          <th>Revoke</th>
+        </tr>
+        {{#each this.apps as |app|}}
+        <tr>
+          <td>{{app.name}}</td>
+          <td>
+            <a {{on 'click' (action 'toggleMenu' id="app.uid")}}>
+              <EmberTooltip @text="Revoke application" />
+              <SvgImage @name="icon-delete" @class="icon" />
+            </a>
+          </td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+</div>
