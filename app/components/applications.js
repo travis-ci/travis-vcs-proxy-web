@@ -5,8 +5,8 @@ import { inject as service } from '@ember/service';
 
 export default class ProfileMenu extends Component {
   @service auth;
-  @service router;
   @service api;
+  @service flashes;
 
   @tracked user = this.auth.currentUser;
   @tracked apps = [];
@@ -15,6 +15,7 @@ export default class ProfileMenu extends Component {
   revokeApp(id) {
     this.user.revokeAuthorizedApp(id).then(() => {
       this.flashes.success('Application revoked.');
+      this.apps = this.apps.filter(item => item.id !== id);
     }).catch(error => {
       this.flashes.error('Failed to revoke application.');
     });
