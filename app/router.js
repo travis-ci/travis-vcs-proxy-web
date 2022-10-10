@@ -18,6 +18,7 @@ Router.map(function () {
   this.route('accept-invite', { path: '/accept_invite' });
   this.route('account', function () {
     this.route('security');
+    this.route('applications');
     this.route('change-password', { path: 'change_password' });
     this.route('change-email', { path: 'change_email' });
     this.route('remove-account', { path: 'remove_account' });
