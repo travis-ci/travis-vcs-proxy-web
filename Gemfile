@@ -22,7 +22,8 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 2.11'
+  gem 'rspec'
   gem 'test-unit'
   gem 'sinatra-contrib'
+  gem 'rack-test'
 end
