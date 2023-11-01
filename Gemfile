@@ -1,13 +1,13 @@
-ruby "3.0.1"
+ruby "3.2.2"
 
 source 'https://rubygems.org'
 
 gem 'travis-web', path: 'waiter'
-gem 'puma', '~> 3.12.4'
-gem 'rack-ssl', '~> 1.4'
-gem 'rack-protection', '~> 1.4'
+gem 'puma'
+gem 'rack-ssl'
+gem 'rack-protection'
 gem 'rack-mobile-detect'
-gem 'sinatra'
+gem 'sinatra', '3.0.6'
 gem 'hashr'
 gem 'sanitize'
 
