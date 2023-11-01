@@ -35,7 +35,7 @@ run Travis::Web::App.build(
   api_endpoint:    ENV['VCS_PROXY_API_ENDPOINT'],
   beta:            ENV['VCS_PROXY_BETA'],
   ga_code:         ENV['GA_CODE'],
-  root:            File.expand_path('../../app', __FILE__),
+  root:            File.expand_path('../../dist', __FILE__),
   server_start:    Time.now,
   caches_enabled:  ENV['CACHES_ENABLED'],
   ssh_key_enabled: ENV['SSH_KEY_ENABLED'],
