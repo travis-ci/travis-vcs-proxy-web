@@ -1,12 +1,16 @@
-import { moduleFor, test } from 'ember-qunit';
-
-moduleFor('service:auth', 'Unit | Service | auth', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
-});
+import { test, module } from 'qunit';
 
 // TODO: Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
+
+
+import { setupTest } from 'ember-qunit';
+
+// Skipping til version 4.12
+module('Unit | service:auth', function (hooks) {
+  setupTest(hooks);
+
+  test('it exists', function (assert) {
+    let service = this.owner.lookup('service:auth');
+    assert.ok(service);
+  })
 });
