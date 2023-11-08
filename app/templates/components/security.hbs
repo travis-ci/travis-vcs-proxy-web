@@ -41,7 +41,7 @@
     <p><strong class="fs-18 fw-600">STEP 2.</strong>
        Open the authentication app. Scan the QR code below.</p>
     <div>
-      {{qr-code text=this.qrCodeUrl size=200 class='qr-code'}}
+      <QrCode @text={{this.qrCodeUrl}} @size={{200}} @class="qr-code" />
     </div>
 
     <p><strong class="fs-18 fw-600">STEP 3.</strong>

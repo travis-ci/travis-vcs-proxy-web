@@ -2,9 +2,9 @@
 
 <AuthPage>
   {{#if config.beta}}
-  {{sign-in isSignUp=false}}
+  <SignIn @isSignUp={{false}} />
   {{else}}
-  {{sign-in isSignUp=true}}
+  <SignIn @isSignUp={{true}} />
   {{/if}}
 </AuthPage>
 
