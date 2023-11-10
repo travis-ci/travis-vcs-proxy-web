@@ -17,9 +17,11 @@ env:
     # See https://git.io/vdao3 for details.
     - JOBS=1
 
-branches:
-  only:
-    - master
+#branches:
+#  only:
+#    - main
+# If we decide to build on all branches, remove this section completely.
+# For now, removed to enable building on other branches + fixing the name of branch to 'main'
 
 script:
   - npm test
