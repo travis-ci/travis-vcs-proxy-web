@@ -54,6 +54,22 @@ export function initialize() {
       return this;
     };
   }
+
+  if (!Array.prototype.uniqBy) {
+    Array.prototype.uniqBy = function(key) {
+      const unique = new Map();
+
+      return this.filter(item => {
+        const keyValue = item[key];
+        if (!unique.has(keyValue)) {
+          unique.set(keyValue, true);
+          return true;
+        }
+
+        return false;
+      });
+    };
+  }
 }
 
 export default {
