@@ -14,7 +14,7 @@
           <p>
             A service meant to serve as a proxy layer between Perforce and SVN version control systems and Travis CI. Please create or log into Account if you want to use your Perforce depots / SVN repositories in Travis CI.
           </p>
-          {{#unless isBeta}}
+          {{#unless this.isBeta}}
           <div>
             <LinkTo @route='sign-up' class='landing-button'>Create Account</LinkTo>
           </div>
