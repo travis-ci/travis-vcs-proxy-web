@@ -35,9 +35,10 @@
   <h3>Email</h3>
   <div class='entry-field'>
     <Input
-      id='email'
-      value={{this.email}}
       type='text'
+      @id='email'
+      @value={{this.email}}
+      @type='text'
       class='text-field'
     />
   </div>
@@ -46,8 +47,8 @@
   <h3>Password</h3>
   <div class='entry-field password'>
     <Input
-      id='password'
-      value={{this.password}}
+      @id='password'
+      @value={{this.password}}
       type='password'
       class='text-field'
     />
