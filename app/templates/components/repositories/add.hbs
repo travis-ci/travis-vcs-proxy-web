@@ -141,7 +141,7 @@
   </div>
   {{/if}}
   <div class="mt-24">
-    <LinkTo @route="repositories" @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
+    <LinkTo @route="repositories" @tagName='button' class='button--white w-156 no-border'>Cancel</LinkTo>
     <button type='button' class='button--green w-156 ml-20' {{ on 'click' (if this.args.editMode this.editRepository this.addRepository)}}>{{if this.args.editMode 'Update' 'Add'}} Repository</button>
   </div>
 </div>

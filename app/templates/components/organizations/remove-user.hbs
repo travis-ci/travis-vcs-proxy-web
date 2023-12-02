@@ -2,7 +2,7 @@
   <h1 class='update'>Remove User</h1>
   <h3>Are you sure you want to remove {{this.user.name}} from Organization "{{this.organization.name}}"?</h3>
   <div>
-    <LinkTo @route='index' @tagName='button' @class='button--white'>Cancel</LinkTo>
+    <LinkTo @route='index' @tagName='button' class='button--white'>Cancel</LinkTo>
     <button type='button' class='button--red' {{ on 'click' this.removeUser}}>Remove User</button>
   </div>
 </div>

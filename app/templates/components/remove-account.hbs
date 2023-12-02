@@ -5,7 +5,7 @@
         This action cannot be undone. By removing the account you will lose all of your information and settings!
     </p>
     <div class="mt-24">
-      <LinkTo @route='index' @tagName='button' @class='button--white no-border fs-16'>Never mind, keep my account</LinkTo>
+      <LinkTo @route='index' @tagName='button' class='button--white no-border fs-16'>Never mind, keep my account</LinkTo>
       <button type='button' class='button--red w-156 ml-50 fs-16' {{ on 'click' this.showFeedback }}>Remove Account</button>
     </div>
 </div>
@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="mt-16">
-    <LinkTo @route='index' @tagName='button' @class='button--white no-border fs-16'>I changed my mind</LinkTo>
+    <LinkTo @route='index' @tagName='button' class='button--white no-border fs-16'>I changed my mind</LinkTo>
     <button type='button' class='button--red w-156 ml-20 fs-16' {{ on 'click' this.removeAccount }}>Remove Account</button>
   </div>
 </div>

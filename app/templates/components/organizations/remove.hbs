@@ -2,7 +2,7 @@
   <h1 class='update'>Delete Organization</h1>
   <h3>Are you sure you want to delete Organization "{{this.args.organization.name}}"?<br>This action cannot be undone.</h3>
   <div>
-    <LinkTo @route='organization.users' @model={{this.args.organization}} @tagName='button' @class='button--white'>Cancel</LinkTo>
+    <LinkTo @route='organization.users' @model={{this.args.organization}} @tagName='button' class='button--white'>Cancel</LinkTo>
     <button type='button' class='button--red' {{ on 'click' this.removeOrganization}}>Delete Organization</button>
   </div>
 </div>
