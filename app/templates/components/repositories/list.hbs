@@ -4,7 +4,7 @@
     <h3>Find a repository</h3>
     <div class='entry-field'>
       <Input
-        @id='repositoryName'
+        id='repositoryName'
         @value={{this.repoSearch}}
         @type='text'
         class='text-field'
@@ -60,7 +60,9 @@
     </ul>
   </nav>
 </div>
-{{#unless this.repositories.isLoading}}
+{{#if this.repositories.isLoading}}
+<LoadingIndicator />
+{{else}}
   {{#if this.repositories.length}}
     <div class='repositories-list'>
     <table>
@@ -82,7 +84,7 @@
           <LinkTo
             @route="organization.users"
             @model={{repository.organization.id}}
-            @title={{repository.organization.name}}
+            title={{repository.organization.name}}
           >
             {{repository.organization.name}}
           </LinkTo>
@@ -94,7 +96,7 @@
           <LinkTo
             @route="repository.edit"
             @model={{repository.id}}
-            @title="Edit repository"
+            title="Edit repository"
             @disabled={{not repository.canModify}}
           >
             <EmberTooltip @text="Edit repository" />
@@ -105,7 +107,7 @@
           <LinkTo
             @route="repository.remove"
             @model={{repository.id}}
-            @title="Remove repository"
+            title="Remove repository"
             @disabled={{not repository.canModify}}
           >
             <EmberTooltip @text="Remove repository" />
@@ -128,6 +130,4 @@
       You don't have any {{if this.userHasOrganizations 'repositories' 'organizations and repositories'}} yet. Add {{if this.userHasOrganizations 'repositories' 'organizations and repositories'}} to begin work.
       </div>
   {{/if}}
-{{else}}
-<LoadingIndicator />
-{{/unless}}
+{{/if}}

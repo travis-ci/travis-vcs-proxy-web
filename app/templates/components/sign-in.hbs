@@ -5,10 +5,10 @@
   <h3>Authentication code</h3>
   <div class='entry-field'>
     <Input
-      @id='otp_attempt'
+      id='otp_attempt'
       @value={{this.otp_attempt}}
       @type='text'
-      @placeholder='6 digit code'
+      placeholder='6 digit code'
       class='text-field'
     />
   </div>
@@ -36,7 +36,7 @@
   <div class='entry-field'>
     <Input
       type='text'
-      @id='email'
+      id='email'
       @value={{this.email}}
       @type='text'
       class='text-field'
@@ -47,9 +47,7 @@
   <h3>Password</h3>
   <div class='entry-field password'>
     <Input
-      @id='password'
-      id='password'
-      value={{this.password}}
+      id='password' value={{this.password}}
       @value={{this.password}}
       type='password'
       class='text-field'

@@ -1,5 +1,5 @@
 <ul class='{{this.classes}}'>
-  {{#let this.messages.firstObject as |flash|}}
+  {{#let (get this.messages "0") as |flash|}}
     {{#if flash}}
       <FlashItem
         @flash={{flash}}
