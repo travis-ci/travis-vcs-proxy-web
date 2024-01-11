@@ -18,9 +18,11 @@ env:
     - JOBS=1
     - NODE_OPTIONS=--no-experimental-fetch
 
-branches:
-  only:
-    - master
+#branches:
+#  only:
+#    - main
+# If we decide to build on all branches, remove this section completely.
+# For now, removed to enable building on other branches + fixing the name of branch to 'main'
 
 script:
   - npm test
