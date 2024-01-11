@@ -7,7 +7,7 @@
       <PowerSelect
         @searchEnabled={{true}}
         @searchField="name"
-        @disabled={{(not this.isOrganizationAdmin)}}
+        @disabled={{not this.isOrganizationAdmin}}
         @options={{this.organizations}}
         @selected={{this.selectedOrganization}}
         @onChange={{fn (mut this.selectedOrganization)}} as |org|>
@@ -19,7 +19,7 @@
     <h3 class="fs-14 fw-600 tt-u">Name</h3>
     <div class='entry-field'>
         <Input
-        @id='name'
+        id='name'
         @value={{this.name}}
         @type='text'
         class='text-field'
@@ -30,7 +30,7 @@
     <h3 class="fs-14 fw-600 tt-u">URL</h3>
     <div class='entry-field'>
         <Input
-        @id='url'
+        id='url'
         @value={{this.url}}
         @type='text'
         class='text-field'
@@ -44,7 +44,7 @@
       <button
         autofocus={{true}}
         class="vcs-server-type-item {{if (eq this.type 'perforce') 'vcs-server-type-item--selected'}}"
-        onclick={{action (mut this.type) 'perforce'}}
+        onclick={{action (mut this.type) 'perforce'}} type="button"
       >
         <span class="vcs-server-type-item__radio"></span>
         <span class="vcs-server-type-item__description">
@@ -54,7 +54,7 @@
       <button
         autofocus={{false}}
         class="vcs-server-type-item {{if (eq this.type 'svn') 'vcs-server-type-item--selected'}}"
-        onclick={{action (mut this.type) 'svn'}}
+        onclick={{action (mut this.type) 'svn'}} type="button"
       >
         <span class="vcs-server-type-item__radio"></span>
         <span class="vcs-server-type-item__description">
@@ -68,7 +68,7 @@
     <h3>Perforce Username</h3>
     <div class='entry-field'>
       <Input
-        @id='username'
+        id='username'
         @value={{this.username}}
         @type='text'
         class='text-field'
@@ -79,7 +79,7 @@
     <h3>Server level ticket / token</h3>
     <div class='entry-field'>
       <Input
-        @id='token'
+        id='token'
         @value={{this.token}}
         @type='text'
         class='text-field'
@@ -94,7 +94,7 @@
     <h3>SVN Realm (optional)</h3>
     <div class='entry-field'>
       <Input
-        @id='svnRealm'
+        id='svnRealm'
         @value={{this.svnRealm}}
         @type='text'
         class='text-field'
@@ -105,7 +105,7 @@
     <h3>Username</h3>
     <div class='entry-field'>
       <Input
-        @id='username'
+        id='username'
         @value={{this.username}}
         @type='text'
         class='text-field'
@@ -116,7 +116,7 @@
     <h3>SSH Key</h3>
     <div class='entry-field entry-field-large'>
       <Textarea
-        @id='token'
+        id='token'
         @value={{this.token}}
         @type='text'
         class='text-field text-field-large'
@@ -132,7 +132,7 @@
     <h3>TCI Proxy Listener Token</h3>
     <div class='entry-field'>
       <Input
-        @id='repositoryListenerToken'
+        id='repositoryListenerToken'
         @value={{this.repositoryListenerToken}}
         @type='text'
         class='text-field'
@@ -141,7 +141,7 @@
   </div>
   {{/if}}
   <div class="mt-24">
-    <LinkTo @route="repositories" @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
+    <LinkTo @route="repositories" @tagName='button' class='button--white w-156 no-border'>Cancel</LinkTo>
     <button type='button' class='button--green w-156 ml-20' {{ on 'click' (if this.args.editMode this.editRepository this.addRepository)}}>{{if this.args.editMode 'Update' 'Add'}} Repository</button>
   </div>
 </div>

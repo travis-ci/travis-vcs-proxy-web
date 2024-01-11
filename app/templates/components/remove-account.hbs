@@ -1,15 +1,4 @@
-{{#unless this.isFeedbackShown}}
-<div class="settings-page-container settings-page-container--center">
-  <h2 class='text-black ta-c fs-36 mt-24 mb-24'>Remove Account</h2>
-    <p class="m-0">Are you sure you want to remove your account?
-        This action cannot be undone. By removing the account you will lose all of your information and settings!
-    </p>
-    <div class="mt-24">
-      <LinkTo @route='index' @tagName='button' @class='button--white no-border fs-16'>Never mind, keep my account</LinkTo>
-      <button type='button' class='button--red w-156 ml-50 fs-16' {{ on 'click' this.showFeedback }}>Remove Account</button>
-    </div>
-</div>
-{{else}}
+{{#if this.isFeedbackShown}}
 <div class="settings-page-container settings-page-container--center w-680">
   <h2 class='text-black ta-c fs-36 mt-24 mb-24'>We’re sorry to see you go</h2>
   <p class="m-0 w-600">We are constantly working on making Travis CI VCS Proxy Service a better place for anyone,
@@ -24,10 +13,10 @@
     <option value="5">Other</option>
   </select>
   <Textarea
-    @id='userFeedback'
+    id='userFeedback'
     @value={{this.feedbackText}}
-    @class='reason-textarea mb-32'
-    @placeholder='Please list any other reasons why you might be leaving.'
+    class='reason-textarea mb-32'
+    placeholder='Please list any other reasons why you might be leaving.'
   />
   <h2 class='text-black ta-c'>Confirmation</h2>
   <p>Enter your current Travis CI VCS Proxy Service password to confirm your decision</p>
@@ -35,8 +24,8 @@
     <h3 class="fs-14 fw-600 tt-u">Password</h3>
     <div class='entry-field password'>
       <Input
-        @id='password'
-        @type='password'
+        id='password'
+        type='password'
         @value={{this.password}}
         class='text-field'
       />
@@ -46,8 +35,19 @@
     </div>
   </div>
   <div class="mt-16">
-    <LinkTo @route='index' @tagName='button' @class='button--white no-border fs-16'>I changed my mind</LinkTo>
+    <LinkTo @route='index' @tagName='button' class='button--white no-border fs-16'>I changed my mind</LinkTo>
     <button type='button' class='button--red w-156 ml-20 fs-16' {{ on 'click' this.removeAccount }}>Remove Account</button>
   </div>
 </div>
-{{/unless}}
+{{else}}
+<div class="settings-page-container settings-page-container--center">
+  <h2 class='text-black ta-c fs-36 mt-24 mb-24'>Remove Account</h2>
+    <p class="m-0">Are you sure you want to remove your account?
+        This action cannot be undone. By removing the account you will lose all of your information and settings!
+    </p>
+    <div class="mt-24">
+      <LinkTo @route='index' @tagName='button' class='button--white no-border fs-16'>Never mind, keep my account</LinkTo>
+      <button type='button' class='button--red w-156 ml-50 fs-16' {{ on 'click' this.showFeedback }}>Remove Account</button>
+    </div>
+</div>
+{{/if}}

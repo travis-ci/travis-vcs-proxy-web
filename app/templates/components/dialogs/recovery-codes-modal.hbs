@@ -1,6 +1,6 @@
 <Modal
   @isVisible={{@isOpen}}
-  @onClose={{fn @onClose}}
+  @onClose={{@onClose}}
   @closeButton={{true}}
 >
   <div class="recovery-modal flex flex--v-center flex--center flex--col">
@@ -15,8 +15,8 @@
     </table>
     <div>
       <CopyButton
-        @clipboardText={{@joinedCodes}}
-        @class='button--green-outline w-156 no-print'
+        @text={{@joinedCodes}}
+        class='button--green-outline w-156 no-print'
       >
         Copy
       </CopyButton>

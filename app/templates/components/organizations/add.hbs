@@ -21,11 +21,11 @@
     <h3>Organization name</h3>
     <div class='entry-field'>
       <Input
-        @id='organizationName'
-        @disabled={{this.args.editMode}}
+        id='organizationName'
+        disabled={{this.args.editMode}}
         @value={{this.organizationName}}
         @type='text'
-        @maxlength=255
+        maxlength="255"
         class='text-field'
       />
     </div>
@@ -35,7 +35,7 @@
     <h3>Short Description</h3>
     <div class='entry-field'>
       <Input
-        @id='organizationDescription'
+        id='organizationDescription'
         @value={{this.organizationDescription}}
         @type='text'
         class='text-field'
@@ -47,7 +47,7 @@
     <h3>TCI Proxy Listener Token (optional)</h3>
     <div class='entry-field'>
       <Input
-        @id='organizationListenerToken'
+        id='organizationListenerToken'
         @value={{this.organizationListenerToken}}
         @type='text'
         class='text-field'
@@ -59,9 +59,9 @@
   </div>
   <div>
     {{#if this.args.editMode}}
-    <LinkTo @route='organization.users' @model={{this.args.organization}} @tagName='button' @class='button--white'>Cancel</LinkTo>
+    <LinkTo @route='organization.users' @model={{this.args.organization}} @tagName='button' class='button--white'>Cancel</LinkTo>
     {{else}}
-    <LinkTo @route='index' @tagName='button' @class='button--white'>Cancel</LinkTo>
+    <LinkTo @route='index' @tagName='button' class='button--white'>Cancel</LinkTo>
     {{/if}}
     <button type='button' class='button--green' {{ on 'click' (if this.args.editMode this.editOrganization this.addOrganization)}}>{{if this.args.editMode 'Save' 'Add Organization'}}</button>
   </div>
