@@ -44,7 +44,7 @@ export default class OrganizationAdd extends Component {
         this.router.transitionTo('repositories.index');
       }
     }).catch((error) => {
-      if (error.errors) {
+      if (error.errors && error.errors.length > 0) {
         this.flashes.error(error.errors[0]);
       } else {
         this.flashes.error(`Organization "${this.organizationName}" isn’t added.`);

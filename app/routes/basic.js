@@ -6,6 +6,7 @@ export default class TravisRoute extends Route {
   @service auth;
   @service router;
   @service flashes;
+  @service store;
 
   beforeModel(transition) {
     if (!this.auth.signedIn && this.needsAuth) {

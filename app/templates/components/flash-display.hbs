@@ -1,10 +1,8 @@
 <ul class='{{this.classes}}'>
-  {{#let (get this.messages "0") as |flash|}}
-    {{#if flash}}
-      <FlashItem
-        @flash={{flash}}
-        @close={{action "closeMessage"}}
-      />
-    {{/if}}
-  {{/let}}
+  {{#each this.messages as |flash|}}
+    <FlashItem
+      @flash={{flash}}
+      @close={{action "closeMessage"}}
+    />
+  {{/each}}
 </ul>

@@ -12,7 +12,6 @@ export default class OrganizationModel extends Model {
   @attr('string') description;
   @attr('string') listener_token;
   @attr('string') permission;
-  @hasMany('repository') repositories;
 
   @tracked users = dynamicQuery(this, function* ({ sort = 'email', page = 1 }) {
     const limit = config.pagination.usersPerPage;
