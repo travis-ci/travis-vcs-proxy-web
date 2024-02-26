@@ -11,4 +11,12 @@ export default class UserSerializer extends JSONSerializer {
   keyForAttribute(attr) {
     return underscore(attr);
   }
+
+  extractErrors(store, type, payload, id) {
+    if (payload.errors) {
+      return payload.errors;
+    } else {
+      return super.extractErrors(...arguments);
+    }
+  }
 }

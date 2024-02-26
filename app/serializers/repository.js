@@ -18,4 +18,12 @@ export default class RepositorySerializer extends ApplicationSerializer {
 
     return { repository: json };
   }
+
+  extractErrors(store, type, payload, id) {
+    if (payload.errors) {
+      return payload.errors;
+    } else {
+      return super.extractErrors(...arguments);
+    }
+  }
 }
