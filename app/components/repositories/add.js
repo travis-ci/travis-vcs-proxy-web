@@ -31,7 +31,7 @@ export default class RepositoriesAdd extends Component {
 
     if (this.args.editMode && this.args.repo) {
       this.repository = this.args.repo;
-      this.name = this.repository.name;
+      this.displayName = this.repository.displayName;
       this.url = this.repository.url;
       this.type = this.repository.type;
       this.username = this.repository.username;
@@ -53,7 +53,7 @@ export default class RepositoriesAdd extends Component {
 
   @action
   editRepository() {
-    this.repository.displayName = this.name;
+    this.repository.displayName = this.displayName;
     this.repository.url = this.url;
     this.repository.type = this.type;
     this.repository.username = this.username;

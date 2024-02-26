@@ -19,8 +19,8 @@
     <h3 class="fs-14 fw-600 tt-u">Name</h3>
     <div class='entry-field'>
         <Input
-        id='name'
-        @value={{this.name}}
+        id='displayName'
+        @value={{this.displayName}}
         @type='text'
         class='text-field'
         />
@@ -33,6 +33,7 @@
         id='url'
         @value={{this.url}}
         @type='text'
+        disabled={{this.args.editMode}}
         class='text-field'
         />
     </div>
