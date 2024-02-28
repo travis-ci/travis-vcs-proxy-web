@@ -74,6 +74,7 @@ export default class RepositoriesAdd extends Component {
 
   @action
   addRepository() {
+    this.name = this.displayName;
     this.store
       .findRecord('organization', this.selectedOrganization.id)
       .then((org) => {
