@@ -16,10 +16,18 @@ export default class OauthAuthorize extends Component {
     this.isLoading = true;
     const self = this;
     let oauthFound = false;
+    console.log("AUTH");
     this.auth.currentUser.getAuthorizedApps().then((data) => {
+      console.log("GET AUTH");
+      console.log(data);
       for (const app of data) {
+        console.log("APP");
+        console.log(app);
+        console.log(app.uid);
+        console.log(self.args.clientId);
         if (app.uid === self.args.clientId) {
           oauthFound = true;
+          console.log("AUTHORIZEUSER");
           this.auth.currentUser
             .authorizeOauth(
               self.args.clientId,
@@ -28,7 +36,10 @@ export default class OauthAuthorize extends Component {
               self.args.redirectUri
             )
             .then((data) => {
+              console.log("REDIR1");
+              console.log(data);
               if (data.hasOwnProperty('status') && data.status === 'redirect') {
+                console.log("REDIR2");
                 window.location.href = data.redirect_uri;
               }
             })

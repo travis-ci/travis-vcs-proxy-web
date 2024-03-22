@@ -73,7 +73,7 @@ export default class UserModel extends Model {
   }
 
   authorizeOauth(clientId, responseType, state, redirectUri) {
-    return this.api.post('/v1/oauth/authorize', {
+    let res = this.api.post('/v1/oauth/authorize', {
       data: {
         client_id: clientId,
         response_type: responseType,
@@ -82,6 +82,10 @@ export default class UserModel extends Model {
         state,
       }
     });
+    console.log("um AUTHORIZE");
+    console.log(`CID: ${clientId}, redir: ${redirectUri}`);
+    console.log(res);
+    return res;
   }
 
   removeUser(password, feedback) {
