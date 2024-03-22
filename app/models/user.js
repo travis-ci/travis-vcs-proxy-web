@@ -65,7 +65,10 @@ export default class UserModel extends Model {
   }
 
   getAuthorizedApps() {
-    return this.api.get('/v1/oauth/authorized_applications');
+    let res  = this.api.get('/v1/oauth/authorized_applications');
+    console.log("AUTH APPS");
+    console.log(res);
+    return res;
   }
 
   revokeAuthorizedApp(id) {
