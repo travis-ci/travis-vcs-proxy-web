@@ -1,6 +1,6 @@
 <h2 class='text-black ta-c fs-36 mt-24'>Remove Repository</h2>
 <p class="text-center text-black w-732 fs-18">Are you sure you want to remove {{this.repo.name}}?  This action cannot be undone.</p>
 <div class="mt-24">
-  <LinkTo @route="repositories" @tagName='button' @class='button--white w-156 no-border'>Cancel</LinkTo>
+  <LinkTo @route="repositories" @tagName='button' class='button--white w-156 no-border'>Cancel</LinkTo>
   <button type='button' class='button--red w-156 ml-20' {{ on 'click' this.removeToken }}>Remove Repository</button>
 </div>

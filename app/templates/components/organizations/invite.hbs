@@ -15,7 +15,7 @@
   <h3>User email</h3>
   <div class='entry-field'>
     <Input
-      @id='email'
+      id='email'
       @value={{this.email}}
       @type='text'
       class='text-field'
@@ -36,7 +36,7 @@
 </div>
 
 <div>
-  <LinkTo @route='organization.users' @tagName='button' @class='button--white'>Cancel</LinkTo>
+  <LinkTo @route='organization.users' @tagName='button' class='button--white'>Cancel</LinkTo>
   <button type='button' class='button--green' {{ on 'click' this.inviteUser}}>Send</button>
 </div>
 </div>

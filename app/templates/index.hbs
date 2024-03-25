@@ -2,7 +2,9 @@
 
 {{#if this.auth.signedIn}}
   <Dashboard>
-    <Repositories />
+    <Repositories>
+      <Repositories::List />
+    </Repositories>
   </Dashboard>
 {{else if (not this.auth.signingIn)}}
   <div class="wrapper centered">

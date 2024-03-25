@@ -32,12 +32,7 @@ export default class Flashes extends Service {
   };
 
   get messages() {
-    let flashes = this.flashes;
-    let model = [];
-    if (flashes.length) {
-      model.pushObjects(flashes.toArray());
-    }
-    return model.uniq();
+    return this.flashes.uniq();
   }
 
   loadFlashes(flashes = []) {

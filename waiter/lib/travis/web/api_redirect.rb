@@ -9,18 +9,16 @@ class Travis::Web::ApiRedirect < Sinatra::Base
   class NotPublicImages
     Match = Struct.new(:captures)
 
-    def initialize(pattern, except)
-      @except   = except
-      @pattern  = pattern
-      @captures = Match.new([])
-    end
-
-    def match(str)
-      @captures if str =~ @pattern && str !~ @except
+    def to_mustermann
+      mustermann = Mustermann.new('placegolder')
+      mustermann.define_singleton_method(:match) do |str|
+        Match.new([]) if str =~ %r{^/([^/]+)/([^/]+)\.(png|svg)$} && str !~ %r{^/images/}
+      end
+      mustermann
     end
   end
 
-  get NotPublicImages.new(%r{^/([^/]+)/([^/]+)\.(png|svg)$}, %r{^/images/}) do
+  get NotPublicImages.new.to_mustermann do
     if settings.redirect_png
       redirect!(request.fullpath.gsub(/\.png$/, '.svg'))
     else

@@ -1,8 +1,5 @@
 import Service from '@ember/service';
-import Ember from 'ember';
 import fade from 'ember-animated/transitions/fade';
-
-const isTest = Ember.testing;
 
 export const DURATION_NAMES = {
   QUICK: 'quick',
@@ -13,7 +10,7 @@ export const DURATIONS = {
 };
 
 export default class AnimationService extends Service {
-  off = isTest;
+  off = false;
 
   get durations() {
     const { off } = this;

@@ -30,6 +30,11 @@ export default class OrganizationAdd extends Component {
 
   @action
   addOrganization() {
+    if (!this.organizationName) {
+      this.flashes.error('Organization name can not be blank.');
+      return;
+    }
+
     let organization = this.store.createRecord('organization');
     organization.name = this.organizationName;
     organization.description = this.organizationDescription;
@@ -37,15 +42,15 @@ export default class OrganizationAdd extends Component {
     organization.save().then(() => {
       this.flashes.success(`Organization "${this.organizationName}" is added.`);
       this.user.organizations.pushObject(organization);
-      this.user.orgPermissions.pushObject({id: organization.id, permission: 'admin'});
+      this.user.orgPermissions.pushObject({id: parseInt(organization.id), permission: 'owner'});
       if (this.args.searchNoOrganization) {
         this.clearSearch();
       } else {
         this.router.transitionTo('repositories.index');
       }
     }).catch((error) => {
-      if (error.errors) {
-        this.flashes.error(error.errors[0]);
+     if (error.errors && error.errors.length > 0) {
+        this.flashes.error(error.errors[0].detail);
       } else {
         this.flashes.error(`Organization "${this.organizationName}" isn’t added.`);
       }
