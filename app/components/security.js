@@ -28,7 +28,7 @@ export default class ProfileMenu extends Component {
   showRecoveryModal() {
     this.user.twoFactorCodes().then((data) => {
       this.codes = data.codes;
-      this.joinedCodes = this.codes.join("\n");
+      this.joinedCodes = this.codes.join('\n');
       this.showRecoveryCodes = true;
     });
   }
@@ -41,10 +41,13 @@ export default class ProfileMenu extends Component {
   constructor() {
     super(...arguments);
 
-    this.user.twoFactorUrl().then((data) => {
-      this.qrCodeUrl = data.url;
-    }).catch((error) => {
-      this.flashes.error(error);
-    });
+    this.user
+      .twoFactorUrl()
+      .then((data) => {
+        this.qrCodeUrl = data.url;
+      })
+      .catch((error) => {
+        this.flashes.error(error);
+      });
   }
 }

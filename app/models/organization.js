@@ -1,4 +1,4 @@
-import Model, { attr, hasMany } from '@ember-data/model';
+import Model, { attr } from '@ember-data/model';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import dynamicQuery from '../utils/dynamic-query';
@@ -16,14 +16,18 @@ export default class OrganizationModel extends Model {
   @tracked users = dynamicQuery(this, function* ({ sort = 'email', page = 1 }) {
     const limit = config.pagination.usersPerPage;
     if (sort === 'name') sort = 'email';
-    return yield this.store.paginated('user', {
-      limit,
-      page,
-      sort_by: sort,
-      custom: {
-        org_id: this.id
+    return yield this.store.paginated(
+      'user',
+      {
+        limit,
+        page,
+        sort_by: sort,
+        custom: {
+          org_id: this.id,
+        },
       },
-    }, { live: false });
+      { live: false }
+    );
   });
 
   get isUser() {

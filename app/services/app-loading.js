@@ -11,7 +11,7 @@ export const TRAVIS_STATUS = {
   MAINTENANCE: 'maintenance',
   DEGRADED: 'degraded',
   MINOR: 'minor',
-  MAJOR: 'major'
+  MAJOR: 'major',
 };
 
 export default class AppLoadingService extends Service {
@@ -23,10 +23,12 @@ export default class AppLoadingService extends Service {
   @task *fetchTravisStatus() {
     if (statusPageStatusUrl) {
       try {
-        const { status = {} } = yield this.ajax.request(statusPageStatusUrl) || {};
+        const { status = {} } = yield this.ajax.request(statusPageStatusUrl) ||
+          {};
 
         const { indicator, description } = status;
         if (indicator || description) {
+          // eslint-disable-next-line
           this.setProperties({ indicator, description });
         }
       } catch (e) {

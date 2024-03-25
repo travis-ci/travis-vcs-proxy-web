@@ -15,7 +15,7 @@ export default class PaginationNavigation extends Component {
 
   queryParam = 'page';
   outer = 1;
-  inner= 2;
+  inner = 2;
 
   route = this.router.currentRouteName;
 
@@ -83,8 +83,10 @@ export default class PaginationNavigation extends Component {
         }
       }
 
-      if (currentPage > lowerOuterBoundary &&
-        currentPage < upperOuterBoundary) {
+      if (
+        currentPage > lowerOuterBoundary &&
+        currentPage < upperOuterBoundary
+      ) {
         // current page
         pageArray.push(this.buildPage(currentPage, offset));
       }
@@ -97,7 +99,7 @@ export default class PaginationNavigation extends Component {
       }
 
       // ... devider unit
-      if (upperOuterBoundary - upperInnerBoundary  > 1) {
+      if (upperOuterBoundary - upperInnerBoundary > 1) {
         pageArray.push({});
       }
 
@@ -108,7 +110,9 @@ export default class PaginationNavigation extends Component {
         }
       }
 
-      pageArray.push(this.buildPage(numberOfPages, this.get('pagination.last.offset')));
+      pageArray.push(
+        this.buildPage(numberOfPages, this.pagination.last.offset)
+      );
     }
 
     return pageArray;
@@ -139,4 +143,3 @@ export default class PaginationNavigation extends Component {
     return false; // prevent default <a> click handler
   }
 }
-

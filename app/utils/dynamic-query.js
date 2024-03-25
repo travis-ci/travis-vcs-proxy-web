@@ -53,18 +53,27 @@ export default function dynamicQuery(...args) {
   const context = args.pop();
 
   assert('Task must be provided', typeof taskFn === 'function');
-  assert('Task must be a GeneratorFunction', taskFn.constructor.name === 'GeneratorFunction');
-  assert('Limit must be provided if using Limit Pagination', !initialState.limitPagination || initialState.limit);
+  assert(
+    'Task must be a GeneratorFunction',
+    taskFn.constructor.name === 'GeneratorFunction'
+  );
+  assert(
+    'Limit must be provided if using Limit Pagination',
+    !initialState.limitPagination || initialState.limit
+  );
 
   const taskFnBound = bindGenerator(taskFn, context);
-  return DynamicQuery.extend({ task: task(taskFnBound).keepLatest() }).create(initialState);
+  return DynamicQuery.extend({ task: task(taskFnBound).keepLatest() }).create(
+    initialState
+  );
 }
 
 export const EVENTS = {
   PAGE_CHANGED: 'page-changed',
-  FILTER_CHANGED: 'filter-changed'
+  FILTER_CHANGED: 'filter-changed',
 };
 
+// eslint-disable-next-line
 const DynamicQuery = ArrayProxy.extend(Evented, {
   task: null,
   promise: null,
@@ -138,7 +147,8 @@ const DynamicQuery = ArrayProxy.extend(Evented, {
 
     const { page, filterTerm, sort } = this;
 
-    this.promise = this.task.perform({ page, filter: filterTerm, sort })
+    this.promise = this.task
+      .perform({ page, filter: filterTerm, sort })
       .then((result = []) => {
         if (this.limitPagination) {
           this.set('pagination', this.calcLimitPagination(result));
@@ -189,5 +199,4 @@ const DynamicQuery = ArrayProxy.extend(Evented, {
     const isFirst = page === 1;
     return { total, numberOfPages, isLast, isFirst };
   },
-
 });

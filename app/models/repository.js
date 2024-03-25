@@ -33,8 +33,8 @@ export default class RepositoryModel extends Model {
       data: {
         token: token,
         username: username,
-        svn_realm: svnRealm
-      }
+        svn_realm: svnRealm,
+      },
     });
   }
 
@@ -46,8 +46,8 @@ export default class RepositoryModel extends Model {
         url: url,
         server_type: type,
         username: username,
-        token: token
-      }
+        token: token,
+      },
     });
   }
 }

@@ -5,13 +5,13 @@ import { tracked } from '@glimmer/tracking';
 const messageTypeToIcon = {
   notice: 'icon-flag',
   success: 'flash-success',
-  error: 'flash-error'
+  error: 'flash-error',
 };
 
 const messageTypeToCloseButton = {
   notice: true,
   success: false,
-  error: true
+  error: true,
 };
 
 export default class Flashes extends Service {
@@ -29,14 +29,14 @@ export default class Flashes extends Service {
 
   setup() {
     this.flashes = [];
-  };
+  }
 
   get messages() {
     return this.flashes.uniq();
   }
 
   loadFlashes(flashes = []) {
-    flashes.forEach(flash => {
+    flashes.forEach((flash) => {
       const type = Object.keys(flash)[0];
       const { message, aboveOverlay } = flash[type];
       const icon = messageTypeToIcon[type];

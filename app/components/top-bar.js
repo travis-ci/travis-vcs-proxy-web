@@ -6,16 +6,15 @@ import { action } from '@ember/object';
 export default class TopBar extends Component {
   @service auth;
   @service store;
-  
+
   isWhite = false;
   landingPage = false;
   isNavigationOpen = false;
-  
+
   @tracked user = this.auth.currentUser;
 
   get isUnconfirmed() {
-    if (!this.user)
-      return false;
+    if (!this.user) return false;
     return !this.user.confirmedAt;
   }
 

@@ -46,4 +46,4 @@ export default class APIService extends Service {
 
     return headers;
   }
-};
+}

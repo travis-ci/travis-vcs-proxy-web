@@ -28,6 +28,7 @@ export default class OauthAuthorize extends Component {
               self.args.redirectUri
             )
             .then((data) => {
+              // eslint-disable-next-line
               if (data.hasOwnProperty('status') && data.status === 'redirect') {
                 window.location.href = data.redirect_uri;
               }
@@ -55,6 +56,7 @@ export default class OauthAuthorize extends Component {
         this.args.redirectUri
       )
       .then((data) => {
+        // eslint-disable-next-line
         if (data.hasOwnProperty('status') && data.status === 'redirect') {
           window.location.href = data.redirect_uri;
         }

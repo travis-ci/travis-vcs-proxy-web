@@ -39,22 +39,32 @@ export default class OrganizationAdd extends Component {
     organization.name = this.organizationName;
     organization.description = this.organizationDescription;
     organization.listener_token = this.organizationListenerToken;
-    organization.save().then(() => {
-      this.flashes.success(`Organization "${this.organizationName}" is added.`);
-      this.user.organizations.pushObject(organization);
-      this.user.orgPermissions.pushObject({id: parseInt(organization.id), permission: 'owner'});
-      if (this.args.searchNoOrganization) {
-        this.clearSearch();
-      } else {
-        this.router.transitionTo('repositories.index');
-      }
-    }).catch((error) => {
-     if (error.errors && error.errors.length > 0) {
-        this.flashes.error(error.errors[0].detail);
-      } else {
-        this.flashes.error(`Organization "${this.organizationName}" isn’t added.`);
-      }
-    });
+    organization
+      .save()
+      .then(() => {
+        this.flashes.success(
+          `Organization "${this.organizationName}" is added.`
+        );
+        this.user.organizations.pushObject(organization);
+        this.user.orgPermissions.pushObject({
+          id: parseInt(organization.id),
+          permission: 'owner',
+        });
+        if (this.args.searchNoOrganization) {
+          this.clearSearch();
+        } else {
+          this.router.transitionTo('repositories.index');
+        }
+      })
+      .catch((error) => {
+        if (error.errors && error.errors.length > 0) {
+          this.flashes.error(error.errors[0].detail);
+        } else {
+          this.flashes.error(
+            `Organization "${this.organizationName}" isn’t added.`
+          );
+        }
+      });
   }
 
   @action
@@ -62,12 +72,19 @@ export default class OrganizationAdd extends Component {
     this.organization.name = this.organizationName;
     this.organization.description = this.organizationDescription;
     this.organization.listener_token = this.organizationListenerToken;
-    this.organization.save().then(() => {
-      this.flashes.success(`Organization "${this.organization.name}" has been successfully updated.`);
-      this.router.transitionTo('repositories.index');
-    }).catch((error) => {
-      this.flashes.error(`Could not update Organization "${this.organization.name}".`);
-    });
+    this.organization
+      .save()
+      .then(() => {
+        this.flashes.success(
+          `Organization "${this.organization.name}" has been successfully updated.`
+        );
+        this.router.transitionTo('repositories.index');
+      })
+      .catch(() => {
+        this.flashes.error(
+          `Could not update Organization "${this.organization.name}".`
+        );
+      });
   }
 
   @action

@@ -11,7 +11,7 @@ export default class ApplicationAdapter extends RESTAdapter {
 
   get headers() {
     return {
-      'Authorization': `Bearer ${this.authStorage.token}`
+      Authorization: `Bearer ${this.authStorage.token}`,
     };
   }
 }

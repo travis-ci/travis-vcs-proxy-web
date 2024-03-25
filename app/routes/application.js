@@ -7,11 +7,11 @@ const NO_SIGN_IN_ROUTES = [
   'forgot-password',
   'unconfirmed',
   'confirmed',
-  'resend-confirmation'
-]
+  'resend-confirmation',
+];
 
 export default class ApplicationRoute extends Route {
-	@service auth;
+  @service auth;
   @service router;
 
   beforeModel(transition) {

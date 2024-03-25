@@ -13,7 +13,7 @@ export default class ProfileMenu extends Component {
 
   @tracked user = this.auth.currentUser;
 
-  isBeta = config.beta == "true";
+  isBeta = config.beta == 'true';
 
   get userName() {
     if (this.user) {

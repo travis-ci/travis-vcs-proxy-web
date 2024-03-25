@@ -8,10 +8,7 @@ module.exports = function (defaults) {
     // Add options here
     svg: {
       optimize: false,
-      paths: [
-        'public/images/stroke-icons',
-        'public/images/svg'
-      ]
+      paths: ['public/images/stroke-icons', 'public/images/svg'],
     },
     svgJar: {
       optimizer: {
@@ -24,26 +21,24 @@ module.exports = function (defaults) {
           {
             removeUnknownsAndDefaults: {
               unknownContent: false,
-            }
+            },
           },
           {
             inlineStyles: {
               onlyMatchedOnce: false,
-              removeMatchedSelectors: true
-            }
-          }
-        ]
-      }
+              removeMatchedSelectors: true,
+            },
+          },
+        ],
+      },
     },
     postcssOptions: {
       compile: {
         enabled: true,
         extension: 'scss',
         parser: require('postcss-scss'),
-        plugins: [
-          require('@csstools/postcss-sass')
-        ]
-      }
+        plugins: [require('@csstools/postcss-sass')],
+      },
     },
   });
 

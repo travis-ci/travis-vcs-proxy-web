@@ -44,13 +44,17 @@ export default class TravisVcsStore extends Store {
   //     }
   //
   paginated(modelName, queryParams, options = {}) {
+    // eslint-disable-next-line
     let allowLive = !options.hasOwnProperty('live') || options.live;
     if (!parseInt(queryParams.offset) && allowLive) {
       // we're on the first page, live updates can be enabled
+
+      // to remove
+      // eslint-disable-next-line
       return fetchLivePaginatedCollection(this, ...arguments);
     } else {
       return PaginatedCollectionPromise.create({
-        content: this.query(...arguments)
+        content: this.query(...arguments),
       });
     }
   }

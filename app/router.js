@@ -25,7 +25,7 @@ Router.map(function () {
     this.route('remove-account-confirm', { path: 'remove_account_confirm' });
   });
   this.route('oauth', function () {
-    this.route('authorize', { path: 'authorize' });
+    this.route('authorize');
   });
   this.route('organizations', function () {
     this.route('add');
@@ -35,21 +35,29 @@ Router.map(function () {
     this.route('add');
   });
 
-  this.route('organization', { path: '/organization/:id', resetNamespace: true }, function () {
-    this.route('users');
-    this.route('user', { path: '/users/:userId' }, function () {
-      this.route('remove');
+  this.route(
+    'organization',
+    { path: '/organization/:id', resetNamespace: true },
+    function () {
+      this.route('users');
+      this.route('user', { path: '/users/:user_id' }, function () {
+        this.route('remove');
+        this.route('edit');
+      });
+      this.route('invite');
       this.route('edit');
-    });
-    this.route('invite');
-    this.route('edit');
-    this.route('remove');
-  });
+      this.route('remove');
+    }
+  );
 
-  this.route('repository', { path: '/repositories/:id', resetNamespace: true }, function () {
-    this.route('edit');
-    this.route('remove');
-  });
+  this.route(
+    'repository',
+    { path: '/repositories/:id', resetNamespace: true },
+    function () {
+      this.route('edit');
+      this.route('remove');
+    }
+  );
 
   this.route('page-not-found', { path: '/*wildcard' });
 });

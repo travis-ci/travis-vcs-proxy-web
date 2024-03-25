@@ -13,7 +13,7 @@ export default class SignIn extends Component {
   @service auth;
   @service flashes;
 
-  isBeta = config.beta == "true";
+  isBeta = config.beta == 'true';
 
   @action
   togglePassword() {

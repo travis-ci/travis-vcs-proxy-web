@@ -9,7 +9,7 @@ export default class StorageAuthService extends Service {
     return storage.getItem('travis.token') || null;
   }
   set token(token) {
-    return storage.setItem('travis.token', token);
+    storage.setItem('travis.token', token);
   }
 
   @tracked savedUser = this.user;
@@ -17,15 +17,15 @@ export default class StorageAuthService extends Service {
 
   get user() {
     const data = parseWithDefault(storage.getItem('travis.user'), null);
-    return data && data.user || data;
+    return (data && data.user) || data;
   }
   set user(user) {
-    return storage.setItem('travis.user', serializeUserRecord(user));
+    storage.setItem('travis.user', serializeUserRecord(user));
   }
 
   get accounts() {
     const accountsData = storage.getItem('travis.auth.accounts');
-    const accounts = parseWithDefault(accountsData, []).map(account =>
+    const accounts = parseWithDefault(accountsData, []).map((account) =>
       extractAccountRecord(this.store, account)
     );
     //accounts.addArrayObserver(this, {
@@ -36,7 +36,6 @@ export default class StorageAuthService extends Service {
   }
   set accounts(accounts) {
     this.persistAccounts(accounts);
-    return accounts;
   }
 
   clearLoginData() {
@@ -61,9 +60,13 @@ function getStorage() {
     sessionStorage = window.sessionStorage;
   }
   // primary storage for auth is the one in which auth data was updated last
-  const sessionStorageUpdatedAt = +sessionStorage.getItem('travis.auth.updatedAt');
+  const sessionStorageUpdatedAt = +sessionStorage.getItem(
+    'travis.auth.updatedAt'
+  );
   const localStorageUpdatedAt = +localStorage.getItem('travis.auth.updatedAt');
-  return sessionStorageUpdatedAt > localStorageUpdatedAt ? sessionStorage : localStorage;
+  return sessionStorageUpdatedAt > localStorageUpdatedAt
+    ? sessionStorage
+    : localStorage;
 }
 
 function serializeUserRecord(record) {
@@ -74,4 +77,3 @@ function extractAccountRecord(store, userData) {
   const record = store.peekRecord('user', userData.id);
   return record || store.push(store.normalize('user', userData));
 }
-

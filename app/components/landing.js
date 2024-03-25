@@ -8,7 +8,7 @@ export default class Landing extends Component {
   @tracked email = '';
   @tracked password = '';
   @service auth;
-  isBeta = config.beta == "true";
+  isBeta = config.beta == 'true';
 
   @action
   signIn() {

@@ -12,12 +12,19 @@ export default class OrganizationsRemoveUser extends Component {
 
   @action
   removeUser() {
-    this.organization.removeUser(this.user.id).then(() => {
-      this.flashes.success(`User "${this.user.name}" successfully removed from "${this.organization.name}"`);
-      this.organization.users.reload();
-      this.router.transitionTo('repositories.index');
-    }).catch((error) => {
-      this.flashes.error(`User "${this.user.name}" couldn't be removed from "${this.organization.name}"`);
-    });
+    this.organization
+      .removeUser(this.user.id)
+      .then(() => {
+        this.flashes.success(
+          `User "${this.user.name}" successfully removed from "${this.organization.name}"`
+        );
+        this.organization.users.reload();
+        this.router.transitionTo('repositories.index');
+      })
+      .catch(() => {
+        this.flashes.error(
+          `User "${this.user.name}" couldn't be removed from "${this.organization.name}"`
+        );
+      });
   }
 }

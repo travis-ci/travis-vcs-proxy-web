@@ -1,4 +1,7 @@
 import Component from '@glimmer/component';
 
-export default class SvgImage extends Component {
-}
+export default Component.extend({
+  tagName: '',
+  width: '',
+  height: '',
+});

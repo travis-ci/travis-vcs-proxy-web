@@ -28,7 +28,7 @@ export default class StorageService extends Service {
   get storage() {
     return window.localStorage;
   }
-};
+}
 
 export function parseWithDefault(json, defaultValue) {
   try {

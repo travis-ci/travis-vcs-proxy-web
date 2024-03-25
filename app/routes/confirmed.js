@@ -10,7 +10,7 @@ export default class ConfirmedRoute extends TravisRoute {
   beforeModel() {
     if (!this.auth.signedIn) {
       this.flashes.success('The confirmation of your account is successful.');
-      this.router.transitionTo('sign-in');  
+      this.router.transitionTo('sign-in');
     } else {
       this.router.transitionTo('index');
     }

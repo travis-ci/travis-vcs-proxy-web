@@ -1,4 +1,3 @@
-import JSONSerializer from '@ember-data/serializer/json';
 import ApplicationSerializer from './application';
 
 export default class RepositorySerializer extends ApplicationSerializer {
@@ -10,15 +9,23 @@ export default class RepositorySerializer extends ApplicationSerializer {
       return repo;
     });
     newPayload['meta'] = payload['meta'];
-    return super.normalizeQueryResponse(store, primaryModelClass, newPayload || [], id, requestType);
+    return super.normalizeQueryResponse(
+      store,
+      primaryModelClass,
+      newPayload || [],
+      id,
+      requestType
+    );
   }
 
+  // eslint-disable-next-line
   serialize(snapshot, options) {
     let json = super.serialize(...arguments);
 
     return { repository: json };
   }
 
+  // eslint-disable-next-line
   extractErrors(store, type, payload, id) {
     if (payload.errors) {
       return payload.errors;

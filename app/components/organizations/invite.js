@@ -15,7 +15,7 @@ export default class OrganizationsAdd extends Component {
   @tracked email = '';
   @tracked selectedRole = this.roles[1];
 
-  isBeta = config.beta == "true";
+  isBeta = config.beta == 'true';
 
   roles = [
     { id: 'owner', name: 'Admin' },
@@ -24,24 +24,32 @@ export default class OrganizationsAdd extends Component {
 
   @action
   inviteUser() {
-    this.organization.inviteUser(this.email, this.selectedRole.id).then(() => {
-      this.flashes.success('Successfully invited user.');
-      this.router.transitionTo('repositories.index');
-    }).catch(() => {
-      if (1) {
-        this.auth.betaSignUp(this.email, "11111111111111111", this.organization.id, this.selectedRole.id, this.auth.currentUser.id).then(() => {
-        this.organization.inviteUser(this.email, this.selectedRole.id).then(() => {
-          this.flashes.success('Successfully invited user.');
-          this.router.transitionTo('repositories.index');
-          }).catch((error) => {
-            this.flashes.error('Could not invite user.');
-
+    this.organization
+      .inviteUser(this.email, this.selectedRole.id)
+      .then(() => {
+        this.flashes.success('Successfully invited user.');
+        this.router.transitionTo('repositories.index');
+      })
+      .catch(() => {
+        this.auth
+          .betaSignUp(
+            this.email,
+            '11111111111111111',
+            this.organization.id,
+            this.selectedRole.id,
+            this.auth.currentUser.id
+          )
+          .then(() => {
+            this.organization
+              .inviteUser(this.email, this.selectedRole.id)
+              .then(() => {
+                this.flashes.success('Successfully invited user.');
+                this.router.transitionTo('repositories.index');
+              })
+              .catch(() => {
+                this.flashes.error('Could not invite user.');
+              });
           });
-        });
-      }
-      else {
-        this.flashes.error('Could not invite user.');
-      }
-    });
+      });
   }
 }

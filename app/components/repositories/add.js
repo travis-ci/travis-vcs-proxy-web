@@ -64,16 +64,23 @@ export default class RepositoriesAdd extends Component {
         this.repository.svnRealm = this.svnRealm;
         this.repository.ownerId = this.selectedOrganization.id;
         this.repository.organization = org;
-        this.repository.save().then(() => {
-          this.flashes.success(`Repository "${this.repository.displayName}" has been successfully updated.`);
-          this.router.transitionTo('repositories.index');
-        }).catch((error) => {
-          if (error) {
-            this.flashes.error(`${error.split(/ (.+)/)[1]}`);
-          } else {
-            this.flashes.error(`Could not update Repository "${this.repository.displayName}".`);
-          }
-        });    
+        this.repository
+          .save()
+          .then(() => {
+            this.flashes.success(
+              `Repository "${this.repository.displayName}" has been successfully updated.`
+            );
+            this.router.transitionTo('repositories.index');
+          })
+          .catch((error) => {
+            if (error) {
+              this.flashes.error(`${error.split(/ (.+)/)[1]}`);
+            } else {
+              this.flashes.error(
+                `Could not update Repository "${this.repository.displayName}".`
+              );
+            }
+          });
       });
   }
 

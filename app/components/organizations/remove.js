@@ -14,13 +14,20 @@ export default class OrganizationsAdd extends Component {
   @action
   removeOrganization() {
     const organizationName = this.args.organization.name;
-    this.organization.destroyRecord().then(() => {
-      this.user.organizations.reload();
-      this.user.repositories.reload();
-      this.flashes.success(`Organization "${organizationName}" has been successfully deleted.`);
-      this.router.transitionTo('repositories.index');
-    }).catch((error) => {
-      this.flashes.error(`Organization "${organizationName}" has not been deleted.`);
-    });
+    this.organization
+      .destroyRecord()
+      .then(() => {
+        this.user.organizations.reload();
+        this.user.repositories.reload();
+        this.flashes.success(
+          `Organization "${organizationName}" has been successfully deleted.`
+        );
+        this.router.transitionTo('repositories.index');
+      })
+      .catch(() => {
+        this.flashes.error(
+          `Organization "${organizationName}" has not been deleted.`
+        );
+      });
   }
 }

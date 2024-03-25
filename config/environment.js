@@ -1,9 +1,6 @@
 'use strict';
 
-const {
-	VCS_PROXY_API_ENDPOINT,
-        VCS_PROXY_BETA,
-} = process.env;
+const { VCS_PROXY_API_ENDPOINT, VCS_PROXY_BETA } = process.env;
 
 module.exports = function (environment) {
   const ENV = {
@@ -25,7 +22,8 @@ module.exports = function (environment) {
     },
 
     apiEndpoint: 'https://travis-vcs-proxy.travis-ci.org',
-    statusPageStatusUrl: 'https://pnpcptp8xh9k.statuspage.io/api/v2/status.json',
+    statusPageStatusUrl:
+      'https://pnpcptp8xh9k.statuspage.io/api/v2/status.json',
     beta: false,
 
     urls: {
@@ -49,7 +47,7 @@ module.exports = function (environment) {
     pagination: {
       usersPerPage: 20,
       repositoriesPerPage: 20,
-    }
+    },
   };
 
   if (environment === 'development') {

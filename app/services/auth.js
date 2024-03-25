@@ -7,12 +7,14 @@ const STATE = {
   SIGNING_IN: 'signing_in',
   SIGNED_IN: 'signed_in',
   SIGNED_OUT: 'signed_out',
-  REQUIRES_2FA: 'requires_2fa'
+  REQUIRES_2FA: 'requires_2fa',
 };
 
-const TOKEN_EXPIRED_MSG = "You've been signed out, because your access token has expired.";
-const UNAUTHORIZED_MSG = "Invalid email or password.";
-const MUST_CONFIRM_EMAIL_API_MSG = "You have to confirm your email address before continuing.";
+const TOKEN_EXPIRED_MSG =
+  "You've been signed out, because your access token has expired.";
+const UNAUTHORIZED_MSG = 'Invalid email or password.';
+const MUST_CONFIRM_EMAIL_API_MSG =
+  'You have to confirm your email address before continuing.';
 const MUST_CONFIRM_EMAIL_MSG = `Your account is not confirmed. Please check your email and confirm your account.<br>If you need to generate a new confirmation email, please <a href="resend_confirmation?email={{email}}">resend your confirmation email</a>.`;
 export const CONFIRM_EMAIL_MSG = `Please check your email and confirm your account. If you need to generate a new confirmation email, please <a href="resend_confirmation?email={{email}}">resend your confirmation email</a>.`;
 
@@ -40,70 +42,71 @@ export default class AuthService extends Service {
   }
 
   get token() {
-    this.storage.get('token');
+    return this.storage.get('token');
   }
 
   signIn(email, password, otp_attempt) {
-    this.api.post(
-      '/v1/users/login',
-      {
+    this.api
+      .post('/v1/users/login', {
         data: {
           user: {
             email,
             password,
-            otp_attempt
-          }
-        }
-      }
-    ).then((data) => {
-      if (data.otp_enabled && data.token === '') {
-        this.set('state', STATE.REQUIRES_2FA);
-      } else {
-        // Set token
-        this.storage.set('token', data.token);
-        this.handleLogin().then(() => {
-          if (this.currentUser) {
-            this.set('state', STATE.SIGNED_IN);
-            this.router.transitionTo('/');
-          }
-        });
-      }
-    }).catch((error) => {
-      if (error === MUST_CONFIRM_EMAIL_API_MSG) {
-        this.flashes.error(MUST_CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, email));
-      } else {
-        if (!error) {
-          this.flashes.error(UNAUTHORIZED_MSG);
+            otp_attempt,
+          },
+        },
+      })
+      .then((data) => {
+        if (data.otp_enabled && data.token === '') {
+          this.state = STATE.REQUIRES_2FA;
         } else {
-          this.flashes.error(error);
+          // Set token
+          this.storage.set('token', data.token);
+          this.handleLogin().then(() => {
+            if (this.currentUser) {
+              this.state = STATE.SIGNED_IN;
+              this.router.transitionTo('/');
+            }
+          });
         }
-      }
-    });
+      })
+      .catch((error) => {
+        if (error === MUST_CONFIRM_EMAIL_API_MSG) {
+          this.flashes.error(
+            MUST_CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, email)
+          );
+        } else {
+          if (!error) {
+            this.flashes.error(UNAUTHORIZED_MSG);
+          } else {
+            this.flashes.error(error);
+          }
+        }
+      });
   }
 
   signUp(email, password) {
-    this.api.post(
-      '/v1/users',
-      {
+    this.api
+      .post('/v1/users', {
         data: {
           user: {
             email,
             password,
-          }
-        }
-      }
-    ).then(() => {
-      this.flashes.notice(CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, email));
-      this.router.transitionTo('unconfirmed');
-    }).catch((error) => {
-      this.flashes.error(error);
-    });
+          },
+        },
+      })
+      .then(() => {
+        this.flashes.notice(CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, email));
+        this.router.transitionTo('unconfirmed');
+      })
+      .catch((error) => {
+        this.flashes.error(error);
+      });
   }
 
   betaSignUp(email, password, organization, role, current_user) {
-    this.api.post(
-      '/v1/users',
-      {
+    this.api
+      .post('/v1/users', {
         data: {
           user: {
             email,
@@ -111,23 +114,23 @@ export default class AuthService extends Service {
           },
           organization: {
             id: organization,
-            role
+            role,
           },
           current_user: {
-            id: current_user
-          }
-        }
-      }
-    ).then(() => {});
+            id: current_user,
+          },
+        },
+      })
+      .then(() => {});
   }
 
   autoSignIn() {
     console.log('Automatically signing in');
-    this.set('state', STATE.SIGNING_IN);
+    this.state = STATE.SIGNING_IN;
     try {
       return this.handleLogin().then(() => {
         if (this.currentUser) {
-          this.set('state', STATE.SIGNED_IN);
+          this.state = STATE.SIGNED_IN;
         } else {
           this.flashes.error(TOKEN_EXPIRED_MSG);
           this.signOut();
@@ -139,26 +142,26 @@ export default class AuthService extends Service {
   }
 
   enable2FA(otpAttempt) {
-    return this.api.post(
-      '/v1/user/two_factor_auth/enable',
-      {
+    return this.api
+      .post('/v1/user/two_factor_auth/enable', {
         data: {
-            otp_attempt: otpAttempt
+          otp_attempt: otpAttempt,
+        },
+      })
+      .then((data) => {
+        if (data.otp_enabled) {
+          // Set token
+          this.storage.set('token', data.token);
+          return this.handleLogin().then(() => {
+            if (this.currentUser) {
+              this.state = STATE.SIGNED_IN;
+            }
+          });
         }
-      }
-    ).then((data) => {
-      if (data.otp_enabled) {
-        // Set token
-        this.storage.set('token', data.token);
-        return this.handleLogin().then(() => {
-          if (this.currentUser) {
-            this.set('state', STATE.SIGNED_IN);
-          }
-        });
-      }
-    }).catch((error) => {
-      this.flashes.error(error);
-    });
+      })
+      .catch((error) => {
+        this.flashes.error(error);
+      });
   }
 
   handleLogin() {
@@ -185,6 +188,7 @@ export default class AuthService extends Service {
     try {
       return yield this.store.queryRecord('user', {});
     } catch (error) {
+      // eslint-disable-next-line
       const status = +error.status || +get(error, 'errors.firstObject.status');
       if (status === 401 || status === 403 || status === 500) {
         this.flashes.error(TOKEN_EXPIRED_MSG);
@@ -200,13 +204,17 @@ export default class AuthService extends Service {
 
     this.storage.clearLoginData();
     this.currentUser = null;
-    this.set('state', STATE.SIGNED_OUT);
+    this.state = STATE.SIGNED_OUT;
 
     this.store.unloadAll();
 
     const currentURL = new URL(window.location.href);
     const redirectUrl = currentURL.pathname;
-    if (redirectUrl !== '/' && redirectUrl !== '/sign_in' && redirectUrl !== '/accept_invite') {
+    if (
+      redirectUrl !== '/' &&
+      redirectUrl !== '/sign_in' &&
+      redirectUrl !== '/accept_invite'
+    ) {
       this.router.transitionTo('sign-in');
     }
   }
@@ -216,10 +224,14 @@ export default class AuthService extends Service {
       this.flashes.error('The password must include at least 6 characters.');
       return false;
     } else if (!password.match(/\d+/) && !password.match(/[^\w\s]+/)) {
-      this.flashes.error('The password must include at least one non-alphabetic character (number or special character).');
+      this.flashes.error(
+        'The password must include at least one non-alphabetic character (number or special character).'
+      );
       return false;
     } else if (!password.match(/[a-z]+/)) {
-      this.flashes.error('The password must include at least one lowercase alphabetic character.');
+      this.flashes.error(
+        'The password must include at least one lowercase alphabetic character.'
+      );
       return false;
     } else {
       return true;
@@ -227,7 +239,7 @@ export default class AuthService extends Service {
   }
 
   togglePasswordVisibility(id) {
-    console.log("The id");
+    console.log('The id');
     console.log(id);
     let element = document.getElementById(id);
     if (element.getAttribute('type') === 'password') {

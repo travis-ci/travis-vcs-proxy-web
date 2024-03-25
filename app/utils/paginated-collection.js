@@ -18,8 +18,8 @@ export default class PaginatedCollection extends ArrayProxy {
       next: paginationData.next,
       first: paginationData.first,
       last: paginationData.last,
-      currentPage: (offset / limit + 1),
-      numberOfPages: Math.ceil(count / limit)
+      currentPage: offset / limit + 1,
+      numberOfPages: Math.ceil(count / limit),
     };
 
     return object;

@@ -24,7 +24,8 @@ export default class AJAXService extends Service {
 
     // Content-Type
     if (!this.isRetrieve(method)) {
-      headers['Content-Type'] = options.contentType || 'application/json; charset=utf-8';
+      headers['Content-Type'] =
+        options.contentType || 'application/json; charset=utf-8';
     }
 
     // Accept
@@ -84,29 +85,34 @@ export default class AJAXService extends Service {
         fetchOptions['body'] = body;
       }
 
-      fetch(url, fetchOptions).then(response => {
-        const { 'content-type': resContentType = '' } = response.headers.map;
-        const resBodyLength = response._bodyBlob.size;
+      fetch(url, fetchOptions)
+        .then((response) => {
+          const { 'content-type': resContentType = '' } = response.headers.map;
+          const resBodyLength = response._bodyBlob.size;
 
-        let resContent;
-        if (resContentType.includes('application/json') && resBodyLength > 0) {
-          resContent = response.json();
-        } else {
-          resContent = response.text();
-        }
+          let resContent;
+          if (
+            resContentType.includes('application/json') &&
+            resBodyLength > 0
+          ) {
+            resContent = response.json();
+          } else {
+            resContent = response.text();
+          }
 
-        resContent
-          .then(data => {
-            if (!response.ok) {
-              this.handleFetchError(reject, data.error || data.errors);
-            } else {
-              resolve(data);
-            }
-          })
-          .catch(error => this.handleFetchError(reject, error));
-      }).catch(error => {
-        this.handleFetchError(reject, error);
-      });
+          resContent
+            .then((data) => {
+              if (!response.ok) {
+                this.handleFetchError(reject, data.error || data.errors);
+              } else {
+                resolve(data);
+              }
+            })
+            .catch((error) => this.handleFetchError(reject, error));
+        })
+        .catch((error) => {
+          this.handleFetchError(reject, error);
+        });
     });
   }
 
@@ -116,7 +122,9 @@ export default class AJAXService extends Service {
         error = error.message;
       } else {
         let errors = [];
-        Object.keys(error).forEach(key => errors.push(key + ' ' + error[key]));
+        Object.keys(error).forEach((key) =>
+          errors.push(key + ' ' + error[key])
+        );
         error = errors.join() + '.';
       }
     }

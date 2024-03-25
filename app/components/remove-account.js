@@ -8,7 +8,7 @@ const removeReasons = {
   2: 'Support',
   3: 'Build Times',
   4: 'End of Project',
-  5: 'Other'
+  5: 'Other',
 };
 
 export default class RemoveAccount extends Component {
@@ -40,11 +40,17 @@ export default class RemoveAccount extends Component {
   @action
   removeAccount() {
     if (this.reason) {
-      this.user.removeUser(this.password, { reason: this.reason, text: this.feedbackText }).then(() => {
-        this.auth.signOut();
-      }).catch(error => {
-        this.flashes.error(error);
-      });  
+      this.user
+        .removeUser(this.password, {
+          reason: this.reason,
+          text: this.feedbackText,
+        })
+        .then(() => {
+          this.auth.signOut();
+        })
+        .catch((error) => {
+          this.flashes.error(error);
+        });
     } else {
       this.flashes.notice('Please specify a reason.');
     }

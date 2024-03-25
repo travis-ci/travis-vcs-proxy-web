@@ -10,15 +10,18 @@ export default class ResendConfirmationRoute extends TravisRoute {
 
   model(params) {
     if (params) {
-      this.api.post('/v1/users/confirmation/resend', {
-        data: {
-          email: params.email
-        }
-      }).then(() => {        
-        this.flashes.notice(CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, params.email));
-        this.router.transitionTo('sign-in');
-      });
+      this.api
+        .post('/v1/users/confirmation/resend', {
+          data: {
+            email: params.email,
+          },
+        })
+        .then(() => {
+          this.flashes.notice(
+            CONFIRM_EMAIL_MSG.replace(/\{\{email\}\}/g, params.email)
+          );
+          this.router.transitionTo('sign-in');
+        });
     }
-
   }
 }

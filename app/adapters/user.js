@@ -7,7 +7,10 @@ export default class UserAdapter extends ApplicationAdapter {
     const isUpdatingCurrentUser = requestType === 'updateRecord' && !id;
     const isQueryOrgUsers = requestType == 'query' && query.custom.org_id;
 
-    assert('Invalid parameters for /user request', isQueryingCurrentUser || isUpdatingCurrentUser || isQueryOrgUsers);
+    assert(
+      'Invalid parameters for /user request',
+      isQueryingCurrentUser || isUpdatingCurrentUser || isQueryOrgUsers
+    );
 
     if (isQueryOrgUsers) {
       return `${this.urlPrefix()}/organizations/${query.custom.org_id}/users`;

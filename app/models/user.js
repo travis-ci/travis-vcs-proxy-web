@@ -16,41 +16,57 @@ export default class UserModel extends Model {
   @attr('string') permission;
   @attr('boolean') otpRequiredForLogin;
 
-  @tracked organizations = dynamicQuery(this, function* ({ sort = 'name', page = 1 }) {
-    const limit = config.pagination.organizationsPerPage || 1;
-    const res= this.store.paginated('organization', {
-      limit,
-      page,
-      sort_by: sort,
-    }, { live: false });
-    return yield res;
-  });
+  @tracked organizations = dynamicQuery(
+    this,
+    function* ({ sort = 'name', page = 1 }) {
+      const limit = config.pagination.organizationsPerPage || 1;
+      const res = this.store.paginated(
+        'organization',
+        {
+          limit,
+          page,
+          sort_by: sort,
+        },
+        { live: false }
+      );
+      return yield res;
+    }
+  );
 
-  @tracked repositories = dynamicQuery(this, function* ({ sort = 'name', filter = '', page = 1 }) {
-    const limit = config.pagination.repositoriesPerPage || 1;
-    const res= this.store.paginated('repository', {
-      limit,
-      page,
-      sort_by: sort,
-      filter
-    }, { live: false });
-    return yield res;
-  });
+  @tracked repositories = dynamicQuery(
+    this,
+    function* ({ sort = 'name', filter = '', page = 1 }) {
+      const limit = config.pagination.repositoriesPerPage || 1;
+      const res = this.store.paginated(
+        'repository',
+        {
+          limit,
+          page,
+          sort_by: sort,
+          filter,
+        },
+        { live: false }
+      );
+      return yield res;
+    }
+  );
 
   isOrganizationAdmin(orgId) {
     orgId = parseInt(orgId);
-    return this.orgPermissions.find((org) => org.id === orgId).permission === 'owner';
+    return (
+      this.orgPermissions.find((org) => org.id === orgId).permission === 'owner'
+    );
   }
 
-  reload(options = {}) {
+  reload() {
     return this.store.queryRecord('user', {});
   }
 
   updateEmail(newEmail) {
     return this.api.patch('/v1/user/update_email', {
       data: {
-        email: newEmail
-      }
+        email: newEmail,
+      },
     });
   }
 
@@ -59,8 +75,8 @@ export default class UserModel extends Model {
       data: {
         current_password: oldPassword,
         password: newPassword,
-        password_confirmation: passwordConfirmation
-      }
+        password_confirmation: passwordConfirmation,
+      },
     });
   }
 
@@ -80,7 +96,7 @@ export default class UserModel extends Model {
         redirect_uri: redirectUri,
         scope: 'read',
         state,
-      }
+      },
     });
   }
 
@@ -88,8 +104,8 @@ export default class UserModel extends Model {
     return this.api.delete('/v1/users', {
       data: {
         password: password,
-        feedback: feedback
-      }
+        feedback: feedback,
+      },
     });
   }
 

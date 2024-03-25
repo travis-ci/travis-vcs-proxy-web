@@ -20,4 +20,3 @@ export default function bindGenerator(genFn, context) {
     return result.value;
   };
 }
-

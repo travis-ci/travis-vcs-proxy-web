@@ -5,13 +5,20 @@ export default class UserSerializer extends JSONSerializer {
   normalizeQueryResponse(store, primaryModelClass, payload, id, requestType) {
     const newPayload = payload['users'];
     newPayload['meta'] = payload['meta'];
-    return super.normalizeQueryResponse(store, primaryModelClass, newPayload || [], id, requestType);
+    return super.normalizeQueryResponse(
+      store,
+      primaryModelClass,
+      newPayload || [],
+      id,
+      requestType
+    );
   }
 
   keyForAttribute(attr) {
     return underscore(attr);
   }
 
+  // eslint-disable-next-line
   extractErrors(store, type, payload, id) {
     if (payload.errors) {
       return payload.errors;

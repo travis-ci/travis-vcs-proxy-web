@@ -22,8 +22,7 @@ export default class Modal extends Component {
   position = 'fixed';
   lastClickInside = false;
 
-  onClose() {
-  }
+  onClose() {}
 
   onClickOverlay() {
     if (!this.lastClickInside && this.closeOnClickOverlay) {
@@ -32,7 +31,7 @@ export default class Modal extends Component {
     this.lastClickInside = false;
   }
 
-  onClickModal(event) {
+  onClickModal() {
     this.lastClickInside = true;
   }
 }

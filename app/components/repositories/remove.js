@@ -16,12 +16,15 @@ export default class RepositoriesRemove extends Component {
 
   @action
   removeToken() {
-    this.repo.destroyRecord().then(() => {
-      this.flashes.success('Repository has been successfully deleted.');
-      this.repositories.reload();
-      this.router.transitionTo('repositories.index');
-    }).catch(() => {
-      this.flashes.error('Could not delete Repository.');
-    });
+    this.repo
+      .destroyRecord()
+      .then(() => {
+        this.flashes.success('Repository has been successfully deleted.');
+        this.repositories.reload();
+        this.router.transitionTo('repositories.index');
+      })
+      .catch(() => {
+        this.flashes.error('Could not delete Repository.');
+      });
   }
 }
