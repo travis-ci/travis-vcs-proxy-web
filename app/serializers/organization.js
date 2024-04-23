@@ -12,4 +12,12 @@ export default class OrganizationSerializer extends JSONSerializer {
 
     return { organization: json };
   }
+
+  extractErrors(store, type, payload, id) {
+    if (payload.errors) {
+      return payload.errors;
+    } else {
+      return super.extractErrors(...arguments);
+    }
+  }
 }

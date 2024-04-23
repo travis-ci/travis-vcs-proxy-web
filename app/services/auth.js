@@ -227,6 +227,8 @@ export default class AuthService extends Service {
   }
 
   togglePasswordVisibility(id) {
+    console.log("The id");
+    console.log(id);
     let element = document.getElementById(id);
     if (element.getAttribute('type') === 'password') {
       element.setAttribute('autocomplete', 'off');

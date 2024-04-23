@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import { inject as service } from '@ember/service';
 
 export default class RepositoryModel extends Model {
@@ -18,14 +18,11 @@ export default class RepositoryModel extends Model {
   @attr('number') ownerId;
   @attr('string') listener_token;
 
+  @belongsTo('organization', { inverse: null, async: true }) organization;
+
   get canModify() {
     return true;
   }
-
-  get organization() {
-    return this.store.peekRecord('organization', this.ownerId)
-      || this.store.findRecord('organization', this.ownerId);
-  };
 
   removeToken() {
     return this.api.delete(`/v1/repositories/${this.id}/token`);

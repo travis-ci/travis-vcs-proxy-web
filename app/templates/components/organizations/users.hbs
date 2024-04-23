@@ -1,13 +1,13 @@
 <h1>{{this.organization.name}}</h1>
 <div class='top-bar'>
   {{#if this.isOrganizationAdmin}}
-    <LinkTo @class="button--red delete-organization-button" @route="organization.remove">
+    <LinkTo class="button--red delete-organization-button" @route="organization.remove">
       Delete Organization
     </LinkTo>
-    <LinkTo @class="button--green add-repository-button" @route="organization.edit">
+    <LinkTo class="button--green add-repository-button" @route="organization.edit">
       Edit Organization
     </LinkTo>
-    <LinkTo @class="button--green add-repository-button" @route="organization.invite">
+    <LinkTo class="button--green add-repository-button" @route="organization.invite">
       Invite user
     </LinkTo>
   {{/if}}
@@ -42,7 +42,9 @@
     </ul>
   </nav>
 </div>
-{{#unless this.users.isLoading}}
+{{#if this.users.isLoading}}
+<LoadingIndicator />
+{{else}}
 <div class='organizations-list'>
 <table>
   <colgroup>
@@ -65,7 +67,7 @@
       <LinkTo
         @route="organization.user.edit"
         @model={{user.id}}
-        @title="Update user information"
+        title="Update user information"
         @disabled={{true}}
       >
         <EmberTooltip @text="Update user information" />
@@ -77,7 +79,7 @@
         @route="organization.user.remove"
         @model={{user.id}}
         @disabled={{or (not this.isOrganizationAdmin) (eq user.id this.user.id)}}
-        @title="Delete this user"
+        title="Delete this user"
       >
         <EmberTooltip @text="Delete this user" />
         <SvgImage @name="icon-delete" @class="icon" />
@@ -94,6 +96,4 @@
   @inner={{3}}
   @outer={{1}}
 />
-{{else}}
-<LoadingIndicator />
-{{/unless}}
+{{/if}}
